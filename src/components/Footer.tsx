@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center md:justify-between gap-6 text-gray-400">
         <div className="text-center md:text-left">
           <p className="text-sm">
-            � {new Date().getFullYear()} Garth Puckerin. All rights reserved.
+            &copy; {new Date().getFullYear()} Garth Puckerin. All rights reserved.
           </p>
         </div>
         <div className="flex gap-4">
