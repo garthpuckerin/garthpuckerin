@@ -98,18 +98,21 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 text-white">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Professional Experience</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto"></div>
+    <section
+      id="experience"
+      className="bg-slate-50 py-20 text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold">Professional Experience</h2>
+          <div className="mx-auto h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
         </div>
 
-        <div className="relative border-l border-slate-800 pl-6 space-y-12">
+        <div className="relative space-y-12 border-l border-slate-200 pl-6 transition-colors duration-300 dark:border-slate-800">
           {experience.map((role) => (
             <article key={role.company} className="relative">
               <div className="absolute -left-9 mt-1">
-                <div className="h-14 w-14 rounded-md overflow-hidden shadow-lg">
+                <div className="h-14 w-14 overflow-hidden rounded-md shadow-lg">
                   {role.logo ? (
                     <img
                       src={role.logo}
@@ -117,25 +120,29 @@ const Experience: React.FC = () => {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <Briefcase size={22} className="text-cyan-300" />
+                    <div className="flex h-full w-full items-center justify-center bg-slate-200 text-cyan-500 dark:bg-slate-800 dark:text-cyan-300">
+                      <Briefcase size={22} />
+                    </div>
                   )}
                 </div>
               </div>
-              <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-xl p-6 md:p-8">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+              <div className="rounded-xl border border-slate-200 bg-white p-6 transition-colors duration-300 backdrop-blur-sm shadow-sm md:p-8 dark:border-slate-800 dark:bg-slate-900/60">
+                <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
-                    <p className="text-cyan-400 text-sm uppercase tracking-wide">
+                    <p className="text-sm uppercase tracking-wide text-cyan-600 dark:text-cyan-300">
                       {role.company}
                     </p>
                     <h3 className="text-2xl font-semibold">{role.role}</h3>
                   </div>
-                  <span className="text-sm text-slate-400 whitespace-nowrap">
+                  <span className="whitespace-nowrap text-sm text-slate-500 dark:text-gray-400">
                     {role.period}
                   </span>
                 </div>
-                <ul className="list-disc list-inside space-y-2 text-slate-300">
+                <ul className="space-y-2 text-slate-700 dark:text-gray-300">
                   {role.accomplishments.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item} className="list-disc list-inside">
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>
