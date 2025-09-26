@@ -1,7 +1,25 @@
 import React from "react";
 import { Github, Linkedin } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
+import { cn } from "../lib/utils";
 
 const Footer: React.FC = () => {
+  const { theme } = useTheme();
+
+  const footerClass = cn(
+    "py-10 border-t transition-colors duration-300",
+    theme === "light" && "border-slate-200 bg-slate-100 text-slate-600",
+    theme === "dark" && "border-slate-800 bg-slate-950 text-gray-400",
+    theme === "original" && "border-slate-800 bg-slate-950 text-gray-400",
+  );
+
+  const socialClass = cn(
+    "rounded-lg p-3 transition-colors duration-200",
+    theme === "light"
+      ? "bg-white text-slate-500 hover:text-cyan-600"
+      : "bg-slate-800 text-gray-300 hover:text-cyan-300",
+  );
+
   const socialLinks = [
     {
       icon: <Github size={18} />,
@@ -16,7 +34,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="border-t border-slate-200 bg-slate-100 py-10 text-slate-600 transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950 dark:text-gray-400">
+    <footer className={footerClass}>
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 sm:px-6 md:flex-row md:justify-between">
         <div className="text-center md:text-left">
           <p className="text-sm">
@@ -31,7 +49,7 @@ const Footer: React.FC = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-white p-3 text-slate-500 transition-colors duration-200 hover:text-cyan-600 dark:bg-slate-800 dark:text-gray-300 dark:hover:text-cyan-300"
+              className={socialClass}
               aria-label={link.label}
             >
               {link.icon}

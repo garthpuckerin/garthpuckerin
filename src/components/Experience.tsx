@@ -6,6 +6,8 @@ import SuccessAcademyLogo from "../assets/logos/success_academy_charter_schools_
 import BoehringerLogo from "../assets/logos/boehringer_ingelheim_logo.jpg";
 import MontefioreLogo from "../assets/logos/montefiore_health_system_logo.jpg";
 import AmericanExpressLogo from "../assets/logos/amex_logo.jpg";
+import { useTheme } from "../context/ThemeContext";
+import { cn } from "../lib/utils";
 
 type ExperienceItem = {
   company: string;
@@ -17,6 +19,33 @@ type ExperienceItem = {
 };
 
 const Experience: React.FC = () => {
+  const { theme } = useTheme();
+
+  const sectionClass = cn(
+    "py-20 transition-colors duration-300",
+    theme === "original" && "bg-slate-950 text-gray-100",
+    theme === "light" && "bg-slate-50 text-slate-800",
+    theme === "dark" && "bg-slate-950 text-gray-100",
+  );
+
+  const timelineBorder =
+    theme === "light" ? "border-slate-200" : "border-slate-800";
+
+  const cardClass = cn(
+    "rounded-xl border backdrop-blur-sm p-6 shadow-sm transition-colors duration-300 md:p-8",
+    theme === "original" && "border-slate-800 bg-slate-900/60",
+    theme === "dark" && "border-slate-800 bg-slate-900/60",
+    theme === "light" && "border-slate-200 bg-white",
+  );
+
+  const textMuted = theme === "light" ? "text-slate-500" : "text-gray-400";
+  const listText = theme === "light" ? "text-slate-700" : "text-gray-300";
+
+  const badgeFallback =
+    theme === "light"
+      ? "bg-slate-200 text-cyan-600"
+      : "bg-slate-800 text-cyan-300";
+
   const experience: ExperienceItem[] = [
     {
       company: "Entrust Corporation",
@@ -98,17 +127,16 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section
-      id="experience"
-      className="bg-slate-50 py-20 text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100"
-    >
+    <section id="experience" className={sectionClass}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-4xl font-bold">Professional Experience</h2>
           <div className="mx-auto h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
         </div>
 
-        <div className="relative space-y-12 border-l border-slate-200 pl-6 transition-colors duration-300 dark:border-slate-800">
+        <div
+          className={cn("relative space-y-12 border-l pl-6", timelineBorder)}
+        >
           {experience.map((role) => (
             <article key={role.company} className="relative">
               <div className="absolute -left-9 mt-1">
@@ -120,13 +148,18 @@ const Experience: React.FC = () => {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-slate-200 text-cyan-500 dark:bg-slate-800 dark:text-cyan-300">
+                    <div
+                      className={cn(
+                        "flex h-full w-full items-center justify-center",
+                        badgeFallback,
+                      )}
+                    >
                       <Briefcase size={22} />
                     </div>
                   )}
                 </div>
               </div>
-              <div className="rounded-xl border border-slate-200 bg-white p-6 transition-colors duration-300 backdrop-blur-sm shadow-sm md:p-8 dark:border-slate-800 dark:bg-slate-900/60">
+              <div className={cardClass}>
                 <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
                     <p className="text-sm uppercase tracking-wide text-cyan-600 dark:text-cyan-300">
@@ -134,11 +167,11 @@ const Experience: React.FC = () => {
                     </p>
                     <h3 className="text-2xl font-semibold">{role.role}</h3>
                   </div>
-                  <span className="whitespace-nowrap text-sm text-slate-500 dark:text-gray-400">
+                  <span className={cn("text-sm", textMuted)}>
                     {role.period}
                   </span>
                 </div>
-                <ul className="space-y-2 text-slate-700 dark:text-gray-300">
+                <ul className={cn("space-y-2", listText)}>
                   {role.accomplishments.map((item) => (
                     <li key={item} className="list-disc list-inside">
                       {item}

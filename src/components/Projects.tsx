@@ -1,5 +1,7 @@
 import React from "react";
 import { ExternalLink, Github, Award } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
+import { cn } from "../lib/utils";
 
 type Project = {
   title: string;
@@ -85,16 +87,45 @@ const projects: Project[] = [
 ];
 
 const Projects: React.FC = () => {
+  const { theme } = useTheme();
+
+  const sectionClass = cn(
+    "py-20 transition-colors duration-300",
+    theme === "original" && "bg-slate-950 text-gray-100",
+    theme === "dark" && "bg-slate-950 text-gray-100",
+    theme === "light" && "bg-slate-50 text-slate-800",
+  );
+
+  const cardClass = cn(
+    "flex flex-col rounded-2xl border p-6 shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl",
+    theme === "light" && "border-slate-200 bg-white",
+    theme !== "light" && "border-slate-800 bg-slate-900/60",
+  );
+
+  const textMuted = theme === "light" ? "text-slate-500" : "text-gray-400";
+  const textBody = theme === "light" ? "text-slate-700" : "text-gray-300";
+  const badgeClass =
+    theme === "light"
+      ? "bg-slate-200 text-cyan-600"
+      : "bg-slate-800 text-cyan-300";
+
+  const toolBadge =
+    theme === "light"
+      ? "bg-slate-200 text-slate-700"
+      : "bg-slate-800 text-gray-200";
+
   return (
-    <section
-      id="projects"
-      className="bg-slate-50 py-20 text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-gray-100"
-    >
+    <section id="projects" className={sectionClass}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-4xl font-bold">Highlighted Projects</h2>
           <div className="mx-auto mb-8 h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
-          <p className="mx-auto max-w-3xl text-slate-600 dark:text-gray-300">
+          <p
+            className={cn(
+              "mx-auto max-w-3xl",
+              theme === "light" ? "text-slate-600" : "text-gray-300",
+            )}
+          >
             Strategic platforms spanning LMS modernization, AI-assisted
             engineering, and intent-to-execution DevOps orchestration.
           </p>
@@ -102,22 +133,35 @@ const Projects: React.FC = () => {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <article
-              key={project.title}
-              className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900/60"
-            >
+            <article key={project.title} className={cardClass}>
               <div className="mb-4">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
+                    <h3
+                      className={cn(
+                        "text-2xl font-semibold",
+                        theme === "light" ? "text-slate-900" : "text-white",
+                      )}
+                    >
+                      {" "}
                       {project.title}
                     </h3>
                     {project.subtitle && (
-                      <p className="text-sm text-cyan-600 dark:text-cyan-300">
+                      <p
+                        className={cn(
+                          "text-sm",
+                          theme === "light" ? "text-cyan-600" : "text-cyan-300",
+                        )}
+                      >
                         {project.subtitle}
                       </p>
                     )}
-                    <p className="mt-2 text-xs uppercase tracking-widest text-slate-500 dark:text-gray-400">
+                    <p
+                      className={cn(
+                        "mt-2 text-xs uppercase tracking-widest",
+                        textMuted,
+                      )}
+                    >
                       {project.role}
                     </p>
                   </div>
@@ -127,7 +171,12 @@ const Projects: React.FC = () => {
                         href={project.repo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-500 dark:border-slate-700 dark:text-slate-300 dark:hover:text-cyan-300"
+                        className={cn(
+                          "flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-200",
+                          theme === "light"
+                            ? "border-slate-200 text-slate-500 hover:border-cyan-400 hover:text-cyan-500"
+                            : "border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-300",
+                        )}
                         aria-label="View source code"
                       >
                         <Github size={18} />
@@ -138,7 +187,12 @@ const Projects: React.FC = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-500 dark:border-slate-700 dark:text-slate-300 dark:hover:text-cyan-300"
+                        className={cn(
+                          "flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-200",
+                          theme === "light"
+                            ? "border-slate-200 text-slate-500 hover:border-cyan-400 hover:text-cyan-500"
+                            : "border-slate-700 text-slate-300 hover:border-cyan-300",
+                        )}
                         aria-label="View project"
                       >
                         <ExternalLink size={18} />
@@ -147,34 +201,54 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
                 {project.status && (
-                  <span className="mt-3 inline-flex items-center gap-1 rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-600 dark:bg-slate-800 dark:text-cyan-300">
+                  <span
+                    className={cn(
+                      "mt-3 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide",
+                      badgeClass,
+                    )}
+                  >
                     <Award size={14} /> {project.status}
                   </span>
                 )}
               </div>
 
-              <p className="mb-4 flex-1 text-sm leading-relaxed text-slate-700 dark:text-gray-300">
+              <p
+                className={cn("mb-4 flex-1 text-sm leading-relaxed", textBody)}
+              >
                 {project.description}
               </p>
 
-              <ul className="mb-4 space-y-2 text-sm text-slate-700 dark:text-gray-300">
+              <ul className={cn("mb-4 space-y-2 text-sm", textBody)}>
                 {project.highlights.map((highlight) => (
                   <li key={highlight} className="flex gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cyan-500 dark:bg-cyan-300"></span>
+                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cyan-500"></span>
                     <span>{highlight}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-auto border-t border-slate-200 pt-4 dark:border-slate-800">
-                <p className="mb-2 text-xs uppercase tracking-widest text-slate-500 dark:text-gray-400">
+              <div
+                className={cn(
+                  "mt-auto border-t pt-4",
+                  theme === "light" ? "border-slate-200" : "border-slate-800",
+                )}
+              >
+                <p
+                  className={cn(
+                    "mb-2 text-xs uppercase tracking-widest",
+                    textMuted,
+                  )}
+                >
                   Key Tools
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tool) => (
                     <span
                       key={tool}
-                      className="rounded-full bg-slate-200 px-3 py-1 text-xs text-slate-700 dark:bg-slate-800 dark:text-gray-200"
+                      className={cn(
+                        "rounded-full px-3 py-1 text-xs",
+                        toolBadge,
+                      )}
                     >
                       {tool}
                     </span>

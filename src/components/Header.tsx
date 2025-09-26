@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Menu, X, Send, Moon, Sun } from "lucide-react";
+import { Menu, X, Send, Moon, Sun, Monitor } from "lucide-react";
 import HeaderAvatar from "../assets/header-avatar.jpg";
+import { useTheme } from "../context/ThemeContext";
+import { cn } from "../lib/utils";
 
 type NavItem = {
   id: string;
   label: string;
-};
-
-type HeaderProps = {
-  theme: "light" | "dark";
-  onToggleTheme: () => void;
 };
 
 const navItems: NavItem[] = [
@@ -22,14 +19,20 @@ const navItems: NavItem[] = [
   { id: "contact", label: "Contact" },
 ];
 
-const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
+const themeLabel: Record<string, string> = {
+  original: "Original",
+  dark: "Dark",
+  light: "Light",
+};
+
+const Header: React.FC = () => {
+  const { theme, cycleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 120;
-
       for (const item of navItems) {
         const section = document.getElementById(item.id);
         if (section) {
@@ -59,15 +62,35 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
   };
 
   const navButtonClasses = (id: string) =>
-    `relative font-medium transition-all duration-200 ${
-      activeSection === id
-        ? "text-cyan-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-cyan-500 dark:text-cyan-300 dark:after:bg-cyan-300"
-        : "text-slate-700 hover:text-cyan-600 dark:text-slate-300 dark:hover:text-cyan-300"
-    }`;
+    cn(
+      "relative font-medium transition-all duration-200",
+      theme === "dark" && "text-slate-300 hover:text-cyan-300",
+      theme !== "dark" && "text-slate-700 hover:text-cyan-600",
+      activeSection === id &&
+        (theme === "dark"
+          ? "text-cyan-300 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-cyan-300"
+          : "text-cyan-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-cyan-500"),
+    );
+
+  const headerClass = cn(
+    "sticky top-0 z-50 border-b backdrop-blur transition-colors duration-300",
+    theme === "dark" && "border-slate-800 bg-slate-950/80",
+    theme === "original" && "border-slate-200 bg-white/95",
+    theme === "light" && "border-slate-200 bg-white/90",
+  );
+
+  const icon =
+    theme === "original" ? (
+      <Monitor size={18} />
+    ) : theme === "dark" ? (
+      <Sun size={18} />
+    ) : (
+      <Moon size={18} />
+    );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/80">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <header className={headerClass}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex h-20 items-center justify-between">
           <button
             onClick={() => handleNavigate("home")}
@@ -80,7 +103,15 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
                 className="h-full w-full rounded-full object-cover object-top"
               />
             </span>
-            <span className="hidden bg-gradient-to-r from-slate-800 to-cyan-600 bg-clip-text text-2xl font-bold text-transparent dark:from-slate-100 dark:to-cyan-300 sm:block">
+            <span
+              className={cn(
+                "hidden text-2xl font-bold bg-clip-text sm:block",
+                theme === "dark" &&
+                  "bg-gradient-to-r from-slate-100 to-cyan-300 text-transparent",
+                theme !== "dark" &&
+                  "bg-gradient-to-r from-slate-800 to-cyan-600 text-transparent",
+              )}
+            >
               Garth Puckerin
             </span>
           </button>
@@ -100,15 +131,26 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
 
             <div className="flex items-center gap-3">
               <button
-                aria-label="Toggle theme"
-                onClick={onToggleTheme}
-                className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-700 transition duration-200 hover:border-cyan-500 hover:text-cyan-600 dark:border-slate-700 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-300 md:flex"
+                aria-label="Cycle theme"
+                onClick={cycleTheme}
+                className={cn(
+                  "hidden h-10 w-28 items-center justify-center gap-2 rounded-full border text-sm font-medium transition duration-200 md:flex",
+                  theme === "dark"
+                    ? "border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-300"
+                    : "border-slate-300 text-slate-700 hover:border-cyan-500 hover:text-cyan-600",
+                )}
               >
-                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                {icon}
+                {themeLabel[theme]}
               </button>
               <a
                 href="mailto:garth.puckerin@me.com?subject=Let%27s%20Connect"
-                className="hidden items-center gap-2 rounded-full border-2 border-cyan-600 px-4 py-2 text-sm font-semibold text-cyan-600 transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan-500 hover:text-cyan-700 dark:border-cyan-300 dark:text-cyan-200 dark:hover:text-white md:inline-flex"
+                className={cn(
+                  "hidden items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-semibold transition-all duration-200 md:inline-flex",
+                  theme === "dark"
+                    ? "border-cyan-300 text-cyan-200 hover:-translate-y-0.5 hover:border-cyan-200 hover:text-white"
+                    : "border-cyan-600 text-cyan-600 hover:-translate-y-0.5 hover:border-cyan-500 hover:text-cyan-700",
+                )}
               >
                 <Send size={16} />
                 Connect
@@ -116,7 +158,12 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
               <button
                 aria-label="Toggle navigation"
                 onClick={() => setIsOpen((prev) => !prev)}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-700 transition duration-200 hover:border-cyan-500 hover:text-cyan-600 dark:border-slate-700 dark:text-slate-200 dark:hover:border-cyan-400 dark:hover:text-cyan-300 md:hidden"
+                className={cn(
+                  "flex h-10 w-10 items-center justify-center rounded-full border transition duration-200 md:hidden",
+                  theme === "dark"
+                    ? "border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-300"
+                    : "border-slate-300 text-slate-700 hover:border-cyan-500 hover:text-cyan-600",
+                )}
               >
                 {isOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
@@ -126,25 +173,38 @@ const Header: React.FC<HeaderProps> = ({ theme, onToggleTheme }) => {
 
         {isOpen && (
           <div className="md:hidden">
-            <div className="space-y-3 border-t border-slate-200 py-4 dark:border-slate-800">
+            <div
+              className={cn(
+                "space-y-3 border-t py-4",
+                theme === "dark" ? "border-slate-800" : "border-slate-200",
+              )}
+            >
               <button
-                onClick={onToggleTheme}
-                className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-left text-slate-700 transition duration-150 hover:bg-slate-100 hover:text-cyan-600 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-cyan-300"
+                onClick={cycleTheme}
+                className={cn(
+                  "flex items-center gap-2 rounded-lg border px-4 py-2 text-left text-sm font-medium transition duration-150",
+                  theme === "dark"
+                    ? "border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-cyan-300"
+                    : "border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-cyan-600",
+                )}
               >
-                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-                <span>
-                  {theme === "dark" ? "Switch to Light" : "Switch to Dark"}
-                </span>
+                {icon}
+                <span>{themeLabel[theme]}</span>
               </button>
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavigate(item.id)}
-                  className={`block w-full rounded-lg px-4 py-2 text-left font-medium transition duration-150 ${
-                    activeSection === item.id
-                      ? "bg-slate-100 text-cyan-600 dark:bg-slate-800 dark:text-cyan-300"
-                      : "text-slate-700 hover:bg-slate-100 hover:text-cyan-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-cyan-300"
-                  }`}
+                  className={cn(
+                    "block w-full rounded-lg px-4 py-2 text-left text-sm font-medium transition duration-150",
+                    theme === "dark"
+                      ? activeSection === item.id
+                        ? "bg-slate-800 text-cyan-300"
+                        : "text-slate-300 hover:bg-slate-800 hover:text-cyan-300"
+                      : activeSection === item.id
+                        ? "bg-slate-100 text-cyan-600"
+                        : "text-slate-700 hover:bg-slate-100 hover:text-cyan-600",
+                  )}
                 >
                   {item.label}
                 </button>
