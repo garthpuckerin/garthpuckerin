@@ -1,57 +1,55 @@
 # Garth Puckerin
-**LMS Operations Leader**  
+**AI-Forward LMS Operations Leader**  
 East Stroudsburg, PA · (718) 310-8707 · garth.puckerin@me.com  
 [LinkedIn](https://linkedin.com/in/garthpuckerin) · [GitHub](https://github.com/garthpuckerin)
 
 ---
 
-## Snapshot
-- 10+ years scaling enterprise LMS ecosystems for global and regulated organizations.  
-- Trusted partner to HR, compliance, and enablement leaders delivering measurable KPIs.  
-- Advocate for agentic AI workflows that automate diagnostics, accelerate content ops, and protect uptime.
+## Leadership Snapshot
+- Aligns learning technology strategy with executive KPIs across regulated, global enterprises.  
+- Blends LMS governance with agentic AI tooling to automate diagnostics, content operations, and analytics.  
+- Trusted partner to HR, compliance, and enablement leaders for high-stakes, audit-ready delivery.
 
-## Key Initiatives
-**EPIC 2025 — Montefiore Access DB Modernization**  
-Migrating a mission-critical hospital scheduling system to SQL Server, FastAPI, and Next.js with RBAC, audit trails, and automated reporting.  
-**PDE/IPDE — Intelligent Professional Development Environment**  
-AI-augmented VS Code extension creating scaffolded repos, tests, CI pipelines, docs, and review-ready PRs.  
-**PipelineOS — Intent-to-Execution DevOps Platform**  
-Human-in-the-loop SAAS product coordinating AI agents, delivery pipelines, and executive governance.
+## Impact Highlights
+- **Entrust Corporation:** Ran a 10k+ user Docebo ecosystem; integrated Workday, Salesforce, QuickSight, LinkedIn Learning; cut incident MTTR by 38%; raised completions 22%.  
+- **Medidata Solutions:** Activated Docebo with SSO/RBAC, produced admin enablement playbooks, and delivered monthly adoption analytics tied to pipeline health.  
+- **Success Academy Charter Schools:** Implemented xAPI-compatible LXP stack, integrating Whova and automating cohort workflows.  
+- **PipelineOS (Founder):** Built a human-in-the-loop DevOps control hub converting strategic intent into governed delivery pipelines using provider-agnostic AI adapters.
 
-## Experience
-### Entrust Corporation · LMS Administrator / BSA · 2022–2025
-- Operated a 10k+ user Docebo ecosystem, integrating Workday, Salesforce, QuickSight, and LinkedIn Learning.  
-- Instituted SOC2-ready governance, HTML micro experiences, and performance dashboards accelerating adoption.  
-- Directed Tier I/II incident response with vendors/security, reducing MTTR by more than a third.
+## Signature Programs & Projects
+1. **EPIC 2025 – Montefiore Access DB Modernization**  
+   Modernizing hospital scheduling to SQL Server + FastAPI + Next.js with RBAC, telemetry, and automated reporting.
+2. **PDE / IPDE – Intelligent Professional Development Environment**  
+   AI-augmented VS Code extension that produces repos, tests, docs, and review-ready PRs with semantic guardrails.  
+3. **Agentic AI Integrations**  
+   Designed ChatGPT/Gemini/Claude-enabled workflows to streamline diagnostics, triage, and change communications.
 
-### Medidata Solutions · LMS Administrator · 2020–2022
-- Launched Docebo with SSO and role-based governance; produced admin enablement and support playbooks.  
-- Instrumented API-based monitoring to preempt performance issues; delivered adoption analytics to Sales leadership.
+## Core Capabilities
+- Enterprise LMS design, governance, and roadmap ownership  
+- Data privacy, SOC2 controls, and audit readiness  
+- Incident response, vendor stewardship, and SLA management  
+- Executive analytics, KPI storytelling, and enablement  
+- AI-assisted automation for diagnostics, content ops, and reporting
 
-### Success Academy Charter Schools · LXP Manager · 2019–2019
-- Implemented xAPI-ready LXP stack, integrating Whova and learning apps for large-scale training programs.  
-- Automated workflows through API extensions, reducing manual touchpoints for cohort management.
+## Technical Savvy
+LMS: Docebo · SuccessFactors · Workday · SumTotal · Canvas · Cornerstone  
+Business Apps: Microsoft 365 · Google Workspace · SharePoint  
+Analytics: Tableau · Power BI · Amazon QuickSight  
+Development: JavaScript · HTML/CSS · SQL · REST APIs · Postman  
+AI Toolkit: ChatGPT · Gemini · Claude · Custom LLM adapters
 
-### Boehringer Ingelheim · LMS Associate · 2016–2018
-- Designed compliance-focused learning pathways, SCORM validation, and global release coordination.
-
-### Montefiore Hospital · Project Coordinator · 2015–2016
-- Produced ILT/WBT courses, analytics dashboards, and a trainer scheduling system supporting 120+ facilitators.
-
-### American Express · Regulatory Compliance Training Analyst · 2012–2015
-- Led enterprise compliance training, migrating workflows to SharePoint; authored SCORM assets in SumTotal.
-
-## Competencies & Tools
-**LMS Platforms:** Docebo, SuccessFactors, Workday, SumTotal, Canvas, Cornerstone  
-**Business Applications:** Microsoft 365, Google Workspace, SharePoint  
-**Analytics & BI:** Tableau, Power BI, Amazon QuickSight  
-**Development & APIs:** JavaScript, HTML/CSS, SQL, REST APIs, Postman  
-**AI Stack:** ChatGPT Platform, Google Gemini, Claude/Anthropic, custom LLM adapters
+## Experience At-a-Glance
+- Entrust Corporation – LMS Administrator / BSA · 2022–2025  
+- Medidata Solutions – LMS Administrator · 2020–2022  
+- Success Academy Charter Schools – LXP Manager · 2019  
+- Boehringer Ingelheim – LMS Associate · 2016–2018  
+- Montefiore Hospital – Project Coordinator · 2015–2016  
+- American Express – Compliance Training Analyst · 2012–2015
 
 ## Education
 **New York Code + Design Academy — Software Engineering Bootcamp (2018)**  
-Full-stack training covering JavaScript, Ruby/Rails, Python, SQL/PostgreSQL, Bootstrap/Materialize, Git/GitHub, API development, authentication, and Agile practices.
+Full-stack training covering JavaScript, Ruby on Rails, Python, SQL/PostgreSQL, API development, authentication, responsive design, Git/GitHub, and Agile delivery.
 
 ---
 
-*Open to opportunities in LMS leadership, platform modernization, and AI-enabled learning innovation.*
+*Exploring opportunities to modernize enterprise learning platforms and implement AI-first operational strategies.*

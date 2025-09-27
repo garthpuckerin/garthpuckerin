@@ -20,8 +20,7 @@ const resumeOptions = [
     title: "Modern Resume",
     description: "Polished single-column layout with detailed summary, achievements, and projects.",
     file: "/resume/garth_modern_resume.pdf",
-    previewLight: "from-cyan-200 via-blue-100 to-indigo-100",
-    previewDark: "from-cyan-500/40 via-blue-500/30 to-indigo-500/40",
+    previewLight: "from-cyan-500/40 via-blue-500/30 to-indigo-500/40", previewDark: "from-cyan-500/40 via-blue-500/30 to-indigo-500/40",
     focus: "Comprehensive narrative with strategic highlights",
   },
   {
@@ -29,8 +28,7 @@ const resumeOptions = [
     title: "Classic Resume",
     description: "ATS-friendly text layout optimized for automated parsing and compliance portals.",
     file: "/resume/garth_classic_resume.pdf",
-    previewLight: "from-slate-200 via-slate-100 to-white",
-    previewDark: "from-slate-700 via-slate-800 to-slate-900",
+    previewLight: "from-slate-700 via-slate-800 to-slate-900", previewDark: "from-slate-700 via-slate-800 to-slate-900",
     focus: "Plain-text format with structured experience bullets",
   },
   {
@@ -38,8 +36,7 @@ const resumeOptions = [
     title: "Executive Brief",
     description: "Concise executive summary emphasising leadership outcomes and signature projects.",
     file: "/resume/garth_exec_resume.pdf",
-    previewLight: "from-blue-200 via-cyan-100 to-slate-100",
-    previewDark: "from-slate-900 via-slate-800 to-cyan-900",
+    previewLight: "from-slate-900 via-slate-800 to-cyan-900", previewDark: "from-slate-900 via-slate-800 to-cyan-900",
     focus: "High-level overview for board and leadership audiences",
   },
 ];
@@ -311,3 +308,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+

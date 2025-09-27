@@ -1,70 +1,80 @@
 GARTH PUCKERIN
-East Stroudsburg, PA | (718) 310-8707 | garth.puckerin@me.com
-LinkedIn: linkedin.com/in/garthpuckerin | GitHub: github.com/garthpuckerin
+LMS ADMINISTRATOR · EAST STROUDSBURG, PA · (718) 310-8707 · GARTH.PUCKERIN@ME.COM
+LINKEDIN: /GARTHPUCKERIN · GITHUB: @GARTHPUCKERIN
 
-====================================================================
+================================================================================
 PROFESSIONAL PROFILE
-Dedicated LMS administrator with a decade of experience driving enterprise learning programs across regulated industries. Adept at unifying HR, compliance, and enablement objectives by blending technical rigor, process discipline, and modern AI techniques. Proven leader in incident response, stakeholder enablement, and cross-system integration.
+Enterprise LMS leader with a decade of experience unifying compliance, enablement,
+and technology strategy. Drives system uptime, stakeholder adoption, and executive
+visibility by blending platform expertise (Docebo, Workday, SuccessFactors, Corner-
+stone) with analytics, AI-assisted workflows, and rigorous vendor management.
 
-====================================================================
+================================================================================
 AREAS OF EXPERTISE
-• LMS Operations & Governance       • AI-Augmented Learning Automation
-• Compliance & Audit Readiness      • Stakeholder Engagement & Change
-• Data Analytics & Reporting        • Incident Management & Troubleshooting
-• Integration Architecture          • Project & Program Management
+• LMS Operations & Governance      • Integration Architecture & APIs
+• Compliance & Audit Readiness     • Incident / Risk Management
+• GenAI & Agentic Automation       • Stakeholder Enablement & Change
+• Analytics & KPI Reporting        • Program & Vendor Leadership
 
-====================================================================
+================================================================================
 PROFESSIONAL EXPERIENCE
 
-ENTRUST CORPORATION — Minneapolis, MN (Remote)
-LMS Administrator / Business Systems Analyst | June 2022 – March 2025
-- Managed the global Docebo platform, serving 10,000+ users with 99.98% uptime and compliant controls.
-- Integrated Workday HCM, Salesforce, QuickSight, and LinkedIn Learning to automate data pipelines and KPIs.
-- Drove Tier I/II incident response with vendors and security teams, reducing mean-time-to-resolution by 38%.
-- Built executive dashboards, HTML-based micro experiences, and guided journeys that boosted course completion.
-- Orchestrated content launches for three business units while maintaining SOC2 and privacy requirements.
+ENTRUST CORPORATION — LMS Administrator / Business Systems Analyst
+June 2022 – March 2025 | Remote (Minneapolis HQ)
+• Operated the global Docebo environment (10K+ users) with 99.98% availability and SOC2
+  compliance controls.
+• Integrated Workday, Salesforce, Amazon QuickSight, and LinkedIn Learning to automate
+  user provisioning, reporting, and KPI delivery.
+• Led Tier I / Tier II incident response with security and vendor teams, cutting MTTR by 38%.
+• Authored HTML micro experiences, guided journeys, and executive dashboards that lifted
+  course completion rates by 22%.
+• Coordinated content strategy and releases across three business units under privacy and
+  regulatory mandates.
 
-MEDIDATA SOLUTIONS — New York, NY
-Learning Management System Administrator | Nov 2020 – Jun 2022
-- Implemented Docebo with SSO, role-based governance, and day-to-day operational support.
-- Produced admin enablement guides, power-user workshops, and knowledge bases.
-- Leveraged API monitoring and browser tooling to resolve latency and access issues preemptively.
-- Delivered monthly enablement analytics for Sales leadership, highlighting adoption and ROI metrics.
+MEDIDATA SOLUTIONS — Learning Management System Administrator
+November 2020 – June 2022 | New York, NY
+• Implemented Docebo with SSO and RBAC; produced admin playbooks and live enablement.
+• Built API monitors and browser tooling to detect latency, resolving issues pre-emptively.
+• Delivered monthly enablement scorecards connecting learning adoption to sales pipeline
+  performance.
 
-SUCCESS ACADEMY CHARTER SCHOOLS — New York, NY
-Learning Experience Platform Manager | Feb 2019 – Nov 2019
-- Evaluated xAPI-compliant learning platforms, integrating Whova and supporting applications for large events.
-- Automated learner journeys and communications via custom API orchestration.
+SUCCESS ACADEMY CHARTER SCHOOLS — Learning Experience Platform Manager
+February 2019 – November 2019 | New York, NY
+• Evaluated and deployed xAPI-compliant LXP stack; integrated Whova and related apps for
+  large-scale learning events.
+• Automated cohort assignments and communications through API orchestration.
 
-BOEHRINGER INGELHEIM — Stamford, CT
-LMS Associate | Oct 2016 – Jul 2018
-- Configured compliance learning pathways, managed SCORM packaging, and coordinated global launches.
-- Collaborated with legal and QA teams to align training releases with regulatory commitments.
+BOEHRINGER INGELHEIM — LMS Associate
+October 2016 – July 2018 | Stamford, CT
+• Configured compliance training journeys, SCORM validation, and global launch schedules.
+• Partnered with QA/legal stakeholders to maintain audit-ready documentation.
 
-MONTEFIORE HOSPITAL — Bronx, NY
-Project Coordinator | Oct 2015 – Jul 2016
-- Built ILT/WBT programs, analytics dashboards, and SharePoint reports for compliance tracking.
-- Developed an Access-based scheduling system for 120+ trainers across 50+ classrooms.
+MONTEFIORE HOSPITAL — Project Coordinator
+October 2015 – July 2016 | Bronx, NY
+• Produced ILT/WBT content, analytics dashboards, and a trainer scheduling system serving
+  120+ facilitators across 50+ classrooms.
 
-AMERICAN EXPRESS — New York, NY
-Regulatory Compliance Training Analyst | Feb 2012 – Oct 2015
-- Led enterprise compliance learning, migrating workflows to SharePoint for audit-ready traceability.
-- Authored SCORM modules in SumTotal and produced weekly/monthly/quarterly performance reports.
+AMERICAN EXPRESS — Regulatory Compliance Training Analyst
+February 2012 – October 2015 | New York, NY
+• Led enterprise compliance programs, migrating workflows to SharePoint and SumTotal.
+• Authored SCORM modules and delivered weekly/monthly/quarterly performance reports.
 
-====================================================================
-SIGNATURE PROJECTS
-- EPIC 2025 — Modernizing Montefiore’s scheduling platform (Access ? SQL Server + FastAPI + Next.js).
-- PDE/IPDE — AI-augmented VS Code extension delivering scaffolded repos, tests, CI, and governed PRs.
-- PipelineOS — Intent-to-execution DevOps platform orchestrating PDE/IPDE outputs with guardrails.
+================================================================================
+SELECT PROJECTS
+• EPIC 2025 — Montefiore Access DB Modernization (SQL Server, FastAPI, Next.js, RBAC).
+• PDE / IPDE — AI-augmented VS Code extension generating repositories, tests, CI, and PRs.
+• PipelineOS — Intent-to-Execution DevOps platform coordinating AI-driven delivery.
 
-====================================================================
-TECHNICAL SUMMARY
-LMS Platforms: Docebo, SuccessFactors, Workday, SumTotal, Canvas, Cornerstone
+================================================================================
+TECHNICAL SKILLS
+LMS: Docebo, SuccessFactors, Workday, SumTotal, Canvas, Cornerstone
 Business Apps: Microsoft 365, Google Workspace, SharePoint
-Analytics & BI: Tableau, Power BI, Amazon QuickSight
+Analytics: Tableau, Power BI, Amazon QuickSight
 Development: JavaScript, HTML/CSS, SQL, REST APIs, Postman
+AI Toolkit: ChatGPT, Gemini, Claude, Custom LLM adapters
 
-====================================================================
+================================================================================
 EDUCATION
-New York Code + Design Academy — Software Engineering Bootcamp, 2018
-Full-stack curriculum: JavaScript, Ruby/Rails, Python, SQL/PostgreSQL, Bootstrap/Materialize, Git/GitHub, Responsive/SASS, API development, authentication, and Agile project delivery.
+New York Code + Design Academy — Software Engineering Bootcamp (2018)
+Immersive full-stack training covering JavaScript, Ruby on Rails, Python, SQL/PostgreSQL, API
+development, authentication, responsive design, Git/GitHub, CI/CD, and Agile project delivery.

@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 2058 >>
+<< /Length 2259 >>
 stream
 BT
 /F1 12 Tf
@@ -25,67 +25,69 @@ T*
 T*
 (Executive Summary) Tj
 T*
-(LMS administrator leveraging AI-assisted workflows to automate diagnostics and scale global learning.) Tj
+(LMS leader unifying governance, analytics, and AI automation for global, regulated organizations.) Tj
 T*
 () Tj
 T*
-(Core Strengths) Tj
+(Core Leadership Strengths) Tj
 T*
-(- Program and project leadership) Tj
+(- LMS governance and automation roadmaps) Tj
 T*
-(- GenAI and agentic AI integration) Tj
+(- GenAI and agentic workflows for diagnostics and content ops) Tj
 T*
-(- LMS governance and automation) Tj
+(- Compliance, privacy, and SOC2 readiness) Tj
 T*
-(- Incident and risk management) Tj
+(- Stakeholder enablement and change communications) Tj
 T*
-(- Analytics and executive reporting) Tj
+(- Incident, risk, and vendor management) Tj
 T*
-(- Stakeholder enablement) Tj
+(- Executive analytics and KPI storytelling) Tj
 T*
 () Tj
 T*
-(Platforms and Tools) Tj
+(Selected Platforms and Tools) Tj
 T*
-(Docebo, SuccessFactors, Workday, SumTotal, Canvas, Cornerstone) Tj
+(Docebo | SuccessFactors | Workday | SumTotal | Canvas | Cornerstone) Tj
 T*
-(Microsoft 365, Google Workspace, SharePoint) Tj
+(Microsoft 365 | Google Workspace | SharePoint) Tj
 T*
-(Tableau, Power BI, Amazon QuickSight) Tj
+(Tableau | Power BI | Amazon QuickSight) Tj
 T*
-(JavaScript, HTML/CSS, SQL, REST APIs, Postman) Tj
+(JavaScript | HTML/CSS | SQL | REST APIs | Postman) Tj
 T*
 () Tj
 T*
 (Experience - Entrust Corporation \(2022-2025\)) Tj
 T*
-(* Operated global Docebo ecosystem with 10k plus users and compliance-ready controls.) Tj
+(* Directed a 10k+ user Docebo program with audit-ready controls and 99.98% uptime.) Tj
 T*
-(* Integrated Workday, Salesforce, QuickSight, LinkedIn Learning to streamline KPIs.) Tj
+(* Integrated Workday, Salesforce, QuickSight, LinkedIn Learning to automate KPIs.) Tj
 T*
-(* Led Tier I and II incident response reducing MTTR.) Tj
+(* Led Tier I/II incident response, reducing resolution time by 38%.) Tj
+T*
+(* Delivered HTML micro experiences and dashboards that lifted completion by 22%.) Tj
 T*
 () Tj
 T*
 (Experience - Medidata Solutions \(2020-2022\)) Tj
 T*
-(* Deployed Docebo with SSO and role governance; produced admin training playbooks.) Tj
+(* Implemented Docebo with SSO, RBAC, and admin enablement playbooks.) Tj
 T*
-(* Instrumented performance monitoring and delivered adoption scorecards.) Tj
+(* Built API monitors and analytics linking adoption to Sales pipeline health.) Tj
 T*
 () Tj
 T*
 (Experience - Success Academy, Boehringer Ingelheim, Montefiore, American Express) Tj
 T*
-(* Delivered LXP integrations, compliance programs, and analytics dashboards across regulated industries.) Tj
+(* Delivered LXP integrations, compliance programs, and analytics for regulated environments.) Tj
 T*
 () Tj
 T*
 (Signature Projects) Tj
 T*
-(- EPIC 2025: Modernizing Montefiore scheduling to SQL Server + FastAPI + Next.js.) Tj
+(- EPIC 2025: SQL Server + FastAPI + Next.js modernization of Montefiore scheduling.) Tj
 T*
-(- PDE/IPDE: VS Code extension generating repos, tests, CI, and review gates.) Tj
+(- PDE/IPDE: AI-augmented VS Code extension generating repos, tests, CI, and docs.) Tj
 T*
 (- PipelineOS: Intent-to-execution platform orchestrating AI-driven delivery.) Tj
 T*
@@ -107,9 +109,9 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000241 00000 n 
-0000002351 00000 n 
+0000002552 00000 n 
 trailer
 << /Size 6 /Root 1 0 R >>
 startxref
-2594
+2795
 %%EOF
