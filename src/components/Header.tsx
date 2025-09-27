@@ -38,44 +38,44 @@ const Header: React.FC = () => {
       return height + 16;
     };
 
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + getHeaderOffset();
-      let currentId: string | null = null;
+    const updateCurrentSection = () => {
+      const offset = getHeaderOffset();
+      const scrollPosition = window.scrollY + offset;
+      let currentId: string = navItems[0].id;
 
       for (const item of navItems) {
         const section = document.getElementById(item.id);
-        if (section) {
-          const { offsetTop, offsetHeight } = section;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            currentId = item.id;
-            break;
-          }
+        if (!section) {
+          continue;
+        }
+
+        const sectionTop = section.offsetTop;
+        if (scrollPosition >= sectionTop - 4) {
+          currentId = item.id;
+        } else {
+          break;
         }
       }
 
-      if (!currentId) {
-        const { scrollHeight } = document.documentElement;
-        const reachedBottom = window.innerHeight + window.scrollY >= scrollHeight - 2;
-        if (reachedBottom) {
-          currentId = navItems[navItems.length - 1].id;
-        }
+      const { scrollHeight } = document.documentElement;
+      const reachedBottom = window.innerHeight + window.scrollY >= scrollHeight - 2;
+      if (reachedBottom) {
+        currentId = navItems[navItems.length - 1].id;
       }
 
-      if (currentId && currentId !== activeSectionRef.current) {
+      if (currentId !== activeSectionRef.current) {
         activeSectionRef.current = currentId;
         setActiveSection(currentId);
       }
     };
 
-    const handleResize = () => handleScroll();
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleResize);
-    handleScroll();
+    window.addEventListener("scroll", updateCurrentSection, { passive: true });
+    window.addEventListener("resize", updateCurrentSection);
+    updateCurrentSection();
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", updateCurrentSection);
+      window.removeEventListener("resize", updateCurrentSection);
     };
   }, []);
   const handleNavigate = (id: string) => {
@@ -232,5 +232,6 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
 
 
