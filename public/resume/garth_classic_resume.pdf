@@ -1,0 +1,101 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1799 >>
+stream
+BT
+/F1 12 Tf
+14 TL
+72 780 Td
+(GARTH PUCKERIN) Tj
+T*
+(LMS Administrator | East Stroudsburg, PA | \(718\) 310-8707 | garth.puckerin@me.com) Tj
+T*
+(LinkedIn /garthpuckerin | GitHub @garthpuckerin) Tj
+T*
+() Tj
+T*
+(PROFILE) Tj
+T*
+(Ten-year track record running enterprise LMS programs with a focus on compliance, integrations, and AI automation.) Tj
+T*
+() Tj
+T*
+(AREAS OF EXPERTISE) Tj
+T*
+(LMS Operations, Compliance and Audit Readiness, AI Workflows, Incident Management, Analytics, Enablement) Tj
+T*
+() Tj
+T*
+(PROFESSIONAL EXPERIENCE) Tj
+T*
+(Entrust Corporation - LMS Administrator / BSA \(2022-2025\)) Tj
+T*
+( - Managed global Docebo platform \(10k plus users\), integrating Workday, Salesforce, QuickSight, LinkedIn Learning.) Tj
+T*
+( - Authored HTML micro experiences and executive dashboards; reduced MTTR via Tier I and II coordination.) Tj
+T*
+() Tj
+T*
+(Medidata Solutions - LMS Administrator \(2020-2022\)) Tj
+T*
+( - Implemented Docebo with SSO, governance, and admin enablement assets.) Tj
+T*
+( - Resolved performance issues using API monitoring; reported adoption KPIs to leadership.) Tj
+T*
+() Tj
+T*
+(Success Academy Charter Schools - LXP Manager \(2019\)) Tj
+T*
+( - Deployed xAPI-ready LXP stack; automated event workflows via APIs.) Tj
+T*
+() Tj
+T*
+(Boehringer Ingelheim - LMS Associate \(2016-2018\)) Tj
+T*
+( - Configured compliance learning journeys and SCORM releases.) Tj
+T*
+() Tj
+T*
+(Montefiore Hospital - Project Coordinator \(2015-2016\)) Tj
+T*
+( - Created ILT/WBT programs and Access-based trainer scheduling system.) Tj
+T*
+() Tj
+T*
+(American Express - Compliance Training Analyst \(2012-2015\)) Tj
+T*
+( - Led global compliance training and SharePoint workflow migration.) Tj
+T*
+() Tj
+T*
+(EDUCATION) Tj
+T*
+(New York Code + Design Academy - Software Engineering Bootcamp \(2018\)) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000002092 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2335
+%%EOF
