@@ -7,17 +7,14 @@ const Footer: React.FC = () => {
   const { theme } = useTheme();
 
   const footerClass = cn(
-    "py-10 border-t transition-colors duration-300",
+    "py-5 border-t transition-colors duration-300",
     theme === "light" && "border-slate-200 bg-slate-100 text-slate-600",
     theme === "dark" && "border-slate-800 bg-slate-950 text-gray-400",
     theme === "original" && "border-slate-800 bg-slate-950 text-gray-400",
   );
 
   const socialClass = cn(
-    "rounded-lg p-3 transition-colors duration-200",
-    theme === "light"
-      ? "bg-white text-slate-500 hover:text-cyan-600"
-      : "bg-slate-800 text-gray-300 hover:text-cyan-300",
+    "rounded-lg p-3 transition-colors duration-200", theme === "light" ? "bg-white text-slate-500 hover:text-cyan-600 border border-slate-300" : "bg-slate-800 text-gray-300 hover:text-cyan-300 border border-slate-700",
   );
 
   const socialLinks = [
@@ -62,3 +59,5 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+
+

@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
   const { theme } = useTheme();
 
   const sectionClass = cn(
-    "py-20 transition-colors duration-300",
+    "py-24 transition-colors duration-300",
     theme === "original" && "bg-slate-950 text-gray-100",
     theme === "dark" && "bg-slate-950 text-gray-100",
     theme === "light" && "bg-slate-50 text-slate-800",
@@ -65,10 +65,7 @@ const Contact: React.FC = () => {
   ];
 
   const socialClass = cn(
-    "rounded-lg p-3 transition-all duration-200 hover:scale-110",
-    theme === "light"
-      ? "bg-slate-200 text-slate-600 hover:text-cyan-600"
-      : "bg-slate-800 text-gray-300 hover:text-cyan-300",
+    "rounded-lg p-3 transition-all duration-200 hover:scale-110", theme === "light" ? "bg-slate-200 text-slate-600 hover:text-cyan-600 border border-slate-300" : "bg-slate-800 text-gray-300 hover:text-cyan-300 border border-slate-700",
   );
 
   const infoLabel = theme === "light" ? "text-slate-500" : "text-gray-400";
@@ -234,3 +231,5 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
+
+
