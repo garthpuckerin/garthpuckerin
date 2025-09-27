@@ -6,6 +6,8 @@ import SuccessAcademyLogo from "../assets/logos/success_academy_charter_schools_
 import BoehringerLogo from "../assets/logos/boehringer_ingelheim_logo.jpg";
 import MontefioreLogo from "../assets/logos/montefiore_health_system_logo.jpg";
 import AmericanExpressLogo from "../assets/logos/amex_logo.jpg";
+import { useTheme } from "../context/ThemeContext";
+import { cn } from "../lib/utils";
 
 type ExperienceItem = {
   company: string;
@@ -17,6 +19,33 @@ type ExperienceItem = {
 };
 
 const Experience: React.FC = () => {
+  const { theme } = useTheme();
+
+  const sectionClass = cn(
+    "py-20 transition-colors duration-300",
+    theme === "original" && "bg-slate-950 text-gray-100",
+    theme === "light" && "bg-slate-50 text-slate-800",
+    theme === "dark" && "bg-slate-950 text-gray-100",
+  );
+
+  const timelineBorder =
+    theme === "light" ? "border-slate-200" : "border-slate-800";
+
+  const cardClass = cn(
+    "rounded-xl border backdrop-blur-sm p-6 shadow-sm transition-colors duration-300 md:p-8",
+    theme === "original" && "border-slate-800 bg-slate-900/60",
+    theme === "dark" && "border-slate-800 bg-slate-900/60",
+    theme === "light" && "border-slate-200 bg-white",
+  );
+
+  const textMuted = theme === "light" ? "text-slate-500" : "text-gray-400";
+  const listText = theme === "light" ? "text-slate-700" : "text-gray-300";
+
+  const badgeFallback =
+    theme === "light"
+      ? "bg-slate-200 text-cyan-600"
+      : "bg-slate-800 text-cyan-300";
+
   const experience: ExperienceItem[] = [
     {
       company: "Entrust Corporation",
@@ -98,18 +127,20 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 text-white">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Professional Experience</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto"></div>
+    <section id="experience" className={sectionClass}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold">Professional Experience</h2>
+          <div className="mx-auto h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
         </div>
 
-        <div className="relative border-l border-slate-800 pl-6 space-y-12">
+        <div
+          className={cn("relative space-y-12 border-l pl-6", timelineBorder)}
+        >
           {experience.map((role) => (
             <article key={role.company} className="relative">
               <div className="absolute -left-9 mt-1">
-                <div className="h-14 w-14 rounded-md overflow-hidden shadow-lg">
+                <div className="h-14 w-14 overflow-hidden rounded-md shadow-lg">
                   {role.logo ? (
                     <img
                       src={role.logo}
@@ -117,25 +148,34 @@ const Experience: React.FC = () => {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <Briefcase size={22} className="text-cyan-300" />
+                    <div
+                      className={cn(
+                        "flex h-full w-full items-center justify-center",
+                        badgeFallback,
+                      )}
+                    >
+                      <Briefcase size={22} />
+                    </div>
                   )}
                 </div>
               </div>
-              <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-800 rounded-xl p-6 md:p-8">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+              <div className={cardClass}>
+                <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
-                    <p className="text-cyan-400 text-sm uppercase tracking-wide">
+                    <p className="text-sm uppercase tracking-wide text-cyan-600 dark:text-cyan-300">
                       {role.company}
                     </p>
                     <h3 className="text-2xl font-semibold">{role.role}</h3>
                   </div>
-                  <span className="text-sm text-slate-400 whitespace-nowrap">
+                  <span className={cn("text-sm", textMuted)}>
                     {role.period}
                   </span>
                 </div>
-                <ul className="list-disc list-inside space-y-2 text-slate-300">
+                <ul className={cn("space-y-2", listText)}>
                   {role.accomplishments.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item} className="list-disc list-inside">
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>

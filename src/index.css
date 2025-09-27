@@ -2,12 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply transition-colors duration-300;
+}
+
 :root {
+  color-scheme: light;
+}
+
+[data-theme="original"] {
   color-scheme: dark;
 }
 
-body {
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="original"] body,
+[data-theme="dark"] body {
   @apply bg-slate-950 text-gray-100;
+}
+
+[data-theme="light"] body {
+  @apply bg-slate-50 text-slate-900;
 }
 
 section {
