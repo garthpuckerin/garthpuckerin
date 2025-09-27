@@ -111,7 +111,7 @@ const Header: React.FC = () => {
 
   return (
     <header ref={headerRef} className={headerClass}>
-      <div className="mx-auto flex max-w-6xl items-center justify-between overflow-hidden px-4 py-5 sm:px-6 sm:py-6">
+      <div className="flex w-full items-center justify-between px-4 py-5 sm:px-6 sm:py-6 lg:px-10">
         <button onClick={() => handleNavigate("home")} className="group flex items-center gap-4 text-left">
           <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 p-[2px] shadow-md transition-transform duration-200 group-hover:scale-105">
             <img src={HeaderAvatar} alt="Garth Puckerin" className="h-full w-full rounded-full object-cover object-top" />
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
           </span>
         </button>
 
-        <div className="flex flex-1 items-center justify-end gap-6 md:gap-8 md:translate-x-[2in]">
+        <div className="flex flex-1 items-center justify-end gap-4 sm:gap-6 lg:gap-8">
           <nav className="hidden items-center gap-8 md:flex">
             {navItems.map((item) => (
               <button key={item.id} onClick={() => handleNavigate(item.id)} className={navButtonClasses(item.id)}>
