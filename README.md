@@ -95,6 +95,13 @@ Selection is stored in `localStorage` and applied via the `ThemeContext` wrapper
 5. Periodically sync `develop` into open feature branches to minimize conflicts.
 6. Promote `develop` ? `main` when ship-ready; tag releases if desired.
 
+## Tooling
+
+- .editorconfig keeps whitespace and newline rules consistent across editors.
+- .prettierrc defines the shared formatting profile (run 
+px prettier --write . as needed).
+- CONTRIBUTING.md outlines the branching and PR expectations.
+
 ## Deployment (GoDaddy)
 
 1. Run `npm run build` to produce the `dist/` directory.
@@ -120,4 +127,5 @@ For automations, consider GitHub Actions producing artifacts you can upload to G
 ## License
 
 This portfolio is proprietary to Garth Puckerin. Contact the owner for reuse permissions.
+
 
