@@ -1,7 +1,35 @@
 import React from "react";
 import { Code, Palette, Users, Zap } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
+import { cn } from "../lib/utils";
 
 const About: React.FC = () => {
+  const { theme } = useTheme();
+
+  const sectionClass = cn(
+    "py-20 transition-colors duration-300",
+    theme === "original" && "bg-white text-slate-800",
+    theme === "light" && "bg-slate-50 text-slate-800",
+    theme === "dark" && "bg-slate-950 text-gray-100",
+  );
+
+  const highlightCard = cn(
+    "rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg",
+    theme === "dark" && "border-slate-800 bg-slate-900/60",
+    theme === "light" &&
+      "border-slate-200 bg-gradient-to-br from-white to-slate-100",
+    theme === "original" &&
+      "border-slate-200 bg-gradient-to-br from-white to-slate-100",
+  );
+
+  const highlightText = theme === "dark" ? "text-gray-300" : "text-slate-600";
+
+  const tagClass = cn(
+    "rounded-full px-4 py-2 text-sm font-medium",
+    theme === "dark" && "bg-slate-800 text-gray-100",
+    theme !== "dark" && "bg-slate-200 text-slate-700",
+  );
+
   const highlights = [
     {
       icon: <Code size={24} />,
@@ -26,18 +54,21 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-800 mb-4">
-            Professional Summary
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-8"></div>
+    <section id="about" className={sectionClass}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold">Professional Summary</h2>
+          <div className="mx-auto mb-8 h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <div className="prose prose-lg text-gray-600 space-y-6">
+            <div
+              className={cn(
+                "space-y-6 text-base leading-relaxed",
+                theme === "dark" ? "text-gray-300" : "text-slate-600",
+              )}
+            >
               <p>
                 Experienced LMS Administrator with more than a decade of success
                 managing, configuring, and optimizing learning management
@@ -64,29 +95,34 @@ const About: React.FC = () => {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <span className="bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">
-                10+ Years in Enterprise LMS
-              </span>
-              <span className="bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">
+              <span className={tagClass}>10+ Years in Enterprise LMS</span>
+              <span className={tagClass}>
                 10,000+ Global Learners Supported
               </span>
-              <span className="bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-medium">
-                Compliance & Security Focused
-              </span>
+              <span className={tagClass}>Compliance & Security Focused</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {highlights.map((highlight, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-slate-50 to-cyan-50 p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="text-cyan-600 mb-4">{highlight.icon}</div>
-                <h3 className="font-bold text-slate-800 mb-2">
+              <div key={index} className={highlightCard}>
+                <div
+                  className={cn(
+                    "mb-4",
+                    theme === "dark" ? "text-cyan-300" : "text-cyan-600",
+                  )}
+                >
+                  {highlight.icon}
+                </div>
+                <h3
+                  className={cn(
+                    "mb-2 font-bold",
+                    theme === "dark" ? "text-gray-100" : "text-slate-800",
+                  )}
+                >
                   {highlight.title}
                 </h3>
-                <p className="text-slate-600 text-sm">
+                <p className={cn("text-sm", highlightText)}>
                   {highlight.description}
                 </p>
               </div>

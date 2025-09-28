@@ -2,14 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply transition-colors duration-300;
+}
+
 :root {
+  color-scheme: light;
+}
+
+[data-theme="original"] {
   color-scheme: dark;
 }
 
-body {
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="original"] body,
+[data-theme="dark"] body {
   @apply bg-slate-950 text-gray-100;
+}
+
+[data-theme="light"] body {
+  @apply bg-slate-50 text-slate-900;
 }
 
 section {
   scroll-margin-top: 5rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  clip: auto;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #06b6d4, #2563eb);
+  color: #fff;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(15, 118, 110, 0.35);
 }

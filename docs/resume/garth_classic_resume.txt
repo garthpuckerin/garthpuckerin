@@ -1,0 +1,54 @@
+GARTH PUCKERIN
+LMS Administrator · East Stroudsburg, PA · (718) 310-8707 · garth.puckerin@me.com
+LinkedIn: linkedin.com/in/garthpuckerin · GitHub: github.com/garthpuckerin
+
+====================================================================
+PROFESSIONAL PROFILE
+Enterprise LMS leader with a decade of experience delivering compliant, AI-augmented solutions for global organizations. Adept at integrating business systems, safeguarding data privacy, and driving measurable adoption with executive-ready analytics.
+
+====================================================================
+AREAS OF EXPERTISE
+LMS Operations & Governance | Compliance & Audit Readiness | GenAI Automation | Incident & Risk Management | Analytics & KPI Reporting | Integration Architecture | Stakeholder Enablement | Vendor Leadership
+
+====================================================================
+PROFESSIONAL EXPERIENCE
+Entrust Corporation — LMS Administrator / BSA | Jun 2022 – Mar 2025 (Remote)
+  • Directed a 10K+ user Docebo program with SOC2 controls and 99.98% availability.
+  • Integrated Workday, Salesforce, QuickSight, LinkedIn Learning to automate KPIs.
+  • Led Tier I/II incident response with vendors/security, reducing MTTR by 38%.
+  • Delivered HTML journeys and dashboards that raised completions by 22%.
+
+Medidata Solutions — LMS Administrator | Nov 2020 – Jun 2022 | New York, NY
+  • Activated Docebo with SSO/RBAC; created admin enablement and support assets.
+  • Implemented API monitoring and produced monthly adoption scorecards.
+
+Success Academy Charter Schools — LXP Manager | Feb 2019 – Nov 2019 | New York, NY
+  • Deployed xAPI-ready LXP stack; automated cohort workflows via APIs.
+
+Boehringer Ingelheim — LMS Associate | Oct 2016 – Jul 2018 | Stamford, CT
+  • Configured compliance pathways, SCORM validation, and global launch schedules.
+
+Montefiore Hospital — Project Coordinator | Oct 2015 – Jul 2016 | Bronx, NY
+  • Built ILT/WBT programs, analytics dashboards, and Access scheduling for 120+ trainers.
+
+American Express — Regulatory Compliance Training Analyst | Feb 2012 – Oct 2015 | New York, NY
+  • Led enterprise compliance training, migrating workflows to SharePoint/SumTotal.
+
+====================================================================
+SIGNATURE PROJECTS
+  • EPIC 2025 — Modernized Montefiore scheduling (SQL Server, FastAPI, Next.js, RBAC).
+  • PDE/IPDE — AI-augmented VS Code extension generating repos, tests, CI, docs, PRs.
+  • PipelineOS — Intent-to-execution DevOps platform orchestrating AI-driven delivery.
+
+====================================================================
+TECHNICAL SUMMARY
+LMS: Docebo, SuccessFactors, Workday, SumTotal, Canvas, Cornerstone
+Business Apps: Microsoft 365, Google Workspace, SharePoint
+Analytics: Tableau, Power BI, Amazon QuickSight
+Development: JavaScript, HTML/CSS, SQL, REST APIs, Postman
+AI Toolkit: ChatGPT, Gemini, Claude, Custom LLM adapters
+
+====================================================================
+EDUCATION
+New York Code + Design Academy — Software Engineering Bootcamp (2018)
+Full-stack curriculum spanning JavaScript, Ruby/Rails, Python, SQL/PostgreSQL, API development, authentication, responsive design, Git/GitHub, and Agile delivery.
