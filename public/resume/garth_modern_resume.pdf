@@ -1,0 +1,117 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2259 >>
+stream
+BT
+/F1 12 Tf
+14 TL
+72 780 Td
+(GARTH PUCKERIN - Modern Resume) Tj
+T*
+(East Stroudsburg, PA | \(718\) 310-8707 | garth.puckerin@me.com) Tj
+T*
+(LinkedIn: linkedin.com/in/garthpuckerin | GitHub: github.com/garthpuckerin) Tj
+T*
+() Tj
+T*
+(Executive Summary) Tj
+T*
+(LMS leader unifying governance, analytics, and AI automation for global, regulated organizations.) Tj
+T*
+() Tj
+T*
+(Core Leadership Strengths) Tj
+T*
+(- LMS governance and automation roadmaps) Tj
+T*
+(- GenAI and agentic workflows for diagnostics and content ops) Tj
+T*
+(- Compliance, privacy, and SOC2 readiness) Tj
+T*
+(- Stakeholder enablement and change communications) Tj
+T*
+(- Incident, risk, and vendor management) Tj
+T*
+(- Executive analytics and KPI storytelling) Tj
+T*
+() Tj
+T*
+(Selected Platforms and Tools) Tj
+T*
+(Docebo | SuccessFactors | Workday | SumTotal | Canvas | Cornerstone) Tj
+T*
+(Microsoft 365 | Google Workspace | SharePoint) Tj
+T*
+(Tableau | Power BI | Amazon QuickSight) Tj
+T*
+(JavaScript | HTML/CSS | SQL | REST APIs | Postman) Tj
+T*
+() Tj
+T*
+(Experience - Entrust Corporation \(2022-2025\)) Tj
+T*
+(* Directed a 10k+ user Docebo program with audit-ready controls and 99.98% uptime.) Tj
+T*
+(* Integrated Workday, Salesforce, QuickSight, LinkedIn Learning to automate KPIs.) Tj
+T*
+(* Led Tier I/II incident response, reducing resolution time by 38%.) Tj
+T*
+(* Delivered HTML micro experiences and dashboards that lifted completion by 22%.) Tj
+T*
+() Tj
+T*
+(Experience - Medidata Solutions \(2020-2022\)) Tj
+T*
+(* Implemented Docebo with SSO, RBAC, and admin enablement playbooks.) Tj
+T*
+(* Built API monitors and analytics linking adoption to Sales pipeline health.) Tj
+T*
+() Tj
+T*
+(Experience - Success Academy, Boehringer Ingelheim, Montefiore, American Express) Tj
+T*
+(* Delivered LXP integrations, compliance programs, and analytics for regulated environments.) Tj
+T*
+() Tj
+T*
+(Signature Projects) Tj
+T*
+(- EPIC 2025: SQL Server + FastAPI + Next.js modernization of Montefiore scheduling.) Tj
+T*
+(- PDE/IPDE: AI-augmented VS Code extension generating repos, tests, CI, and docs.) Tj
+T*
+(- PipelineOS: Intent-to-execution platform orchestrating AI-driven delivery.) Tj
+T*
+() Tj
+T*
+(Education) Tj
+T*
+(New York Code + Design Academy - Software Engineering Bootcamp \(2018\)) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000002552 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2795
+%%EOF
