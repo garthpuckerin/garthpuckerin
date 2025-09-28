@@ -20,3 +20,7 @@ pandoc garth_exec_resume.md -o garth_exec_resume.pdf
 For the plain-text version, copy into your preferred word processor and apply branding as needed.
 
 Update these files whenever the site content changes so the resume remains in sync.
+
+## Automation
+
+Run `npm run resumes` from the project root to regenerate the PDF bundle consumed by the site.
