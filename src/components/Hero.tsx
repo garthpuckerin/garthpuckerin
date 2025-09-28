@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
   MapPin,
@@ -20,7 +20,7 @@ const resumeOptions = [
     title: "Modern Resume",
     description: "Polished single-column layout with detailed summary, achievements, and projects.",
     file: "/resume/garth_modern_resume.pdf",
-    previewLight: "from-cyan-500/40 via-blue-500/30 to-indigo-500/40", previewDark: "from-cyan-500/40 via-blue-500/30 to-indigo-500/40",
+    previewGradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/40",
     focus: "Comprehensive narrative with strategic highlights",
   },
   {
@@ -28,7 +28,7 @@ const resumeOptions = [
     title: "Classic Resume",
     description: "ATS-friendly text layout optimized for automated parsing and compliance portals.",
     file: "/resume/garth_classic_resume.pdf",
-    previewLight: "from-slate-700 via-slate-800 to-slate-900", previewDark: "from-slate-700 via-slate-800 to-slate-900",
+    previewGradient: "from-slate-700 via-slate-800 to-slate-900",
     focus: "Plain-text format with structured experience bullets",
   },
   {
@@ -36,7 +36,7 @@ const resumeOptions = [
     title: "Executive Brief",
     description: "Concise executive summary emphasising leadership outcomes and signature projects.",
     file: "/resume/garth_exec_resume.pdf",
-    previewLight: "from-slate-900 via-slate-800 to-cyan-900", previewDark: "from-slate-900 via-slate-800 to-cyan-900",
+    previewGradient: "from-slate-900 via-slate-800 to-cyan-900",
     focus: "High-level overview for board and leadership audiences",
   },
 ];
@@ -44,6 +44,8 @@ const resumeOptions = [
 const Hero: React.FC = () => {
   const { theme } = useTheme();
   const [isResumeModalOpen, setResumeModalOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const previouslyFocusedElement = useRef<HTMLElement | null>(null);
 
   const sectionClass = cn(
     "relative flex min-h-screen items-center justify-center overflow-hidden transition-colors duration-300",
@@ -79,6 +81,53 @@ const Hero: React.FC = () => {
       ? "border-slate-200 bg-white"
       : "border-slate-700 bg-slate-900/70";
   const mutedText = theme === "light" ? "text-slate-500" : "text-slate-400";
+
+  useEffect(() => {
+    if (!isResumeModalOpen) {
+      return;
+    }
+
+    previouslyFocusedElement.current = document.activeElement as HTMLElement | null;
+    const body = document.body;
+    const previousOverflow = body.style.overflow;
+    body.style.overflow = "hidden";
+
+    const modalNode = modalRef.current;
+    const focusableSelectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const focusable = modalNode ? Array.from(modalNode.querySelectorAll<HTMLElement>(focusableSelectors)) : [];
+    focusable[0]?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setResumeModalOpen(false);
+        return;
+      }
+
+      if (event.key === "Tab" && focusable.length > 0) {
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey) {
+          if (document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          }
+        } else if (document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      body.style.overflow = previousOverflow;
+      previouslyFocusedElement.current?.focus();
+    };
+  }, [isResumeModalOpen]);
 
   const scrollToAbout = () => {
     const aboutSection = document.getElementById("about");
@@ -224,10 +273,16 @@ const Hero: React.FC = () => {
       {isResumeModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
           <div
-            className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
+            className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" aria-hidden="true"
             onClick={() => setResumeModalOpen(false)}
           ></div>
           <div
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="resume-modal-title"
+            aria-describedby="resume-modal-description"
+            tabIndex={-1}
             className={cn(
               "relative z-10 w-full max-w-5xl rounded-3xl border p-6 shadow-2xl sm:p-8",
               modalSurface,
@@ -235,12 +290,13 @@ const Hero: React.FC = () => {
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <h3 className="text-2xl font-semibold">Select a Resume</h3>
-                <p className={cn("mt-1 max-w-2xl text-sm", mutedText)}>
+                <h3 id="resume-modal-title" className="text-2xl font-semibold">Select a Resume</h3>
+                <p id="resume-modal-description" className={cn("mt-1 max-w-2xl text-sm", mutedText)}>
                   Preview the available formats and download the version that best fits your target audience.
                 </p>
               </div>
               <button
+                type="button"
                 aria-label="Close resume picker"
                 onClick={() => setResumeModalOpen(false)}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-transparent transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-400"
@@ -261,7 +317,7 @@ const Hero: React.FC = () => {
                   <div
                     className={cn(
                       "flex h-36 w-full items-start justify-between rounded-xl bg-gradient-to-br p-4 text-left text-xs font-medium uppercase tracking-widest text-white shadow-inner",
-                      theme === "light" ? option.previewLight : option.previewDark,
+                      option.previewGradient,
                     )}
                   >
                     <div className="flex flex-col gap-2">
@@ -308,4 +364,5 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
 

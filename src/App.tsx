@@ -52,7 +52,7 @@ function App() {
     <ThemeContext.Provider value={value}>
       <div className="font-sans antialiased">
         <Header />
-        <main>
+        <main id="main-content" tabIndex={-1}>
           <Hero />
           <About />
           <Experience />
@@ -68,3 +68,4 @@ function App() {
 }
 
 export default App;
+
