@@ -496,7 +496,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
 function renderClassic() {
   const { personal, summary, coreCompetencies, experience, education } = resumeData;
   
-  let html = `
+  const html = `
                 <div class="header">
                     <div class="name">${personal.name.toUpperCase()}</div>
                     <div class="contact">
@@ -544,7 +544,7 @@ function renderClassic() {
 function renderModern() {
   const { personal, summary, coreCompetencies, experience, education } = resumeData;
   
-  let html = `
+  const html = `
                 <div class="sidebar">
                     <div class="section">
                         <div class="section-title">Contact</div>
@@ -597,7 +597,7 @@ function renderModern() {
 function renderMinimal() {
   const { personal, summary, experience, education } = resumeData;
   
-  let html = `
+  const html = `
                 <div class="header">
                     <div class="name">${personal.name}</div>
                     <div class="contact">
