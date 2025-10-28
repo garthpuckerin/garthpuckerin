@@ -749,7 +749,16 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        // Import resume data from the centralized source
+        // Note: This is a static HTML file, so we'll need to either:
+        // 1. Copy the data into this file (current approach)
+        // 2. Use a JSON API endpoint to fetch the data
+        // 3. Build this HTML file dynamically from the source data
+        
+        // For now, the data is embedded directly in the HTML template below.
+        // TODO: Generate this HTML file from src/data/resumeData.ts
+        
         const styleBtns = document.querySelectorAll('.style-btn');
         const resume = document.getElementById('resume');
         const templates = {
