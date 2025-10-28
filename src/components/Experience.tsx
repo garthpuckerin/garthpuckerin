@@ -1,5 +1,7 @@
 import React from "react";
 import { Briefcase } from "lucide-react";
+import FHLBCLogo from "../assets/logos/federal_home_loan_bank_of_chicago_logo.jpg";
+import CitadelLogo from "../assets/logos/citadel_federal_credit_union_logo.jpg";
 import EntrustLogo from "../assets/logos/entrust_logo.jpg";
 import MedidataLogo from "../assets/logos/medidata_logo.jpg";
 import SuccessAcademyLogo from "../assets/logos/success_academy_charter_schools_logo.jpg";
@@ -8,15 +10,7 @@ import MontefioreLogo from "../assets/logos/montefiore_health_system_logo.jpg";
 import AmericanExpressLogo from "../assets/logos/amex_logo.jpg";
 import { useTheme } from "../context/ThemeContext";
 import { cn } from "../lib/utils";
-
-type ExperienceItem = {
-  company: string;
-  role: string;
-  period: string;
-  accomplishments: string[];
-  logo?: string;
-  logoAlt?: string;
-};
+import { experience } from "../data/resumeData";
 
 const Experience: React.FC = () => {
   const { theme } = useTheme();
@@ -46,85 +40,49 @@ const Experience: React.FC = () => {
       ? "bg-slate-200 text-cyan-600"
       : "bg-slate-800 text-cyan-300";
 
-  const experience: ExperienceItem[] = [
-    {
-      company: "Entrust Corporation",
-      role: "LMS Administrator / BSA",
-      period: "June 2022 - March 2025",
-      accomplishments: [
-        "Managed enterprise LMS configuration, platform reliability, and security compliance",
-        "Integrated Docebo with Workday, Salesforce, QuickSight, and LinkedIn Learning",
-        "Led Tier I/II incident triage alongside vendors and internal teams",
-        "Created performance dashboards and engagement metrics to evaluate learning impact",
-        "Built HTML-based notifications and modules to enhance navigation and accessibility",
-        "Directed content implementation for three organizational branches serving 10k+ users",
-      ],
-      logo: EntrustLogo,
-      logoAlt: "Entrust Corporation logo",
-    },
-    {
-      company: "Medidata Solutions",
-      role: "Learning Management System Administrator",
-      period: "November 2020 - June 2022",
-      accomplishments: [
-        "Implemented and launched Docebo with minimal operational disruption",
-        "Maintained user roles, authentication policies, and daily LMS operations",
-        "Authored training guides and workshops for admins and power users",
-        "Diagnosed performance issues using browser tooling and API testing",
-        "Delivered enablement metrics covering course consumption and completion",
-      ],
-      logo: MedidataLogo,
-      logoAlt: "Medidata Solutions logo",
-    },
-    {
-      company: "Success Academy Charter Schools",
-      role: "Learning Experience Platform Manager",
-      period: "February 2019 - November 2019",
-      accomplishments: [
-        "Evaluated and implemented LXP tools aligned with xAPI standards",
-        "Integrated Whova and supporting applications for large-scale programs",
-        "Automated workflows and extended LMS functionality via APIs",
-      ],
-      logo: SuccessAcademyLogo,
-      logoAlt: "Success Academy Charter Schools logo",
-    },
-    {
-      company: "Boehringer Ingelheim",
-      role: "LMS Associate",
-      period: "October 2016 - July 2018",
-      accomplishments: [
-        "Configured LMS workflows to support compliance initiatives",
-        "Resolved SCORM issues and managed course deployment lifecycles",
-      ],
-      logo: BoehringerLogo,
-      logoAlt: "Boehringer Ingelheim logo",
-    },
-    {
-      company: "Montefiore Hospital",
-      role: "Project Coordinator",
-      period: "October 2015 - July 2016",
-      accomplishments: [
-        "Produced ILT/WBT courses and delivered attendance + completion analytics",
-        "Maintained daily LMS operations including course creation and registrations",
-        "Developed an Access-based scheduling system for 120+ trainers across 50+ classrooms",
-      ],
-      logo: MontefioreLogo,
-      logoAlt: "Montefiore Health System logo",
-    },
-    {
-      company: "American Express",
-      role: "Regulatory Compliance Training Analyst",
-      period: "February 2012 - October 2015",
-      accomplishments: [
-        "Owned enterprise compliance training programs and regulatory alignment",
-        "Migrated compliance workflows to SharePoint for improved reporting",
-        "Created SCORM content and managed deployment within SumTotal LMS",
-        "Monitored completion rates and delivered multi-cadence dashboards",
-      ],
-      logo: AmericanExpressLogo,
-      logoAlt: "American Express logo",
-    },
-  ];
+  // Map logos to experience items
+  const experienceWithLogos = experience.map((item) => {
+    let logo = item.logo;
+    let logoAlt = item.logoAlt;
+
+    // Map company names to logo imports
+    switch (item.company) {
+      case "Federal Home Loan Bank of Chicago (FHLBC)":
+        logo = FHLBCLogo;
+        logoAlt = "Federal Home Loan Bank of Chicago logo";
+        break;
+      case "Citadel Credit Union":
+        logo = CitadelLogo;
+        logoAlt = "Citadel Credit Union logo";
+        break;
+      case "Entrust Corporation":
+        logo = EntrustLogo;
+        logoAlt = "Entrust Corporation logo";
+        break;
+      case "Medidata Solutions (Dassault Systèmes)":
+        logo = MedidataLogo;
+        logoAlt = "Medidata Solutions logo";
+        break;
+      case "Success Academy Charter Schools":
+        logo = SuccessAcademyLogo;
+        logoAlt = "Success Academy Charter Schools logo";
+        break;
+      case "Boehringer Ingelheim Pharmaceuticals":
+        logo = BoehringerLogo;
+        logoAlt = "Boehringer Ingelheim logo";
+        break;
+      case "Montefiore Hospital":
+        logo = MontefioreLogo;
+        logoAlt = "Montefiore Health System logo";
+        break;
+      case "American Express":
+        logo = AmericanExpressLogo;
+        logoAlt = "American Express logo";
+        break;
+    }
+
+    return { ...item, logo, logoAlt };
+  });
 
   return (
     <section id="experience" className={sectionClass}>
@@ -137,7 +95,7 @@ const Experience: React.FC = () => {
         <div
           className={cn("relative space-y-12 border-l pl-6", timelineBorder)}
         >
-          {experience.map((role) => (
+          {experienceWithLogos.map((role) => (
             <article key={role.company} className="relative">
               <div className="absolute -left-9 mt-1">
                 <div className="h-14 w-14 overflow-hidden rounded-md shadow-lg">

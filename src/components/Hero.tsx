@@ -13,31 +13,32 @@ import {
 import ProfileHeadshot from "../assets/profile-headshot.jpg";
 import { useTheme } from "../context/ThemeContext";
 import { cn } from "../lib/utils";
+import { resumeData } from "../data/resumeData";
 
 const resumeOptions = [
   {
-    id: "modern",
-    title: "Modern Resume",
-    description: "Polished single-column layout with detailed summary, achievements, and projects.",
-    file: "/resume/garth_modern_resume.pdf",
-    previewGradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/40",
-    focus: "Comprehensive narrative with strategic highlights",
-  },
-  {
     id: "classic",
     title: "Classic Resume",
-    description: "ATS-friendly text layout optimized for automated parsing and compliance portals.",
-    file: "/resume/garth_classic_resume.pdf",
+    description: "Traditional format with centered header and clean sections. Perfect for corporate environments.",
+    url: "/resume/resume-generator.html?style=classic",
     previewGradient: "from-slate-700 via-slate-800 to-slate-900",
-    focus: "Plain-text format with structured experience bullets",
+    focus: "Professional layout with structured experience bullets",
   },
   {
-    id: "executive",
-    title: "Executive Brief",
-    description: "Concise executive summary emphasising leadership outcomes and signature projects.",
-    file: "/resume/garth_exec_resume.pdf",
+    id: "modern",
+    title: "Modern Resume",
+    description: "Two-column layout with colored sidebar. Great for creative and tech roles.",
+    url: "/resume/resume-generator.html?style=modern",
+    previewGradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/40",
+    focus: "Visual design with skills sidebar",
+  },
+  {
+    id: "minimal",
+    title: "Minimal Resume",
+    description: "Clean, typography-focused design. Ideal for senior positions and consulting roles.",
+    url: "/resume/resume-generator.html?style=minimal",
     previewGradient: "from-slate-900 via-slate-800 to-cyan-900",
-    focus: "High-level overview for board and leadership audiences",
+    focus: "Clean layout emphasizing content",
   },
 ];
 
@@ -165,10 +166,10 @@ const Hero: React.FC = () => {
               headingTextClass,
             )}
           >
-            Garth Puckerin
+            {resumeData.personal.name}
           </h1>
           <p className={cn("font-light sm:text-2xl", subtitleTextClass)}>
-            LMS Administrator & Learning Technology Specialist
+            {resumeData.personal.title}
           </p>
         </div>
 
@@ -179,11 +180,7 @@ const Hero: React.FC = () => {
               bodyTextClass,
             )}
           >
-            Experienced LMS Administrator with 10+ years managing, configuring,
-            and optimizing learning ecosystems. I combine system expertise with
-            agentic AI workflows to automate diagnostics, accelerate content
-            operations, and surface real-time insights so global audiences keep
-            learning without disruption.
+            {resumeData.summary}
           </p>
         </div>
 
@@ -196,21 +193,21 @@ const Hero: React.FC = () => {
           >
             <div className="flex items-center gap-2">
               <MapPin size={18} className="text-cyan-500" />
-              <span>East Stroudsburg, PA</span>
+              <span>{resumeData.personal.location}</span>
             </div>
             <a
-              href="mailto:garth.puckerin@me.com"
+              href={`mailto:${resumeData.personal.email}`}
               className="flex items-center gap-2 transition-colors duration-200 hover:text-cyan-500"
             >
               <Mail size={18} className="text-cyan-500" />
-              <span>garth.puckerin@me.com</span>
+              <span>{resumeData.personal.email}</span>
             </a>
             <a
-              href="tel:+17183108707"
+              href={`tel:+17183108707`}
               className="flex items-center gap-2 transition-colors duration-200 hover:text-cyan-500"
             >
               <Phone size={18} className="text-cyan-500" />
-              <span>(718) 310-8707</span>
+              <span>{resumeData.personal.phone}</span>
             </a>
           </div>
 
@@ -221,7 +218,7 @@ const Hero: React.FC = () => {
             )}
           >
             <a
-              href="https://linkedin.com/in/garthpuckerin"
+              href={`https://${resumeData.personal.linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 transition-colors duration-200 hover:text-cyan-500"
@@ -230,7 +227,7 @@ const Hero: React.FC = () => {
               <span>/garthpuckerin</span>
             </a>
             <a
-              href="https://github.com/garthpuckerin"
+              href={`https://${resumeData.personal.github}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 transition-colors duration-200 hover:text-cyan-500"
@@ -314,19 +311,91 @@ const Hero: React.FC = () => {
                     cardSurface,
                   )}
                 >
-                  <div
-                    className={cn(
-                      "flex h-36 w-full items-start justify-between rounded-xl bg-gradient-to-br p-4 text-left text-xs font-medium uppercase tracking-widest text-white shadow-inner",
-                      option.previewGradient,
-                    )}
-                  >
-                    <div className="flex flex-col gap-2">
-                      <span className="text-sm font-semibold">{option.title}</span>
-                      <span className="text-[11px] opacity-90">{option.focus}</span>
+                  {/* Resume Thumbnail Preview */}
+                  <div className={cn(
+                    "h-80 rounded-xl p-5 flex items-center justify-center",
+                    theme === "light" ? "bg-slate-100" : "bg-slate-800/50"
+                  )}>
+                    <div className={cn(
+                      "w-full h-full rounded-lg shadow-lg flex flex-col p-4 text-[6px] overflow-hidden",
+                      "bg-white text-slate-900"
+                    )}>
+                      {option.id === "classic" && (
+                        <>
+                          <div className="text-center border-b border-slate-300 pb-2 mb-2">
+                            <div className="font-bold text-[10px] mb-1 text-slate-900">{resumeData.personal.name.toUpperCase()}</div>
+                            <div className="text-[5px] text-slate-600">{resumeData.personal.location} | {resumeData.personal.phone}</div>
+                          </div>
+                          <div className="mb-2">
+                            <div className="font-bold text-[7px] uppercase border-b border-slate-300 mb-1 text-slate-900">Professional Summary</div>
+                            <div className="text-[5px] text-slate-700 leading-tight">Project-focused LMS Administrator with 10+ years...</div>
+                          </div>
+                          <div className="mb-2">
+                            <div className="font-bold text-[7px] uppercase border-b border-slate-300 mb-1 text-slate-900">Experience</div>
+                            <div className="text-[6px] font-semibold text-slate-900">Business Systems Analyst</div>
+                            <div className="text-[5px] italic text-slate-600">Entrust Corporation</div>
+                          </div>
+                          <div>
+                            <div className="font-bold text-[7px] uppercase border-b border-slate-300 mb-1 text-slate-900">Education</div>
+                            <div className="text-[5px] text-slate-700">Software Engineering Bootcamp</div>
+                          </div>
+                        </>
+                      )}
+                      {option.id === "modern" && (
+                        <div className="grid grid-cols-[80px_1fr] gap-0 h-full -m-4">
+                          <div className="bg-slate-700 text-white p-3 flex flex-col">
+                            <div className="mb-3">
+                              <div className="text-[6px] font-bold text-cyan-400 mb-1">CONTACT</div>
+                              <div className="text-[4px] mb-1 text-white">📧 Email</div>
+                              <div className="text-[4px] text-white">📱 Phone</div>
+                            </div>
+                            <div className="mb-3">
+                              <div className="text-[6px] font-bold text-cyan-400 mb-1">SKILLS</div>
+                              <div className="text-[4px] mb-1 text-white">Docebo</div>
+                              <div className="text-[4px] mb-1 text-white">Workday</div>
+                              <div className="text-[4px] text-white">JavaScript</div>
+                            </div>
+                            <div className="flex-1">
+                              <div className="text-[6px] font-bold text-cyan-400 mb-1">EDUCATION</div>
+                              <div className="text-[4px] text-white">Software Engineering</div>
+                            </div>
+                          </div>
+                          <div className="p-3 bg-white flex flex-col">
+                            <div className="font-bold text-[9px] mb-1 text-slate-900">{resumeData.personal.name}</div>
+                            <div className="text-[6px] text-cyan-600 mb-2">LMS Administrator</div>
+                            <div className="mb-2">
+                              <div className="text-[6px] font-bold border-b border-cyan-500 mb-1 text-slate-900">EXPERIENCE</div>
+                              <div className="text-[5px] font-semibold text-slate-900">Business Systems Analyst</div>
+                              <div className="text-[4px] text-slate-600">Entrust Corporation</div>
+                            </div>
+                            <div className="flex-1">
+                              <div className="text-[6px] font-bold border-b border-cyan-500 mb-1 text-slate-900">SUMMARY</div>
+                              <div className="text-[4px] text-slate-700">Project-focused LMS Administrator...</div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {option.id === "minimal" && (
+                        <>
+                          <div className="mb-3">
+                            <div className="text-[12px] font-light mb-1 text-slate-900">{resumeData.personal.name}</div>
+                            <div className="text-[5px] text-slate-600">{resumeData.personal.email} • {resumeData.personal.phone}</div>
+                          </div>
+                          <div className="mb-2">
+                            <div className="text-[6px] font-semibold uppercase tracking-wider mb-1 text-slate-900">SUMMARY</div>
+                            <div className="text-[5px] text-slate-700 leading-tight">LMS Administrator with 10+ years managing enterprise...</div>
+                          </div>
+                          <div className="mb-2">
+                            <div className="text-[6px] font-semibold uppercase tracking-wider mb-1 text-slate-900">EXPERIENCE</div>
+                            <div className="flex justify-between items-start mb-1">
+                              <div className="text-[6px] font-semibold text-slate-900">Business Systems Analyst</div>
+                              <div className="text-[5px] text-slate-400">2022 - 2025</div>
+                            </div>
+                            <div className="text-[5px] text-slate-600">Entrust Corporation</div>
+                          </div>
+                        </>
+                      )}
                     </div>
-                    <span className="rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold uppercase">
-                      PDF
-                    </span>
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -338,20 +407,30 @@ const Hero: React.FC = () => {
 
                   <div className="mt-auto flex items-center justify-between gap-3 pt-2">
                     <a
-                      href={option.file}
+                      href={option.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 text-sm font-medium text-cyan-500 transition-colors duration-200 hover:text-cyan-400"
                     >
                       <ExternalLink size={16} /> Preview
                     </a>
-                    <a
-                      href={option.file}
-                      download
+                    <button
+                      onClick={() => {
+                        // Open the HTML generator with the selected style and trigger print
+                        const generatorWindow = window.open(option.url, '_blank');
+                        if (generatorWindow) {
+                          generatorWindow.addEventListener('load', () => {
+                            // Wait for the page to load, then trigger print
+                            setTimeout(() => {
+                              generatorWindow.print();
+                            }, 1000);
+                          });
+                        }
+                      }}
                       className="flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:from-cyan-600 hover:to-blue-700"
                     >
                       <Download size={16} /> Download
-                    </a>
+                    </button>
                   </div>
                 </div>
               ))}

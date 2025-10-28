@@ -3,6 +3,7 @@ import { GraduationCap } from "lucide-react";
 import NycdaLogo from "../assets/logos/NYCDA_logo.jpg";
 import { useTheme } from "../context/ThemeContext";
 import { cn } from "../lib/utils";
+import { education } from "../data/resumeData";
 
 const Education: React.FC = () => {
   const { theme } = useTheme();
@@ -30,39 +31,6 @@ const Education: React.FC = () => {
   const headingMuted = theme === "light" ? "text-slate-500" : "text-gray-400";
   const listText = theme === "light" ? "text-slate-700" : "text-gray-300";
 
-  const coursework = [
-    {
-      title: "Front-End",
-      items: [
-        "JavaScript",
-        "HTML5",
-        "CSS",
-        "Bootstrap",
-        "Materialize",
-        "Responsive Design",
-        "SASS",
-      ],
-    },
-    {
-      title: "Back-End",
-      items: [
-        "Ruby",
-        "Rails",
-        "Python",
-        "SQL",
-        "PostgreSQL",
-        "Sinatra",
-        "Heroku",
-        "API Development",
-        "User Authentication",
-      ],
-    },
-    {
-      title: "Tools",
-      items: ["Git", "GitHub", "VS Code", "Atom", "Project Management"],
-    },
-  ];
-
   return (
     <section id="education" className={sectionClass}>
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -83,10 +51,10 @@ const Education: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-semibold">
-                  New York Code + Design Academy
+                  {education.institution}
                 </h3>
                 <p className={headingMuted}>
-                  Software Engineering Bootcamp - 2018
+                  {education.program} - {education.year}
                 </p>
               </div>
             </div>
@@ -101,7 +69,7 @@ const Education: React.FC = () => {
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {coursework.map((section) => (
+            {education.coursework.map((section) => (
               <div key={section.title} className={cardClass}>
                 <h4
                   className={cn(
