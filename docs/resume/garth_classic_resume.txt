@@ -1,48 +1,82 @@
 GARTH PUCKERIN
-LMS Administrator · East Stroudsburg, PA · (718) 310-8707 · garth.puckerin@me.com
-LinkedIn: linkedin.com/in/garthpuckerin · GitHub: github.com/garthpuckerin
+LMS Administrator & Learning Technology Specialist
+East Stroudsburg, PA | (718) 310-8707 | garth.puckerin@me.com
+LinkedIn: linkedin.com/in/garthpuckerin | GitHub: github.com/garthpuckerin
 
 ====================================================================
-PROFESSIONAL PROFILE
-Enterprise LMS leader with a decade of experience delivering compliant, AI-augmented solutions for global organizations. Adept at integrating business systems, safeguarding data privacy, and driving measurable adoption with executive-ready analytics.
+PROFESSIONAL SUMMARY
+Learning & Development Specialist and LMS Administrator with 10+ years of experience leading enterprise learning initiatives across financial, healthcare, and technology environments. Skilled in configuring, testing, and deploying LMS platforms, coordinating cross-functional integrations, and managing soft-launch readiness through structured UAT. Combines system expertise with AI-driven automation to accelerate diagnostics, streamline content operations, and deliver real-time insights that keep global audiences learning without disruption.
 
 ====================================================================
-AREAS OF EXPERTISE
-LMS Operations & Governance | Compliance & Audit Readiness | GenAI Automation | Incident & Risk Management | Analytics & KPI Reporting | Integration Architecture | Stakeholder Enablement | Vendor Leadership
+CORE COMPETENCIES
+Project Management & UAT Coordination | LMS Administration & Operations | AI-Driven Workflow Automation | API & SSO Integration | Incident & Vendor Management | Compliance & Data Governance | Analytics & Executive Reporting | Stakeholder Alignment & Change Management
 
 ====================================================================
 PROFESSIONAL EXPERIENCE
-Entrust Corporation — LMS Administrator / BSA | Jun 2022 – Mar 2025 (Remote)
-  • Directed a 10K+ user Docebo program with SOC2 controls and 99.98% availability.
-  • Integrated Workday, Salesforce, QuickSight, LinkedIn Learning to automate KPIs.
-  • Led Tier I/II incident response with vendors/security, reducing MTTR by 38%.
-  • Delivered HTML journeys and dashboards that raised completions by 22%.
 
-Medidata Solutions — LMS Administrator | Nov 2020 – Jun 2022 | New York, NY
-  • Activated Docebo with SSO/RBAC; created admin enablement and support assets.
-  • Implemented API monitoring and produced monthly adoption scorecards.
+Federal Home Loan Bank of Chicago (FHLBC) | Learning Management & Integration Consultant
+Aug 2025 - Nov 2025
+  â€¢ Directed integration efforts between Docebo, Udemy, Outlook, Teams, SSO, and SharePoint to streamline training workflows
+  â€¢ Authored UAT test scripts and executed content validation in sandbox and production environments
+  â€¢ Collaborated with HRIS and IT teams to configure authentication and permissions for pilot cohorts
+  â€¢ Set up LMS platform for soft launch post-UAT with user provisioning and issue tracking
 
-Success Academy Charter Schools — LXP Manager | Feb 2019 – Nov 2019 | New York, NY
-  • Deployed xAPI-ready LXP stack; automated cohort workflows via APIs.
+Citadel Credit Union | L&D Specialist (Interim LMS Administrator)
+Aug 2025 - Nov 2025
+  â€¢ Provided temporary coverage for LMS team during maternity leave, ensuring business continuity
+  â€¢ Assisted in UAT testing and content validation for Docebo platform updates
 
-Boehringer Ingelheim — LMS Associate | Oct 2016 – Jul 2018 | Stamford, CT
-  • Configured compliance pathways, SCORM validation, and global launch schedules.
+Entrust Corporation | Business Systems Analyst â€“ LMS
+Jun 2022 - Mar 2025 | Remote
+  â€¢ Managed global Docebo LMS configuration supporting 10,000+ users across internal teams, partners, and customers
+  â€¢ Integrated Workday, Salesforce, QuickSight, and LinkedIn Learning to automate data flows and reporting
+  â€¢ Led Tier I/II incident triage alongside vendors and security teams
+  â€¢ Created performance dashboards, system metrics, and test plans for feature releases and audits
+  â€¢ Developed HTML-based custom notifications and learning modules to enhance navigation and accessibility
+  â€¢ Directed content implementation across three organizational branches under compliance requirements
 
-Montefiore Hospital — Project Coordinator | Oct 2015 – Jul 2016 | Bronx, NY
-  • Built ILT/WBT programs, analytics dashboards, and Access scheduling for 120+ trainers.
+Medidata Solutions (Dassault SystÃ¨mes) | Learning Management System Administrator
+Nov 2020 - Jun 2022 | New York, NY
+  â€¢ Implemented Docebo LMS deployment with Okta SSO integration and minimal operational disruption
+  â€¢ Developed training guides and admin workshops for self-service governance
+  â€¢ Diagnosed performance issues using browser tooling and API testing
+  â€¢ Produced monthly enablement scorecards and analytics linking adoption to Sales pipeline performance
 
-American Express — Regulatory Compliance Training Analyst | Feb 2012 – Oct 2015 | New York, NY
-  • Led enterprise compliance training, migrating workflows to SharePoint/SumTotal.
+Success Academy Charter Schools | Learning Experience Platform Manager
+Feb 2019 - Nov 2019 | New York, NY
+  â€¢ Introduced and implemented xAPI-compliant LXP tools for data tracking and analytics
+  â€¢ Integrated Whova and supporting event applications for large-scale programs
+  â€¢ Automated cohort assignments, notifications, and reporting through custom API orchestration
+
+Boehringer Ingelheim Pharmaceuticals | LMS Associate
+Oct 2016 - Jul 2018 | Stamford, CT
+  â€¢ Administered GxP-compliant training programs and resolved SCORM content issues
+  â€¢ Configured compliance-driven learning paths, SCORM validation, and global launch schedules
+  â€¢ Coordinated with QA/legal partners to maintain audit-ready documentation
+
+Montefiore Hospital | Project Coordinator
+Oct 2015 - Jul 2016 | Bronx, NY
+  â€¢ Managed Epic Go-Live supporting 25,000+ users utilizing SuccessFactors LMS
+  â€¢ Coordinated training logistics across 7 locations with 120+ instructors and 50+ classrooms
+  â€¢ Tracked learner progress and completion rates for enterprise-wide training initiatives
+  â€¢ Developed an Access-based scheduling system and analytics dashboards supporting 120+ trainers
+
+American Express | Regulatory Compliance Training Analyst
+Feb 2012 - Oct 2015 | New York, NY
+  â€¢ Oversaw enterprise-wide compliance training programs and regulatory alignment
+  â€¢ Migrated compliance workflows to SharePoint and SumTotal for improved reporting and traceability
+  â€¢ Created SCORM content and delivered weekly/monthly/quarterly performance dashboards
 
 ====================================================================
 SIGNATURE PROJECTS
-  • EPIC 2025 — Modernized Montefiore scheduling (SQL Server, FastAPI, Next.js, RBAC).
-  • PDE/IPDE — AI-augmented VS Code extension generating repos, tests, CI, docs, PRs.
-  • PipelineOS — Intent-to-execution DevOps platform orchestrating AI-driven delivery.
+  â€¢ EPIC 2025 â€“ Modernizing the Montefiore Access-based scheduling system to SQL Server + FastAPI + Next.js with RBAC, telemetry, and automated reporting
+  â€¢ PDE/IPDE â€“ AI-augmented VS Code extension generating scaffolded repos, tests, CI, docs, and review-ready PRs
+  â€¢ PipelineOS â€“ Intent-to-execution DevOps platform orchestrating provider-agnostic AI agents with human-in-the-loop guardrails
 
 ====================================================================
 TECHNICAL SUMMARY
-LMS: Docebo, SuccessFactors, Workday, SumTotal, Canvas, Cornerstone
+LMS Platforms: Docebo, Workday Learning, SuccessFactors, Cornerstone, SumTotal, Canvas
+Integrations & Standards: REST APIs, SCORM/xAPI, SAML, OAuth2, SSO
 Business Apps: Microsoft 365, Google Workspace, SharePoint
 Analytics: Tableau, Power BI, Amazon QuickSight
 Development: JavaScript, HTML/CSS, SQL, REST APIs, Postman
@@ -50,5 +84,5 @@ AI Toolkit: ChatGPT, Gemini, Claude, Custom LLM adapters
 
 ====================================================================
 EDUCATION
-New York Code + Design Academy — Software Engineering Bootcamp (2018)
-Full-stack curriculum spanning JavaScript, Ruby/Rails, Python, SQL/PostgreSQL, API development, authentication, responsive design, Git/GitHub, and Agile delivery.
+New York Code + Design Academy | Software Engineering Bootcamp (2018)
+Immersive full-stack program covering JavaScript, Ruby on Rails, Python, SQL/PostgreSQL, API development, authentication, responsive design, Git/GitHub, and Agile delivery.

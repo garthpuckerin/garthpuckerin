@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garth Puckerin - Resume Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+
+        .controls {
+            max-width: 8.5in;
+            margin: 0 auto 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .controls h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .style-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .style-btn {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .style-btn:hover {
+            border-color: #4CAF50;
+        }
+
+        .style-btn.active {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .print-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .print-btn:hover {
+            background: #1976D2;
+        }
+
+        .print-btn:active {
+            background: #1565c0;
+        }
+
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .resume {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.75in;
+            background: white;
+        }
+
+        /* Classic Style */
+        .resume.classic .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .resume.classic .name {
+            font-size: 28pt;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .resume.classic .contact {
+            font-size: 10pt;
+            color: #555;
+        }
+
+        .resume.classic .section {
+            margin-bottom: 20px;
+        }
+
+        .resume.classic .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .resume.classic .job-title {
+            font-weight: bold;
+            font-size: 11pt;
+        }
+
+        .resume.classic .company {
+            font-style: italic;
+            color: #555;
+        }
+
+        .resume.classic .date {
+            float: right;
+            color: #666;
+            font-size: 10pt;
+            margin-left: 8px;
+        }
+
+        /* Modern and Minimal styles... */
+        .resume.modern {
+            display: grid;
+            grid-template-columns: 2.5in 1fr;
+            gap: 0;
+            padding: 0;
+        }
+
+        .resume.modern .sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 0.75in 0.5in;
+        }
+
+        .resume.modern .main {
+            padding: 0.75in 0.5in;
+        }
+
+        .resume.modern .name {
+            font-size: 26pt;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .resume.modern .title {
+            font-size: 12pt;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .resume.modern .sidebar .section {
+            margin-bottom: 25px;
+        }
+
+        .resume.modern .sidebar .section-title {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #3498db;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .resume.modern .main .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .resume.modern .contact-item {
+            margin-bottom: 8px;
+            font-size: 9pt;
+        }
+
+        .resume.modern .skill {
+            margin-bottom: 8px;
+            font-size: 10pt;
+        }
+
+        .resume.minimal .header {
+            margin-bottom: 30px;
+        }
+
+        .resume.minimal .name {
+            font-size: 32pt;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        .resume.minimal .contact {
+            font-size: 10pt;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .resume.minimal .section {
+            margin-bottom: 25px;
+        }
+
+        .resume.minimal .section-title {
+            font-size: 11pt;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .resume.minimal .job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .resume.minimal .job-title {
+            font-weight: 600;
+            font-size: 11pt;
+        }
+
+        .resume.minimal .date {
+            color: #999;
+            font-size: 10pt;
+        }
+
+        .resume.minimal .company {
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .item {
+            margin-bottom: 15px;
+            clear: both;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        li {
+            margin-bottom: 5px;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        @media print {
+            @page {
+                size: letter;
+                margin: 0 0.25in 0.75in 0.25in;
+            }
+            
+            body * {
+                visibility: hidden;
+            }
+            
+            .resume-container,
+            .resume-container * {
+                visibility: visible;
+            }
+            
+            .resume.classic .modern-content,
+            .resume.classic .minimal-content,
+            .resume.modern .classic-content,
+            .resume.modern .minimal-content,
+            .resume.minimal .classic-content,
+            .resume.minimal .modern-content {
+                display: none !important;
+                visibility: hidden !important;
+            }
+            
+            .resume.classic .classic-content,
+            .resume.modern .modern-content,
+            .resume.minimal .minimal-content {
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            .controls {
+                display: none !important;
+            }
+
+            .resume-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                box-shadow: none;
+                max-width: none;
+                margin: 0;
+            }
+
+            .resume {
+                box-shadow: none;
+                page-break-after: avoid;
+                width: 100%;
+                min-height: auto !important;
+                height: auto !important;
+                padding: 0.5in !important;
+            }
+
+            .resume.modern {
+                display: grid;
+                grid-template-columns: 2.5in 1fr;
+            }
+
+            .item {
+                page-break-inside: auto;
+                margin-bottom: 10px;
+            }
+
+            .section {
+                page-break-inside: auto;
+                margin-bottom: 15px;
+            }
+
+            .resume.classic .name {
+                font-size: 24pt !important;
+            }
+
+            .resume.classic .section-title {
+                font-size: 12pt !important;
+            }
+
+            .resume.classic .job-title {
+                font-size: 10pt !important;
+            }
+
+            .resume.classic .contact {
+                font-size: 9pt !important;
+            }
+
+            li {
+                font-size: 9pt !important;
+                line-height: 1.3 !important;
+            }
+
+            p {
+                font-size: 9pt !important;
+                line-height: 1.3 !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h2>Garth Puckerin Resume - Choose Your Style</h2>
+        <div class="style-selector">
+            <button class="style-btn active" data-style="classic">Classic</button>
+            <button class="style-btn" data-style="modern">Modern</button>
+            <button class="style-btn" data-style="minimal">Minimal</button>
+        </div>
+        <button class="print-btn" onclick="handlePrint()">📥 Download as Garth_Puckerin_Resume.pdf</button>
+    </div>
+
+    <div class="resume-container">
+        <div class="resume classic" id="resume">
+            <!-- Classic Template -->
+            <div class="classic-content">
+<div class="header">
+                    <div class="name">GARTH PUCKERIN</div>
+                    <div class="contact">
+                        East Stroudsburg, PA | (718) 310-8707 | garth.puckerin@me.com<br>
+                        linkedin.com/in/garthpuckerin | github.com/garthpuckerin
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Professional Summary</div>
+                    <p style="font-size: 10pt; line-height: 1.6;">Learning & Development Specialist and LMS Administrator with 10+ years of experience leading enterprise learning initiatives across financial, healthcare, and technology environments. Skilled in configuring, testing, and deploying LMS platforms, coordinating cross-functional integrations, and managing soft-launch readiness through structured UAT. Combines system expertise with AI-driven automation to accelerate diagnostics, streamline content operations, and deliver real-time insights that keep global audiences learning without disruption.</p>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Core Competencies</div>
+                    <p style="font-size: 10pt; line-height: 1.5;">
+                        Project Management & UAT Coordination • LMS Administration & Operations • AI-Driven Workflow Automation • API & SSO Integration • Incident & Vendor Management • Compliance & Data Governance • Analytics & Executive Reporting • Stakeholder Alignment & Change Management
+                    </p>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Professional Experience</div>
+                    
+                    <div class="item">
+                        <div class="job-title">Learning Management & Integration Consultant</div>
+                        <div class="company">Federal Home Loan Bank of Chicago (FHLBC) <span class="date">Aug 2025 - Nov 2025</span></div>
+                        <ul>
+                            <li>Directed integration efforts between Docebo, Udemy, Outlook, Teams, SSO, and SharePoint to streamline training workflows</li>
+<li>Authored UAT test scripts and executed content validation in sandbox and production environments</li>
+<li>Collaborated with HRIS and IT teams to configure authentication and permissions for pilot cohorts</li>
+<li>Set up LMS platform for soft launch post-UAT with user provisioning and issue tracking</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-title">L&D Specialist (Interim LMS Administrator)</div>
+                        <div class="company">Citadel Credit Union <span class="date">Aug 2025 - Nov 2025</span></div>
+                        <ul>
+                            <li>Provided temporary coverage for LMS team during maternity leave, ensuring business continuity</li>
+<li>Assisted in UAT testing and content validation for Docebo platform updates</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-title">Business Systems Analyst – LMS</div>
+                        <div class="company">Entrust Corporation <span class="date">Jun 2022 - Mar 2025</span></div>
+                        <ul>
+                            <li>Managed global Docebo LMS configuration supporting 10,000+ users across internal teams, partners, and customers</li>
+<li>Integrated Workday, Salesforce, QuickSight, and LinkedIn Learning to automate data flows and reporting</li>
+<li>Led Tier I/II incident triage alongside vendors and security teams</li>
+<li>Created performance dashboards, system metrics, and test plans for feature releases and audits</li>
+<li>Developed HTML-based custom notifications and learning modules to enhance navigation and accessibility</li>
+<li>Directed content implementation across three organizational branches under compliance requirements</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-title">Learning Management System Administrator</div>
+                        <div class="company">Medidata Solutions (Dassault Systèmes) <span class="date">Nov 2020 - Jun 2022</span></div>
+                        <ul>
+                            <li>Implemented Docebo LMS deployment with Okta SSO integration and minimal operational disruption</li>
+<li>Developed training guides and admin workshops for self-service governance</li>
+<li>Diagnosed performance issues using browser tooling and API testing</li>
+<li>Produced monthly enablement scorecards and analytics linking adoption to Sales pipeline performance</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-title">Learning Experience Platform Manager</div>
+                        <div class="company">Success Academy Charter Schools <span class="date">Feb 2019 - Nov 2019</span></div>
+                        <ul>
+                            <li>Introduced and implemented xAPI-compliant LXP tools for data tracking and analytics</li>
+<li>Integrated Whova and supporting event applications for large-scale programs</li>
+<li>Automated cohort assignments, notifications, and reporting through custom API orchestration</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-title">LMS Associate</div>
+                        <div class="company">Boehringer Ingelheim Pharmaceuticals <span class="date">Oct 2016 - Jul 2018</span></div>
+                        <ul>
+                            <li>Administered GxP-compliant training programs and resolved SCORM content issues</li>
+<li>Configured compliance-driven learning paths, SCORM validation, and global launch schedules</li>
+<li>Coordinated with QA/legal partners to maintain audit-ready documentation</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-title">Project Coordinator</div>
+                        <div class="company">Montefiore Hospital <span class="date">Oct 2015 - Jul 2016</span></div>
+                        <ul>
+                            <li>Managed Epic Go-Live supporting 25,000+ users utilizing SuccessFactors LMS</li>
+<li>Coordinated training logistics across 7 locations with 120+ instructors and 50+ classrooms</li>
+<li>Tracked learner progress and completion rates for enterprise-wide training initiatives</li>
+<li>Developed an Access-based scheduling system and analytics dashboards supporting 120+ trainers</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-title">Regulatory Compliance Training Analyst</div>
+                        <div class="company">American Express <span class="date">Feb 2012 - Oct 2015</span></div>
+                        <ul>
+                            <li>Oversaw enterprise-wide compliance training programs and regulatory alignment</li>
+<li>Migrated compliance workflows to SharePoint and SumTotal for improved reporting and traceability</li>
+<li>Created SCORM content and delivered weekly/monthly/quarterly performance dashboards</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Education</div>
+                    <div class="item">
+                        <div class="job-title">Software Engineering Bootcamp</div>
+                        <div class="company">New York Code + Design Academy <span class="date">2018</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modern Template -->
+            <div class="modern-content" style="display: none;">
+<div class="sidebar">
+                    <div class="section">
+                        <div class="section-title">Contact</div>
+                        <div class="contact-item">📧 garth.puckerin@me.com</div>
+                        <div class="contact-item">📱 (718) 310-8707</div>
+                        <div class="contact-item">🔗 linkedin.com/in/garthpuckerin</div>
+                        <div class="contact-item">💻 github.com/garthpuckerin</div>
+                        <div class="contact-item">📍 East Stroudsburg, PA</div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Core Skills</div>
+                        <div class="skill">Project Management & UAT Coordination</div>
+<div class="skill">LMS Administration & Operations</div>
+<div class="skill">AI-Driven Workflow Automation</div>
+<div class="skill">API & SSO Integration</div>
+<div class="skill">Incident & Vendor Management</div>
+<div class="skill">Compliance & Data Governance</div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Education</div>
+                        <div style="font-size: 10pt; font-weight: 600; margin-bottom: 3px;">Software Engineering</div>
+                        <div style="font-size: 9pt;">New York Code + Design Academy</div>
+                        <div style="font-size: 9pt; color: #bbb;">2018</div>
+                    </div>
+                </div>
+
+                <div class="main">
+                    <div class="name">Garth Puckerin</div>
+                    <div class="title">LMS Administrator & Learning Technology Specialist</div>
+
+                    <div class="section">
+                        <div class="section-title">Professional Summary</div>
+                        <p style="font-size: 10pt; line-height: 1.6; color: #333;">Learning & Development Specialist and LMS Administrator with 10+ years of experience leading enterprise learning initiatives across financial, healthcare, and technology environments. Skilled in configuring, testing, and deploying LMS platforms, coordinating cross-functional integrations, and managing soft-launch readiness through structured UAT. Combines system expertise with AI-driven automation to accelerate diagnostics, streamline content operations, and deliver real-time insights that keep global audiences learning without disruption.</p>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Experience</div>
+                        
+                        <div class="item">
+                            <div style="font-weight: 600; font-size: 11pt;">Learning Management & Integration Consultant</div>
+                            <div style="color: #666; font-size: 10pt; margin-bottom: 3px;">Federal Home Loan Bank of Chicago (FHLBC) | Aug 2025 - Nov 2025</div>
+                            <ul style="color: #333;">
+                                <li>Directed integration efforts between Docebo, Udemy, Outlook, Teams, SSO, and SharePoint to streamline training workflows</li>
+<li>Authored UAT test scripts and executed content validation in sandbox and production environments</li>
+<li>Collaborated with HRIS and IT teams to configure authentication and permissions for pilot cohorts</li>
+                            </ul>
+                        </div>
+                        
+
+                        <div class="item">
+                            <div style="font-weight: 600; font-size: 11pt;">L&D Specialist (Interim LMS Administrator)</div>
+                            <div style="color: #666; font-size: 10pt; margin-bottom: 3px;">Citadel Credit Union | Aug 2025 - Nov 2025</div>
+                            <ul style="color: #333;">
+                                <li>Provided temporary coverage for LMS team during maternity leave, ensuring business continuity</li>
+<li>Assisted in UAT testing and content validation for Docebo platform updates</li>
+                            </ul>
+                        </div>
+                        
+
+                        <div class="item">
+                            <div style="font-weight: 600; font-size: 11pt;">Business Systems Analyst – LMS</div>
+                            <div style="color: #666; font-size: 10pt; margin-bottom: 3px;">Entrust Corporation | Jun 2022 - Mar 2025</div>
+                            <ul style="color: #333;">
+                                <li>Managed global Docebo LMS configuration supporting 10,000+ users across internal teams, partners, and customers</li>
+<li>Integrated Workday, Salesforce, QuickSight, and LinkedIn Learning to automate data flows and reporting</li>
+<li>Led Tier I/II incident triage alongside vendors and security teams</li>
+                            </ul>
+                        </div>
+                        
+
+                        <div class="item">
+                            <div style="font-weight: 600; font-size: 11pt;">Learning Management System Administrator</div>
+                            <div style="color: #666; font-size: 10pt; margin-bottom: 3px;">Medidata Solutions (Dassault Systèmes) | Nov 2020 - Jun 2022</div>
+                            <ul style="color: #333;">
+                                <li>Implemented Docebo LMS deployment with Okta SSO integration and minimal operational disruption</li>
+<li>Developed training guides and admin workshops for self-service governance</li>
+<li>Diagnosed performance issues using browser tooling and API testing</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Minimal Template -->
+            <div class="minimal-content" style="display: none;">
+<div class="header">
+                    <div class="name">Garth Puckerin</div>
+                    <div class="contact">
+                        garth.puckerin@me.com • (718) 310-8707 • linkedin.com/in/garthpuckerin • github.com/garthpuckerin • East Stroudsburg, PA
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Summary</div>
+                    <p style="font-size: 10pt; line-height: 1.7; color: #333;">Learning & Development Specialist and LMS Administrator with 10+ years of experience leading enterprise learning initiatives across financial, healthcare, and technology environments. Skilled in configuring, testing, and deploying LMS platforms, coordinating cross-functional integrations, and managing soft-launch readiness through structured UAT. Combines system expertise with AI-driven automation to accelerate diagnostics, streamline content operations, and deliver real-time insights that keep global audiences learning without disruption.</p>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Experience</div>
+                    
+                    <div class="item">
+                        <div class="job-header">
+                            <div class="job-title">Learning Management & Integration Consultant, Federal Home Loan Bank of Chicago (FHLBC)</div>
+                            <div class="date">Aug 2025 - Nov 2025</div>
+                        </div>
+                        <ul>
+                            <li>Directed integration efforts between Docebo, Udemy, Outlook, Teams, SSO, and SharePoint to streamline training workflows</li>
+<li>Authored UAT test scripts and executed content validation in sandbox and production environments</li>
+<li>Collaborated with HRIS and IT teams to configure authentication and permissions for pilot cohorts</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-header">
+                            <div class="job-title">L&D Specialist (Interim LMS Administrator), Citadel Credit Union</div>
+                            <div class="date">Aug 2025 - Nov 2025</div>
+                        </div>
+                        <ul>
+                            <li>Provided temporary coverage for LMS team during maternity leave, ensuring business continuity</li>
+<li>Assisted in UAT testing and content validation for Docebo platform updates</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-header">
+                            <div class="job-title">Business Systems Analyst – LMS, Entrust Corporation</div>
+                            <div class="date">Jun 2022 - Mar 2025</div>
+                        </div>
+                        <ul>
+                            <li>Managed global Docebo LMS configuration supporting 10,000+ users across internal teams, partners, and customers</li>
+<li>Integrated Workday, Salesforce, QuickSight, and LinkedIn Learning to automate data flows and reporting</li>
+<li>Led Tier I/II incident triage alongside vendors and security teams</li>
+                        </ul>
+                    </div>
+                    
+
+                    <div class="item">
+                        <div class="job-header">
+                            <div class="job-title">Learning Management System Administrator, Medidata Solutions (Dassault Systèmes)</div>
+                            <div class="date">Nov 2020 - Jun 2022</div>
+                        </div>
+                        <ul>
+                            <li>Implemented Docebo LMS deployment with Okta SSO integration and minimal operational disruption</li>
+<li>Developed training guides and admin workshops for self-service governance</li>
+<li>Diagnosed performance issues using browser tooling and API testing</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Education</div>
+                    <div class="item">
+                        <div class="job-header">
+                            <div class="job-title">Software Engineering Bootcamp</div>
+                            <div class="date">2018</div>
+                        </div>
+                        <div class="company">New York Code + Design Academy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        const styleBtns = document.querySelectorAll('.style-btn');
+        const resume = document.getElementById('resume');
+        const templates = {
+            classic: document.querySelector('.classic-content'),
+            modern: document.querySelector('.modern-content'),
+            minimal: document.querySelector('.minimal-content')
+        };
+
+        function handlePrint() {
+            console.log('Print button clicked');
+            try {
+                window.print();
+            } catch (error) {
+                console.error('Print error:', error);
+                alert('Unable to open print dialog. Please try using Ctrl+P (Windows) or Cmd+P (Mac)');
+            }
+        }
+
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function initializeStyle() {
+            const styleParam = getUrlParameter('style');
+            if (styleParam && ['classic', 'modern', 'minimal'].includes(styleParam)) {
+                styleBtns.forEach(b => b.classList.remove('active'));
+                
+                const targetBtn = document.querySelector(`[data-style="${styleParam}"]`);
+                if (targetBtn) {
+                    targetBtn.classList.add('active');
+                }
+                
+                resume.className = `resume ${styleParam}`;
+                
+                Object.keys(templates).forEach(key => {
+                    templates[key].style.display = key === styleParam ? 'block' : 'none';
+                });
+
+                if (styleParam === 'modern') {
+                    templates.modern.style.display = 'contents';
+                }
+            }
+        }
+
+        styleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const style = btn.dataset.style;
+                
+                styleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                resume.className = `resume ${style}`;
+                
+                Object.keys(templates).forEach(key => {
+                    templates[key].style.display = key === style ? 'block' : 'none';
+                });
+
+                if (style === 'modern') {
+                    templates.modern.style.display = 'contents';
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', initializeStyle);
+    </script>
+</body>
+</html>

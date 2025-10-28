@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Download Modal</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .demo-container {
+            text-align: center;
+            color: white;
+        }
+
+        .demo-container h1 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .download-btn {
+            padding: 18px 40px;
+            font-size: 18px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Modal styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .close-btn {
+            background: #f0f2f5;
+            border: none;
+            font-size: 2rem;
+            color: #a0aec0;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #e2e8f0;
+            color: #333;
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .resume-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: white;
+        }
+
+        .resume-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .resume-thumbnail {
+            height: 350px;
+            background: #f7fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .resume-preview {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            font-size: 8px;
+        }
+
+        .preview-header {
+            text-align: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 8px;
+        }
+
+        .preview-name {
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .preview-contact {
+            font-size: 6px;
+            color: #666;
+        }
+
+        .preview-section {
+            margin-bottom: 8px;
+        }
+
+        .preview-section-title {
+            font-weight: bold;
+            font-size: 8px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 3px;
+        }
+
+        .preview-text {
+            font-size: 6px;
+            line-height: 1.2;
+            color: #555;
+        }
+
+        /* Modern preview specific */
+        .resume-card.modern .resume-preview {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 0;
+            padding: 0;
+        }
+
+        .preview-sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+        }
+
+        .preview-main {
+            padding: 10px;
+        }
+
+        /* Minimal preview specific */
+        .resume-card.minimal .preview-header {
+            border-bottom: none;
+            text-align: left;
+        }
+
+        .resume-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .resume-info h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .resume-info p {
+            color: #718096;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .download-card-btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .download-card-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo page - replace this with your portfolio -->
+    <div class="demo-container">
+        <h1>Garth Puckerin</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">LMS Administrator & Business Systems Analyst</p>
+        <button class="download-btn" onclick="openResumeModal()">
+            📥 Download Resume
+        </button>
+    </div>
+
+    <!-- Resume Download Modal -->
+    <div class="modal-overlay" id="resumeModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Choose Your Resume Style</h2>
+                <button class="close-btn" onclick="closeResumeModal()">×</button>
+            </div>
+            <div class="modal-content">
+                <div class="resume-grid">
+                    <!-- Classic Resume Card -->
+                    <div class="resume-card">
+                        <div class="resume-thumbnail">
+                            <div class="resume-preview">
+                                <div class="preview-header">
+                                    <div class="preview-name">GARTH PUCKERIN</div>
+                                    <div class="preview-contact">East Stroudsburg, PA | (718) 310-8707</div>
+                                </div>
+                                <div class="preview-section">
+                                    <div class="preview-section-title">Professional Summary</div>
+                                    <div class="preview-text">Project-focused LMS Administrator with 10+ years...</div>
+                                </div>
+                                <div class="preview-section">
+                                    <div class="preview-section-title">Experience</div>
+                                    <div class="preview-text" style="font-weight: bold;">Business Systems Analyst</div>
+                                    <div class="preview-text" style="font-style: italic;">Entrust Corporation</div>
+                                </div>
+                                <div class="preview-section">
+                                    <div class="preview-section-title">Education</div>
+                                    <div class="preview-text">Software Engineering Bootcamp</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume-info">
+                            <h3>Classic</h3>
+                            <p>Traditional format with centered header and clean sections. Perfect for corporate environments.</p>
+                            <button class="download-card-btn" onclick="downloadResume('classic')">
+                                Download Classic Style
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modern Resume Card -->
+                    <div class="resume-card modern">
+                        <div class="resume-thumbnail">
+                            <div class="resume-preview">
+                                <div class="preview-sidebar">
+                                    <div class="preview-section" style="margin-bottom: 10px;">
+                                        <div style="font-size: 7px; font-weight: bold; color: #3498db; margin-bottom: 3px;">CONTACT</div>
+                                        <div style="font-size: 5px;">📧 Email</div>
+                                        <div style="font-size: 5px;">📱 Phone</div>
+                                    </div>
+                                    <div class="preview-section">
+                                        <div style="font-size: 7px; font-weight: bold; color: #3498db; margin-bottom: 3px;">SKILLS</div>
+                                        <div style="font-size: 5px;">Docebo</div>
+                                        <div style="font-size: 5px;">Workday</div>
+                                        <div style="font-size: 5px;">JavaScript</div>
+                                    </div>
+                                </div>
+                                <div class="preview-main">
+                                    <div style="font-weight: bold; font-size: 11px; margin-bottom: 2px;">Garth Puckerin</div>
+                                    <div style="font-size: 7px; color: #3498db; margin-bottom: 8px;">LMS Administrator</div>
+                                    <div class="preview-section">
+                                        <div style="font-size: 7px; font-weight: bold; margin-bottom: 3px; border-bottom: 1px solid #3498db; padding-bottom: 2px;">EXPERIENCE</div>
+                                        <div style="font-size: 6px; font-weight: bold;">Business Systems Analyst</div>
+                                        <div style="font-size: 5px; color: #666;">Entrust Corporation</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume-info">
+                            <h3>Modern</h3>
+                            <p>Two-column layout with colored sidebar. Great for creative and tech roles.</p>
+                            <button class="download-card-btn" onclick="downloadResume('modern')">
+                                Download Modern Style
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Minimal Resume Card -->
+                    <div class="resume-card minimal">
+                        <div class="resume-thumbnail">
+                            <div class="resume-preview">
+                                <div class="preview-header">
+                                    <div style="font-size: 14px; font-weight: 300; margin-bottom: 2px;">Garth Puckerin</div>
+                                    <div class="preview-contact">garth.puckerin@me.com • (718) 310-8707</div>
+                                </div>
+                                <div class="preview-section">
+                                    <div style="font-size: 7px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 3px;">SUMMARY</div>
+                                    <div class="preview-text">LMS Administrator with 10+ years managing enterprise...</div>
+                                </div>
+                                <div class="preview-section">
+                                    <div style="font-size: 7px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 3px;">EXPERIENCE</div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 2px;">
+                                        <div style="font-size: 7px; font-weight: 600;">Business Systems Analyst</div>
+                                        <div style="font-size: 6px; color: #999;">2022 - 2025</div>
+                                    </div>
+                                    <div style="font-size: 6px; color: #666;">Entrust Corporation</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume-info">
+                            <h3>Minimal</h3>
+                            <p>Clean, typography-focused design. Ideal for senior positions and consulting roles.</p>
+                            <button class="download-card-btn" onclick="downloadResume('minimal')">
+                                Download Minimal Style
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openResumeModal() {
+            document.getElementById('resumeModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resumeModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('resumeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeResumeModal();
+            }
+        });
+
+        // Download resume (opens the multi-style generator)
+        function downloadResume(style) {
+            // Open the resume generator with the selected style pre-selected
+            window.open('resume-generator.html?style=' + style, '_blank');
+        }
+    </script>
+</body>
+</html>
+
