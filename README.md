@@ -49,11 +49,19 @@ npm run build
 
 ### Résumé Assets
 
+**Automated Resume Generator (NEW!)**
+```bash
+npm run generate:resumes
+```
+
+Automatically generates the interactive resume HTML (`public/resume/resume-generator.html`) from the centralized data source (`src/data/resumeData.ts`). This ensures the downloadable resumes stay in sync with the portfolio site content.
+
+**PDF Resume Generation**
 ```bash
 npm run resumes
 ```
 
-Regenerates the Modern, Classic, and Executive résumé PDFs used by the download modal (`public/resume/*.pdf`). Source content lives in `docs/resume/`.
+Regenerates the Modern, Classic, and Executive résumé PDFs (`public/resume/*.pdf`) using Python scripts. Note: These PDFs contain hardcoded content and may need manual updates to stay in sync with the site.
 
 ## Project Structure
 
@@ -67,8 +75,9 @@ Regenerates the Modern, Classic, and Executive résumé PDFs used by the downloa
 │   ├── lib/             # utility helpers (e.g., className combiner)
 │   ├── App.tsx          # top-level layout wiring all sections
 │   └── main.tsx         # React entry (with ThemeProvider, Tailwind)
-├── scripts/             # maintenance utilities (resume generator)
+├── scripts/             # maintenance utilities (resume generator, PDF generator)
 ├── docs/resume/         # editable résumé content + instructions
+├── public/resume/       # downloadable resumes (HTML + PDFs + backups)
 └── README.md
 ```
 
