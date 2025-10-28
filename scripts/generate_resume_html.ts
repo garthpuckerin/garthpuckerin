@@ -536,10 +536,9 @@ function renderClassic() {
                         <div class="job-title">${education.program}</div>
                         <div class="company">${education.institution} <span class="date">${education.year}</span></div>
                     </div>
-                </div>
-            </div>`;
+                </div>`;
   
-  return html;
+  return html.trim();
 }
 
 function renderModern() {
@@ -590,10 +589,9 @@ function renderModern() {
                         </div>
                         `).join('\n')}
                     </div>
-                </div>
-            </div>`;
+                </div>`;
   
-  return html;
+  return html.trim();
 }
 
 function renderMinimal() {
@@ -636,10 +634,9 @@ function renderMinimal() {
                         </div>
                         <div class="company">${education.institution}</div>
                     </div>
-                </div>
-            </div>`;
+                </div>`;
   
-  return html;
+  return html.trim();
 }
 
 // Generate the HTML
