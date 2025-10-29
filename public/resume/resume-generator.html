@@ -366,6 +366,19 @@
                 grid-template-columns: 2.5in 1fr;
             }
 
+            /* Ensure modern template maintains grid layout in print */
+            .resume.modern .modern-content {
+                display: contents !important;
+            }
+
+            .resume.modern .sidebar {
+                grid-column: 1;
+            }
+
+            .resume.modern .main {
+                grid-column: 2;
+            }
+
             /* Allow content to flow naturally */
             .item {
                 page-break-inside: auto;
@@ -392,6 +405,48 @@
 
             .resume.classic .contact {
                 font-size: 9pt !important;
+            }
+
+            /* Modern template print sizing - keep two columns, fit on one page */
+            .resume.modern .name {
+                font-size: 20pt !important;
+            }
+
+            .resume.modern .title {
+                font-size: 10pt !important;
+            }
+
+            .resume.modern .sidebar .section-title {
+                font-size: 9pt !important;
+                margin-bottom: 8px !important;
+            }
+
+            .resume.modern .main .section-title {
+                font-size: 11pt !important;
+                margin-bottom: 10px !important;
+            }
+
+            .resume.modern .contact-item,
+            .resume.modern .skill {
+                font-size: 8pt !important;
+                line-height: 1.2 !important;
+                margin-bottom: 6px !important;
+            }
+
+            .resume.modern .sidebar {
+                padding: 0.4in 0.25in !important;
+            }
+
+            .resume.modern .main {
+                padding: 0.4in 0.3in !important;
+            }
+
+            .resume.modern .item {
+                margin-bottom: 8px !important;
+            }
+
+            .resume.modern .sidebar .section {
+                margin-bottom: 12px !important;
             }
 
             /* Modern template print sizing to fit on one page */
