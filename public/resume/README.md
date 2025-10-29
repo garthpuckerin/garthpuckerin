@@ -1,6 +1,20 @@
 # Resume Files
 
-## Current Status
+## 🔒 PROTECTED STATUS - RESUME GENERATOR
+
+**CRITICAL:** The `resume-generator.html` file has been **RESTORED and PROTECTED** as of commit `e3aaa88` (Oct 28, 2025).
+
+### 🚨 DO NOT MODIFY WITHOUT EXPLICIT AUTHORIZATION
+
+This file is the **WORKING BASELINE** restored from original Web Claude implementation (commit `0bb2334`):
+
+- ✅ **All three templates work**: Classic, Modern, Minimal
+- ✅ **PDF download functional**: Print dialog triggers correctly  
+- ✅ **Style switching operational**: Buttons work properly
+- ✅ **Unicode characters fixed**: All icons display correctly
+- ✅ **Known-good reference**: Use for React conversion attempts
+
+### 🔄 Current Status
 
 **Important:** The `resume-generator.html` file is currently **manually maintained** and not automatically generated from `src/data/resumeData.ts`. 
 
