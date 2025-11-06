@@ -176,7 +176,7 @@ export const resumeData: ResumeData = {
 
   education: {
     institution: "New York Code + Design Academy",
-    program: "Software Engineering Bootcamp",
+    program: "Full Stack Software Engineering Curriculum",
     year: "2018",
     description: "Immersive full-stack program covering JavaScript, Ruby on Rails, Python, SQL/PostgreSQL, API development, authentication, responsive design, Git/GitHub, and Agile delivery.",
     coursework: [

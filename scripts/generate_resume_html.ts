@@ -618,6 +618,13 @@ function renderClassic() {
                     <div class="item">
                         <div class="job-title">${education.program}</div>
                         <div class="company">${education.institution} <span class="date">${education.year}</span></div>
+                        <p style="font-size: 10pt; margin-top: 8px; margin-bottom: 8px;">${education.description}</p>
+                        ${education.coursework.map(category => `
+                        <div style="margin-bottom: 10px;">
+                            <strong style="font-size: 10pt;">${category.title}:</strong>
+                            <span style="font-size: 10pt;"> ${category.items.join(', ')}</span>
+                        </div>
+                        `).join('')}
                     </div>
                 </div>`;
   
@@ -645,9 +652,15 @@ function renderModern() {
 
                     <div class="section">
                         <div class="section-title">Education</div>
-                        <div style="font-size: 10pt; font-weight: 600; margin-bottom: 3px;">Software Engineering</div>
+                        <div style="font-size: 10pt; font-weight: 600; margin-bottom: 3px;">${education.program}</div>
                         <div style="font-size: 9pt;">${education.institution}</div>
-                        <div style="font-size: 9pt; color: #bbb;">${education.year}</div>
+                        <div style="font-size: 9pt; color: #bbb; margin-bottom: 8px;">${education.year}</div>
+                        ${education.coursework.map(category => `
+                        <div style="margin-bottom: 6px;">
+                            <div style="font-size: 8pt; font-weight: 600; color: #3498db; margin-bottom: 2px;">${category.title}</div>
+                            <div style="font-size: 8pt; line-height: 1.3;">${category.items.join(', ')}</div>
+                        </div>
+                        `).join('')}
                     </div>
                 </div>
 
@@ -736,6 +749,9 @@ function renderMinimal() {
                             <div class="date">${education.year}</div>
                         </div>
                         <div class="company">${education.institution}</div>
+                        <div style="font-size: 9pt; margin-top: 6px; line-height: 1.4;">
+                            ${education.coursework.map(category => `<strong>${category.title}:</strong> ${category.items.join(', ')}`).join(' • ')}
+                        </div>
                     </div>
                 </div>`;
   
