@@ -103,6 +103,10 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
             background: white;
         }
 
+        .resume.minimal {
+            padding: 0.25in;
+        }
+
         /* Classic Style */
         .resume.classic .header {
             text-align: center;
@@ -285,30 +289,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
         }
 
         @media print {
-            /* Default page setup for classic and minimal */
-            @page {
-                size: letter;
-                margin: 0.75in 0.5in 0.5in 0.5in;
-            }
-            
-            @page :first {
-                margin-top: 0;
-            }
-            
-            @page :not(:first) {
-                @top-center {
-                    content: "Garth Puckerin";
-                }
-            }
-            
-            /* Suppress browser headers and footers */
-            @page {
-                @top-left { content: ""; }
-                @top-right { content: ""; }
-                @bottom-left { content: ""; }
-                @bottom-center { content: ""; }
-                @bottom-right { content: ""; }
-            }
+            /* Page rules are handled dynamically by setPageMargins() function */
             
             /* Modern template gets edge-to-edge layout */
             .resume.modern {
@@ -514,6 +495,11 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 line-height: 1.4 !important;
             }
 
+            /* Minimal template print styles */
+            .resume.minimal {
+                padding: 0.25in !important;
+            }
+
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
@@ -560,15 +546,15 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
             minimal: document.querySelector('.minimal-content')
         };
 
-        // Function to dynamically inject @page rules for edge-to-edge printing
-        function setPageMargins(isModern) {
+        // Function to dynamically inject @page rules for different templates
+        function setPageMargins(templateType) {
             // Remove any existing dynamic page rules
             const existingStyle = document.getElementById('dynamic-page-rules');
             if (existingStyle) {
                 existingStyle.remove();
             }
             
-            if (isModern) {
+            if (templateType === 'modern') {
                 // Create new style element with zero margins for modern template
                 const style = document.createElement('style');
                 style.id = 'dynamic-page-rules';
@@ -590,6 +576,28 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                     }
                 \`;
                 document.head.appendChild(style);
+            } else if (templateType === 'minimal') {
+                // Create new style element with 0.25in left/right margins for minimal template
+                const style = document.createElement('style');
+                style.id = 'dynamic-page-rules';
+                style.textContent = \`
+                    @media print {
+                        @page {
+                            size: letter;
+                            margin: 0.75in 0.25in 0.5in 0.25in !important;
+                        }
+                        @page :first {
+                            margin: 0 0.25in 0.5in 0.25in !important;
+                        }
+                        @page :not(:first) {
+                            margin: 0.75in 0.25in 0.5in 0.25in !important;
+                            @top-center {
+                                content: "Garth Puckerin";
+                            }
+                        }
+                    }
+                \`;
+                document.head.appendChild(style);
             }
         }
 
@@ -598,8 +606,13 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
             try {
                 // Check which template is currently active and set appropriate margins
                 const currentTemplate = document.querySelector('.resume.classic, .resume.modern, .resume.minimal');
-                const isModern = currentTemplate && currentTemplate.classList.contains('modern');
-                setPageMargins(isModern);
+                let templateType = 'classic'; // default
+                if (currentTemplate && currentTemplate.classList.contains('modern')) {
+                    templateType = 'modern';
+                } else if (currentTemplate && currentTemplate.classList.contains('minimal')) {
+                    templateType = 'minimal';
+                }
+                setPageMargins(templateType);
                 
                 window.print();
             } catch (error) {
@@ -629,7 +642,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 resume.className = \`resume \${styleParam}\`;
                 
                 // Set appropriate page margins
-                setPageMargins(styleParam === 'modern');
+                setPageMargins(styleParam);
                 
                 Object.keys(templates).forEach(key => {
                     templates[key].style.display = key === styleParam ? 'block' : 'none';
@@ -651,7 +664,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 resume.className = \`resume \${style}\`;
                 
                 // Set appropriate page margins
-                setPageMargins(style === 'modern');
+                setPageMargins(style);
                 
                 Object.keys(templates).forEach(key => {
                     templates[key].style.display = key === style ? 'block' : 'none';
