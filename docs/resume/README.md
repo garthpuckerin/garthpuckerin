@@ -1,4 +1,4 @@
-# Resume Assets v1.0.0
+# Resume Assets v1.0.1
 
 This folder contains the **PERFECTED** resume generation system with multiple output methods.
 

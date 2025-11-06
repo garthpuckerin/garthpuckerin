@@ -5,6 +5,15 @@ All notable changes to the Garth Puckerin Portfolio project will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-11-06
+
+### Fixed
+- **Resume Modal Thumbnails**: Eliminated border gap in modern template thumbnail by removing container background
+- **TypeScript Linting**: Resolved 5 linting errors in resume generator script
+  - Added src/data to tsconfig.node.json include pattern
+  - Changed let to const for non-reassigned variables
+  - Removed unused summary variable from minimal template
+
 ## [1.0.0] - 2025-11-06
 
 ### 🎯 MAJOR RELEASE: Perfect Resume Templates
