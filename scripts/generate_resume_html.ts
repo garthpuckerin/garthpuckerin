@@ -788,7 +788,7 @@ Source: src/data/resumeData.ts via scripts/generate_resume_html.ts
 function renderClassic() {
   const { personal, summary, coreCompetencies, experience, education } = resumeData;
   
-  let html = `
+  const html = `
                 <div class="header">
                     <div class="name">${personal.name.toUpperCase()}</div>
                     <div class="contact">
@@ -843,7 +843,7 @@ function renderClassic() {
 function renderModern() {
   const { personal, summary, coreCompetencies, experience, education } = resumeData;
   
-  let html = `
+  const html = `
                 <div class="sidebar">
                     <div class="section">
                         <div class="section-title">Contact</div>
@@ -907,12 +907,12 @@ function renderModern() {
 }
 
 function renderMinimal() {
-  const { personal, summary, experience, education } = resumeData;
+  const { personal, experience, education } = resumeData;
   
   // Create a minimal summary - just the key point
   const minimalSummary = "LMS Administrator with 10+ years managing enterprise learning platforms across financial, healthcare, and technology organizations. Specialized in Docebo configuration, system integrations, UAT coordination, and compliance assurance.";
   
-  let html = `
+  const html = `
                 <div class="header">
                     <div class="name">${personal.name}</div>
                     <div class="contact">
