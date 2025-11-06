@@ -47,21 +47,28 @@ npm run lint
 npm run build
 ```
 
-### Résumé Assets
+### Résumé System v1.0.0 ⭐
 
-**Automated Resume Generator (NEW!)**
 ```bash
 npm run generate:resumes
 ```
 
-Automatically generates the interactive resume HTML (`public/resume/resume-generator.html`) from the centralized data source (`src/data/resumeData.ts`). This ensures the downloadable resumes stay in sync with the portfolio site content.
+**Perfect Resume Generator**: Automatically builds `public/resume/resume-generator.html` from TypeScript data source with three print-optimized templates:
 
-**PDF Resume Generation**
+- **Classic**: Professional with page headers (0.75in/0.5in margins)
+- **Modern**: Edge-to-edge two-column design (zero margins)  
+- **Minimal**: Space-optimized with clean formatting (0.25in print margins)
+
+**Advanced Features**:
+- Dynamic @page rules for template-specific print optimization
+- Complete browser header/footer suppression (no dates, URLs, page numbers)
+- Automatic company name cleaning in minimal template
+- TypeScript-generated from `src/data/resumeData.ts` single source of truth
+
+**Legacy Python Script**:
 ```bash
-npm run resumes
+npm run resumes  # Generates basic PDFs from docs/resume/
 ```
-
-Regenerates the Modern, Classic, and Executive résumé PDFs (`public/resume/*.pdf`) using Python scripts. Note: These PDFs contain hardcoded content and may need manual updates to stay in sync with the site.
 
 ## Project Structure
 
@@ -75,9 +82,8 @@ Regenerates the Modern, Classic, and Executive résumé PDFs (`public/resume/*.p
 │   ├── lib/             # utility helpers (e.g., className combiner)
 │   ├── App.tsx          # top-level layout wiring all sections
 │   └── main.tsx         # React entry (with ThemeProvider, Tailwind)
-├── scripts/             # maintenance utilities (resume generator, PDF generator)
+├── scripts/             # maintenance utilities (resume generator)
 ├── docs/resume/         # editable résumé content + instructions
-├── public/resume/       # downloadable resumes (HTML + PDFs + backups)
 └── README.md
 ```
 
