@@ -47,7 +47,7 @@ npm run lint
 npm run build
 ```
 
-### Résumé System v1.0.0 ⭐
+### Résumé System v1.0.1 ⭐
 
 ```bash
 npm run generate:resumes
@@ -134,9 +134,16 @@ For automation, consider GitHub Actions artifacts or syncing to a bucket/CDN (Az
 
 ## Asset Notes
 
-- Hero and contact imagery live in `src/assets/`; keep originals in the repo root for future editing.
-- Company logos follow a square format sized for circular badges.
-- Update both `favicon` and hero avatar if branding changes.
+- Hero and contact imagery live in `src/assets/`; optimized for performance and consistency.
+- Company logos standardized on `_logo.jpg` format for uniform presentation.
+- Repository optimized December 2024 - see `REPOSITORY_REORGANIZATION.md` for details.
+
+## Repository Status
+
+**Version:** 1.0.1  
+**Last Optimized:** December 20, 2024  
+**Repository Size:** 159.66 MB (11,781 files)  
+**Status:** Clean and production-ready
 
 ## Roadmap Ideas
 
