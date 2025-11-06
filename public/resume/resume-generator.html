@@ -179,7 +179,7 @@
         }
 
         .resume.modern .sidebar .section-title {
-            font-size: 12pt;
+            font-size: 10pt;
             font-weight: bold;
             margin-bottom: 10px;
             color: #3498db;
@@ -188,7 +188,7 @@
         }
 
         .resume.modern .main .section-title {
-            font-size: 14pt;
+            font-size: 12pt;
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 15px;
@@ -275,6 +275,7 @@
         }
 
         @media print {
+            /* Default page setup for classic and minimal */
             @page {
                 size: letter;
                 margin: 0.75in 0.5in 0.5in 0.5in;
@@ -314,7 +315,6 @@
                 padding: 0 !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                color-adjust: exact !important;
             }
             
             body * {
@@ -376,28 +376,77 @@
                 height: auto !important;
                 padding: 0.5in !important;
             }
-
+            
+            /* Modern template uses standard grid layout - edge-to-edge handled by dynamic @page rules */
             .resume.modern {
-                position: absolute !important;
+                position: relative !important;
                 top: 0 !important;
                 left: 0 !important;
                 margin: 0 !important;
                 width: 100% !important;
                 height: 100% !important;
                 display: grid;
-                grid-template-columns: 2.5in 1fr;
+                grid-template-columns: 2.3in 1fr;
                 gap: 0;
                 padding: 0 !important;
+                max-width: none !important;
             }
 
             .resume.modern .sidebar {
-                padding: 0.5in !important;
+                padding: 0.25in !important;
                 margin: 0 !important;
+                background: #2c3e50;
+                color: white;
             }
 
             .resume.modern .main {
-                padding: 0.5in !important;
+                padding: 0.25in !important;
                 margin: 0 !important;
+                background: white;
+            }
+            
+            /* Modern template specific typography for space efficiency */
+            .resume.modern .name {
+                font-size: 18pt !important;
+                margin-bottom: 4px !important;
+            }
+            
+            .resume.modern .title {
+                font-size: 10pt !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .resume.modern .sidebar .section {
+                margin-bottom: 15px !important;
+            }
+            
+            .resume.modern .sidebar .section-title {
+                font-size: 9pt !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .resume.modern .main .section {
+                margin-bottom: 10px !important;
+            }
+            
+            .resume.modern .main .section-title {
+                font-size: 11pt !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .resume.modern .item {
+                margin-bottom: 6px !important;
+            }
+            
+            .resume.modern li {
+                font-size: 8pt !important;
+                line-height: 1.2 !important;
+                margin-bottom: 2px !important;
+            }
+            
+            .resume.modern p {
+                font-size: 8pt !important;
+                line-height: 1.3 !important;
             }
 
             .item {
@@ -458,7 +507,6 @@
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                color-adjust: exact !important;
             }
         }
     </style>
@@ -481,7 +529,7 @@
 <div class="header">
                     <div class="name">GARTH PUCKERIN</div>
                     <div class="contact">
-                        East Stroudsburg, PA | (718) 310-8707 | garth.puckerin@me.com<br>
+                        (718) 310-8707 | East Stroudsburg, PA | garth.puckerin@me.com<br>
                         linkedin.com/in/garthpuckerin | github.com/garthpuckerin
                     </div>
                 </div>
@@ -626,11 +674,11 @@
 <div class="sidebar">
                     <div class="section">
                         <div class="section-title">Contact</div>
-                        <div class="contact-item">📧 garth.puckerin@me.com</div>
-                        <div class="contact-item">📱 (718) 310-8707</div>
-                        <div class="contact-item">🔗 linkedin.com/in/garthpuckerin</div>
-                        <div class="contact-item">💻 github.com/garthpuckerin</div>
-                        <div class="contact-item">📍 East Stroudsburg, PA</div>
+                        <div class="contact-item">garth.puckerin@me.com</div>
+                        <div class="contact-item">(718) 310-8707</div>
+                        <div class="contact-item">East Stroudsburg, PA</div>
+                        <div class="contact-item">linkedin.com/in/garthpuckerin</div>
+                        <div class="contact-item">github.com/garthpuckerin</div>
                     </div>
 
                     <div class="section">
@@ -710,9 +758,19 @@
                         
 
                         <div class="item">
+                            <div style="font-weight: 600; font-size: 11pt;">Learning Management System Administrator</div>
+                            <div style="color: #666; font-size: 10pt; margin-bottom: 3px;">Medidata Solutions (Dassault Systèmes) | Nov 2020 - Jun 2022</div>
+                            <ul style="color: #333;">
+                                <li>Implemented Docebo LMS deployment with Okta SSO integration and minimal operational disruption</li>
+<li>Developed training guides and admin workshops for self-service governance</li>
+                            </ul>
+                        </div>
+                        
+
+                        <div class="item">
                             <div style="font-weight: 600; font-size: 10pt; color: #555;">Previous Roles:</div>
                             <div style="font-size: 9pt; color: #666; line-height: 1.6;">
-                                Medidata Solutions (Dassault Systèmes) (Learning Management System Administrator, Nov 2020) • Success Academy Charter Schools (Learning Experience Platform Manager, Feb 2019) • Boehringer Ingelheim Pharmaceuticals (LMS Associate, Oct 2016) • Montefiore Hospital (Project Coordinator, Oct 2015) • American Express (Regulatory Compliance Training Analyst, Feb 2012)
+                                Success Academy Charter Schools (Learning Experience Platform Manager, Feb 2019) • Boehringer Ingelheim Pharmaceuticals (LMS Associate, Oct 2016) • Montefiore Hospital (Project Coordinator, Oct 2015) • American Express (Regulatory Compliance Training Analyst, Feb 2012)
                             </div>
                         </div>
                     </div>
@@ -771,6 +829,18 @@
                         </ul>
                     </div>
                     
+
+                    <div class="item">
+                        <div class="job-header">
+                            <div class="job-title">Learning Management System Administrator, Medidata Solutions (Dassault Systèmes)</div>
+                            <div class="date">Nov 2020 - Jun 2022</div>
+                        </div>
+                        <ul>
+                            <li>Implemented Docebo LMS deployment with Okta SSO integration and minimal operational disruption</li>
+<li>Developed training guides and admin workshops for self-service governance</li>
+                        </ul>
+                    </div>
+                    
                     
                     <div class="item">
                         <div class="job-header">
@@ -778,7 +848,7 @@
                             <div class="date"></div>
                         </div>
                         <div style="font-size: 9pt; color: #666; line-height: 1.6;">
-                            Medidata Solutions (Dassault Systèmes) (Learning Management System Administrator, Nov 2020) • Success Academy Charter Schools (Learning Experience Platform Manager, Feb 2019) • Boehringer Ingelheim Pharmaceuticals (LMS Associate, Oct 2016) • Montefiore Hospital (Project Coordinator, Oct 2015) • American Express (Regulatory Compliance Training Analyst, Feb 2012)
+                            Success Academy Charter Schools (Learning Experience Platform Manager, Feb 2019) • Boehringer Ingelheim Pharmaceuticals (LMS Associate, Oct 2016) • Montefiore Hospital (Project Coordinator, Oct 2015) • American Express (Regulatory Compliance Training Analyst, Feb 2012)
                         </div>
                     </div>
                 </div>
@@ -809,9 +879,47 @@
             minimal: document.querySelector('.minimal-content')
         };
 
+        // Function to dynamically inject @page rules for edge-to-edge printing
+        function setPageMargins(isModern) {
+            // Remove any existing dynamic page rules
+            const existingStyle = document.getElementById('dynamic-page-rules');
+            if (existingStyle) {
+                existingStyle.remove();
+            }
+            
+            if (isModern) {
+                // Create new style element with zero margins for modern template
+                const style = document.createElement('style');
+                style.id = 'dynamic-page-rules';
+                style.textContent = `
+                    @media print {
+                        @page {
+                            size: letter;
+                            margin: 0 !important;
+                        }
+                        @page :first {
+                            margin: 0 !important;
+                        }
+                        @page :not(:first) {
+                            margin: 0 !important;
+                            @top-center {
+                                content: none;
+                            }
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
         function handlePrint() {
             console.log('Print button clicked');
             try {
+                // Check which template is currently active and set appropriate margins
+                const currentTemplate = document.querySelector('.resume.classic, .resume.modern, .resume.minimal');
+                const isModern = currentTemplate && currentTemplate.classList.contains('modern');
+                setPageMargins(isModern);
+                
                 window.print();
             } catch (error) {
                 console.error('Print error:', error);
@@ -839,6 +947,9 @@
                 
                 resume.className = `resume ${styleParam}`;
                 
+                // Set appropriate page margins
+                setPageMargins(styleParam === 'modern');
+                
                 Object.keys(templates).forEach(key => {
                     templates[key].style.display = key === styleParam ? 'block' : 'none';
                 });
@@ -857,6 +968,9 @@
                 btn.classList.add('active');
                 
                 resume.className = `resume ${style}`;
+                
+                // Set appropriate page margins
+                setPageMargins(style === 'modern');
                 
                 Object.keys(templates).forEach(key => {
                     templates[key].style.display = key === style ? 'block' : 'none';

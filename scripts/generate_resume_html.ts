@@ -189,7 +189,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
         }
 
         .resume.modern .sidebar .section-title {
-            font-size: 12pt;
+            font-size: 10pt;
             font-weight: bold;
             margin-bottom: 10px;
             color: #3498db;
@@ -198,7 +198,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
         }
 
         .resume.modern .main .section-title {
-            font-size: 14pt;
+            font-size: 12pt;
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 15px;
@@ -285,6 +285,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
         }
 
         @media print {
+            /* Default page setup for classic and minimal */
             @page {
                 size: letter;
                 margin: 0.75in 0.5in 0.5in 0.5in;
@@ -324,7 +325,6 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 padding: 0 !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                color-adjust: exact !important;
             }
             
             body * {
@@ -386,28 +386,77 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 height: auto !important;
                 padding: 0.5in !important;
             }
-
+            
+            /* Modern template uses standard grid layout - edge-to-edge handled by dynamic @page rules */
             .resume.modern {
-                position: absolute !important;
+                position: relative !important;
                 top: 0 !important;
                 left: 0 !important;
                 margin: 0 !important;
                 width: 100% !important;
                 height: 100% !important;
                 display: grid;
-                grid-template-columns: 2.5in 1fr;
+                grid-template-columns: 2.3in 1fr;
                 gap: 0;
                 padding: 0 !important;
+                max-width: none !important;
             }
 
             .resume.modern .sidebar {
-                padding: 0.5in !important;
+                padding: 0.25in !important;
                 margin: 0 !important;
+                background: #2c3e50;
+                color: white;
             }
 
             .resume.modern .main {
-                padding: 0.5in !important;
+                padding: 0.25in !important;
                 margin: 0 !important;
+                background: white;
+            }
+            
+            /* Modern template specific typography for space efficiency */
+            .resume.modern .name {
+                font-size: 18pt !important;
+                margin-bottom: 4px !important;
+            }
+            
+            .resume.modern .title {
+                font-size: 10pt !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .resume.modern .sidebar .section {
+                margin-bottom: 15px !important;
+            }
+            
+            .resume.modern .sidebar .section-title {
+                font-size: 9pt !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .resume.modern .main .section {
+                margin-bottom: 10px !important;
+            }
+            
+            .resume.modern .main .section-title {
+                font-size: 11pt !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .resume.modern .item {
+                margin-bottom: 6px !important;
+            }
+            
+            .resume.modern li {
+                font-size: 8pt !important;
+                line-height: 1.2 !important;
+                margin-bottom: 2px !important;
+            }
+            
+            .resume.modern p {
+                font-size: 8pt !important;
+                line-height: 1.3 !important;
             }
 
             .item {
@@ -468,7 +517,6 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                color-adjust: exact !important;
             }
         }
     </style>
@@ -512,9 +560,47 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
             minimal: document.querySelector('.minimal-content')
         };
 
+        // Function to dynamically inject @page rules for edge-to-edge printing
+        function setPageMargins(isModern) {
+            // Remove any existing dynamic page rules
+            const existingStyle = document.getElementById('dynamic-page-rules');
+            if (existingStyle) {
+                existingStyle.remove();
+            }
+            
+            if (isModern) {
+                // Create new style element with zero margins for modern template
+                const style = document.createElement('style');
+                style.id = 'dynamic-page-rules';
+                style.textContent = \`
+                    @media print {
+                        @page {
+                            size: letter;
+                            margin: 0 !important;
+                        }
+                        @page :first {
+                            margin: 0 !important;
+                        }
+                        @page :not(:first) {
+                            margin: 0 !important;
+                            @top-center {
+                                content: none;
+                            }
+                        }
+                    }
+                \`;
+                document.head.appendChild(style);
+            }
+        }
+
         function handlePrint() {
             console.log('Print button clicked');
             try {
+                // Check which template is currently active and set appropriate margins
+                const currentTemplate = document.querySelector('.resume.classic, .resume.modern, .resume.minimal');
+                const isModern = currentTemplate && currentTemplate.classList.contains('modern');
+                setPageMargins(isModern);
+                
                 window.print();
             } catch (error) {
                 console.error('Print error:', error);
@@ -542,6 +628,9 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 
                 resume.className = \`resume \${styleParam}\`;
                 
+                // Set appropriate page margins
+                setPageMargins(styleParam === 'modern');
+                
                 Object.keys(templates).forEach(key => {
                     templates[key].style.display = key === styleParam ? 'block' : 'none';
                 });
@@ -560,6 +649,9 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 btn.classList.add('active');
                 
                 resume.className = \`resume \${style}\`;
+                
+                // Set appropriate page margins
+                setPageMargins(style === 'modern');
                 
                 Object.keys(templates).forEach(key => {
                     templates[key].style.display = key === style ? 'block' : 'none';
@@ -583,7 +675,7 @@ function renderClassic() {
                 <div class="header">
                     <div class="name">${personal.name.toUpperCase()}</div>
                     <div class="contact">
-                        ${personal.location} | ${personal.phone} | ${personal.email}<br>
+                        ${personal.phone} | ${personal.location} | ${personal.email}<br>
                         ${personal.linkedin} | ${personal.github}
                     </div>
                 </div>
@@ -638,11 +730,11 @@ function renderModern() {
                 <div class="sidebar">
                     <div class="section">
                         <div class="section-title">Contact</div>
-                        <div class="contact-item">📧 ${personal.email}</div>
-                        <div class="contact-item">📱 ${personal.phone}</div>
-                        <div class="contact-item">🔗 ${personal.linkedin}</div>
-                        <div class="contact-item">💻 ${personal.github}</div>
-                        <div class="contact-item">📍 ${personal.location}</div>
+                        <div class="contact-item">${personal.email}</div>
+                        <div class="contact-item">${personal.phone}</div>
+                        <div class="contact-item">${personal.location}</div>
+                        <div class="contact-item">${personal.linkedin}</div>
+                        <div class="contact-item">${personal.github}</div>
                     </div>
 
                     <div class="section">
@@ -675,7 +767,7 @@ function renderModern() {
 
                     <div class="section">
                         <div class="section-title">Experience</div>
-                        ${experience.slice(0, 3).map(item => `
+                        ${experience.slice(0, 4).map(item => `
                         <div class="item">
                             <div style="font-weight: 600; font-size: 11pt;">${item.role}</div>
                             <div style="color: #666; font-size: 10pt; margin-bottom: 3px;">${item.company} | ${item.period}</div>
@@ -688,7 +780,7 @@ function renderModern() {
                         <div class="item">
                             <div style="font-weight: 600; font-size: 10pt; color: #555;">Previous Roles:</div>
                             <div style="font-size: 9pt; color: #666; line-height: 1.6;">
-                                ${experience.slice(3).map(item => `${item.company} (${item.role}, ${item.period.split(' - ')[0]})`).join(' • ')}
+                                ${experience.slice(4).map(item => `${item.company} (${item.role}, ${item.period.split(' - ')[0]})`).join(' • ')}
                             </div>
                         </div>
                     </div>
@@ -718,7 +810,7 @@ function renderMinimal() {
 
                 <div class="section">
                     <div class="section-title">Experience</div>
-                    ${experience.slice(0, 3).map(item => `
+                    ${experience.slice(0, 4).map(item => `
                     <div class="item">
                         <div class="job-header">
                             <div class="job-title">${item.role}, ${item.company}</div>
@@ -736,7 +828,7 @@ function renderMinimal() {
                             <div class="date"></div>
                         </div>
                         <div style="font-size: 9pt; color: #666; line-height: 1.6;">
-                            ${experience.slice(3).map(item => `${item.company} (${item.role}, ${item.period.split(' - ')[0]})`).join(' • ')}
+                            ${experience.slice(4).map(item => `${item.company} (${item.role}, ${item.period.split(' - ')[0]})`).join(' • ')}
                         </div>
                     </div>
                 </div>
