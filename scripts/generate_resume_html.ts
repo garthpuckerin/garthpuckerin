@@ -291,6 +291,22 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
         @media print {
             /* Page rules are handled dynamically by setPageMargins() function */
             
+            /* Suppress all browser-generated print headers and footers */
+            @page {
+                @top-left { content: ""; }
+                @top-center { content: ""; }
+                @top-right { content: ""; }
+                @bottom-left { content: ""; }
+                @bottom-center { content: ""; }
+                @bottom-right { content: ""; }
+            }
+            
+            /* Additional browser print suppression */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
             /* Modern template gets edge-to-edge layout */
             .resume.modern {
                 position: absolute !important;
@@ -499,11 +515,6 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
             .resume.minimal {
                 padding: 0.25in !important;
             }
-
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
         }
     </style>
 </head>
@@ -563,15 +574,30 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                         @page {
                             size: letter;
                             margin: 0 !important;
+                            @top-left { content: ""; }
+                            @top-center { content: ""; }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                         @page :first {
                             margin: 0 !important;
+                            @top-left { content: ""; }
+                            @top-center { content: ""; }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                         @page :not(:first) {
                             margin: 0 !important;
-                            @top-center {
-                                content: none;
-                            }
+                            @top-left { content: ""; }
+                            @top-center { content: ""; }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                     }
                 \`;
@@ -585,15 +611,31 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                         @page {
                             size: letter;
                             margin: 0.75in 0.25in 0.5in 0.25in !important;
+                            @top-left { content: ""; }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                         @page :first {
                             margin: 0 0.25in 0.5in 0.25in !important;
+                            @top-left { content: ""; }
+                            @top-center { content: ""; }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                         @page :not(:first) {
                             margin: 0.75in 0.25in 0.5in 0.25in !important;
+                            @top-left { content: ""; }
                             @top-center {
                                 content: "Garth Puckerin";
                             }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                     }
                 \`;
@@ -607,15 +649,31 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                         @page {
                             size: letter;
                             margin: 0.75in 0.5in 0.5in 0.5in !important;
+                            @top-left { content: ""; }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                         @page :first {
                             margin-top: 0 !important;
+                            @top-left { content: ""; }
+                            @top-center { content: ""; }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                         @page :not(:first) {
                             margin: 0.75in 0.5in 0.5in 0.5in !important;
+                            @top-left { content: ""; }
                             @top-center {
                                 content: "Garth Puckerin";
                             }
+                            @top-right { content: ""; }
+                            @bottom-left { content: ""; }
+                            @bottom-center { content: ""; }
+                            @bottom-right { content: ""; }
                         }
                     }
                 \`;
