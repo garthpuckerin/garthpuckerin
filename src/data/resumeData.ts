@@ -72,6 +72,17 @@ export const resumeData: ResumeData = {
 
   experience: [
     {
+      company: "Citadel Credit Union",
+      role: "L&D Specialist (Interim LMS Administrator)",
+      period: "Aug 2025 - Nov 2025",
+      accomplishments: [
+        "Provided temporary coverage for LMS team during maternity leave, ensuring business continuity",
+        "Assisted in UAT testing and content validation for Docebo platform updates"
+      ],
+      logo: "/src/assets/logos/citadel_federal_credit_union_logo.jpg",
+      logoAlt: "Citadel Credit Union logo"
+    },
+    {
       company: "Federal Home Loan Bank of Chicago (FHLBC)",
       role: "Learning Management & Integration Consultant",
       period: "Aug 2025 - Nov 2025",
@@ -83,17 +94,6 @@ export const resumeData: ResumeData = {
       ],
       logo: "/src/assets/logos/federal_home_loan_bank_of_chicago_logo.jpg",
       logoAlt: "Federal Home Loan Bank of Chicago logo"
-    },
-    {
-      company: "Citadel Credit Union",
-      role: "L&D Specialist (Interim LMS Administrator)",
-      period: "Aug 2025 - Nov 2025",
-      accomplishments: [
-        "Provided temporary coverage for LMS team during maternity leave, ensuring business continuity",
-        "Assisted in UAT testing and content validation for Docebo platform updates"
-      ],
-      logo: "/src/assets/logos/citadel_federal_credit_union_logo.jpg",
-      logoAlt: "Citadel Credit Union logo"
     },
     {
       company: "Entrust Corporation",

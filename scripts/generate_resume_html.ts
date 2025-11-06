@@ -287,7 +287,44 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
         @media print {
             @page {
                 size: letter;
-                margin: 0 0.25in 0.75in 0.25in;
+                margin: 0.75in 0.5in 0.5in 0.5in;
+            }
+            
+            @page :first {
+                margin-top: 0;
+            }
+            
+            @page :not(:first) {
+                @top-center {
+                    content: "Garth Puckerin";
+                }
+            }
+            
+            /* Suppress browser headers and footers */
+            @page {
+                @top-left { content: ""; }
+                @top-right { content: ""; }
+                @bottom-left { content: ""; }
+                @bottom-center { content: ""; }
+                @bottom-right { content: ""; }
+            }
+            
+            /* Modern template gets edge-to-edge layout */
+            .resume.modern {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+            
+            html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
             }
             
             body * {
@@ -310,9 +347,13 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
             }
             
             .resume.classic .classic-content,
-            .resume.modern .modern-content,
             .resume.minimal .minimal-content {
                 display: block !important;
+                visibility: visible !important;
+            }
+            
+            .resume.modern .modern-content {
+                display: contents !important;
                 visibility: visible !important;
             }
             
@@ -333,6 +374,8 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 box-shadow: none;
                 max-width: none;
                 margin: 0;
+                width: 100vw;
+                height: 100vh;
             }
 
             .resume {
@@ -345,44 +388,81 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
             }
 
             .resume.modern {
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
                 display: grid;
                 grid-template-columns: 2.5in 1fr;
+                gap: 0;
+                padding: 0 !important;
+            }
+
+            .resume.modern .sidebar {
+                padding: 0.5in !important;
+                margin: 0 !important;
+            }
+
+            .resume.modern .main {
+                padding: 0.5in !important;
+                margin: 0 !important;
             }
 
             .item {
                 page-break-inside: auto;
-                margin-bottom: 10px;
+                margin-bottom: 8px;
             }
 
             .section {
                 page-break-inside: auto;
-                margin-bottom: 15px;
+                margin-bottom: 12px;
             }
 
             .resume.classic .name {
-                font-size: 24pt !important;
+                font-size: 22pt !important;
             }
 
             .resume.classic .section-title {
-                font-size: 12pt !important;
+                font-size: 11pt !important;
             }
 
             .resume.classic .job-title {
-                font-size: 10pt !important;
+                font-size: 9pt !important;
             }
 
             .resume.classic .contact {
-                font-size: 9pt !important;
+                font-size: 8pt !important;
+            }
+
+            .resume.classic li {
+                font-size: 10pt !important;
+                line-height: 1.4 !important;
+                margin-bottom: 4px !important;
+            }
+
+            .resume.modern .name {
+                font-size: 20pt !important;
+            }
+
+            .resume.modern .sidebar .section-title {
+                font-size: 10pt !important;
+            }
+
+            .resume.modern .main .section-title {
+                font-size: 12pt !important;
             }
 
             li {
-                font-size: 9pt !important;
-                line-height: 1.3 !important;
+                font-size: 10pt !important;
+                line-height: 1.4 !important;
+                margin-bottom: 3px !important;
             }
 
             p {
-                font-size: 9pt !important;
-                line-height: 1.3 !important;
+                font-size: 10pt !important;
+                line-height: 1.4 !important;
             }
 
             * {
@@ -441,6 +521,9 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
                 alert('Unable to open print dialog. Please try using Ctrl+P (Windows) or Cmd+P (Mac)');
             }
         }
+
+        // Make handlePrint globally available
+        window.handlePrint = handlePrint;
 
         function getUrlParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -579,15 +662,22 @@ function renderModern() {
 
                     <div class="section">
                         <div class="section-title">Experience</div>
-                        ${experience.slice(0, 4).map(item => `
+                        ${experience.slice(0, 3).map(item => `
                         <div class="item">
                             <div style="font-weight: 600; font-size: 11pt;">${item.role}</div>
                             <div style="color: #666; font-size: 10pt; margin-bottom: 3px;">${item.company} | ${item.period}</div>
                             <ul style="color: #333;">
-                                ${item.accomplishments.slice(0, 3).map(acc => `<li>${acc}</li>`).join('\n')}
+                                ${item.accomplishments.slice(0, 2).map(acc => `<li>${acc}</li>`).join('\n')}
                             </ul>
                         </div>
                         `).join('\n')}
+
+                        <div class="item">
+                            <div style="font-weight: 600; font-size: 10pt; color: #555;">Previous Roles:</div>
+                            <div style="font-size: 9pt; color: #666; line-height: 1.6;">
+                                ${experience.slice(3).map(item => `${item.company} (${item.role}, ${item.period.split(' - ')[0]})`).join(' • ')}
+                            </div>
+                        </div>
                     </div>
                 </div>`;
   
@@ -597,32 +687,45 @@ function renderModern() {
 function renderMinimal() {
   const { personal, summary, experience, education } = resumeData;
   
+  // Create a minimal summary - just the key point
+  const minimalSummary = "LMS Administrator with 10+ years managing enterprise learning platforms across financial, healthcare, and technology organizations. Specialized in Docebo configuration, system integrations, UAT coordination, and compliance assurance.";
+  
   let html = `
                 <div class="header">
                     <div class="name">${personal.name}</div>
                     <div class="contact">
-                        ${personal.email} • ${personal.phone} • ${personal.linkedin} • ${personal.github} • ${personal.location}
+                        ${personal.email} • ${personal.phone} • linkedin: /garthpuckerin • github: /garthpuckerin • ${personal.location}
                     </div>
                 </div>
 
                 <div class="section">
                     <div class="section-title">Summary</div>
-                    <p style="font-size: 10pt; line-height: 1.7; color: #333;">${summary}</p>
+                    <p style="font-size: 10pt; line-height: 1.7; color: #333;">${minimalSummary}</p>
                 </div>
 
                 <div class="section">
                     <div class="section-title">Experience</div>
-                    ${experience.slice(0, 4).map(item => `
+                    ${experience.slice(0, 3).map(item => `
                     <div class="item">
                         <div class="job-header">
                             <div class="job-title">${item.role}, ${item.company}</div>
                             <div class="date">${item.period}</div>
                         </div>
                         <ul>
-                            ${item.accomplishments.slice(0, 3).map(acc => `<li>${acc}</li>`).join('\n')}
+                            ${item.accomplishments.slice(0, 2).map(acc => `<li>${acc}</li>`).join('\n')}
                         </ul>
                     </div>
                     `).join('\n')}
+                    
+                    <div class="item">
+                        <div class="job-header">
+                            <div class="job-title" style="font-weight: 600; color: #666;">Previous Roles</div>
+                            <div class="date"></div>
+                        </div>
+                        <div style="font-size: 9pt; color: #666; line-height: 1.6;">
+                            ${experience.slice(3).map(item => `${item.company} (${item.role}, ${item.period.split(' - ')[0]})`).join(' • ')}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="section">
