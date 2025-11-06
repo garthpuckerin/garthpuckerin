@@ -317,8 +317,8 @@ const Hero: React.FC = () => {
                     theme === "light" ? "bg-slate-100" : "bg-slate-800/50"
                   )}>
                     <div className={cn(
-                      "w-full h-full rounded-lg shadow-lg flex flex-col p-4 text-[6px] overflow-hidden",
-                      "bg-white text-slate-900"
+                      "w-full h-full rounded-lg shadow-lg flex flex-col text-[6px] overflow-hidden",
+                      option.id === "modern" ? "" : "p-4 bg-white text-slate-900"
                     )}>
                       {option.id === "classic" && (
                         <>
@@ -342,8 +342,8 @@ const Hero: React.FC = () => {
                         </>
                       )}
                       {option.id === "modern" && (
-                        <div className="grid grid-cols-[80px_1fr] gap-0 h-full -m-4">
-                          <div className="bg-slate-700 text-white p-3 flex flex-col">
+                        <div className="flex h-full">
+                          <div className="w-[80px] bg-slate-700 text-white p-3 flex flex-col">
                             <div className="mb-3">
                               <div className="text-[6px] font-bold text-cyan-400 mb-1">CONTACT</div>
                               <div className="text-[4px] mb-1 text-white">📧 Email</div>
@@ -360,7 +360,7 @@ const Hero: React.FC = () => {
                               <div className="text-[4px] text-white">Software Engineering</div>
                             </div>
                           </div>
-                          <div className="p-3 bg-white flex flex-col">
+                          <div className="flex-1 p-3 bg-white flex flex-col">
                             <div className="font-bold text-[9px] mb-1 text-slate-900">{resumeData.personal.name}</div>
                             <div className="text-[6px] text-cyan-600 mb-2">LMS Administrator</div>
                             <div className="mb-2">
