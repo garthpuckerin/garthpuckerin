@@ -104,7 +104,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
         }
 
         .resume.minimal {
-            padding: 0.25in;
+            padding: 0.5in;
         }
 
         /* Classic Style */
