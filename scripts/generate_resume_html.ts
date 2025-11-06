@@ -903,17 +903,21 @@ function renderMinimal() {
 
                 <div class="section">
                     <div class="section-title">Experience</div>
-                    ${experience.slice(0, 4).map(item => `
+                    ${experience.slice(0, 4).map(item => {
+                        // For minimal template, clean up company names by removing abbreviations in parentheses
+                        const cleanCompany = item.company.replace(/\s*\([^)]*\)$/, '');
+                        return `
                     <div class="item">
                         <div class="job-header">
-                            <div class="job-title">${item.role}, ${item.company}</div>
+                            <div class="job-title">${item.role}, ${cleanCompany}</div>
                             <div class="date">${item.period}</div>
                         </div>
                         <ul>
                             ${item.accomplishments.slice(0, 2).map(acc => `<li>${acc}</li>`).join('\n')}
                         </ul>
                     </div>
-                    `).join('\n')}
+                    `;
+                    }).join('\n')}
                     
                     <div class="item">
                         <div class="job-header">
