@@ -1,5 +1,20 @@
 # Resume Files
 
+## 🔒 PROTECTED STATUS - RESUME GENERATOR v1.0.0
+
+**CRITICAL:** The `resume-generator.html` file is now in **PROTECTED STATE** as of November 6, 2025.
+
+### 🚨 DO NOT MODIFY WITHOUT EXPLICIT AUTHORIZATION
+
+This file represents the **PERFECTED BASELINE** with sophisticated resume templates:
+
+- ✅ **AUTOMATICALLY GENERATED**: Created via TypeScript from `src/data/resumeData.ts`
+- ✅ **PRODUCTION READY**: All three templates optimized and print-perfect
+- ✅ **PROTECTED ASSET**: Manual modifications strictly prohibited
+- ✅ **VERSION CONTROLLED**: Any changes must go through proper approval process
+
+**⚠️ WARNING**: Direct HTML modifications will be **OVERWRITTEN** by the next generation cycle.
+
 ## ✅ PERFECT STATUS - RESUME GENERATOR v1.0.0
 
 **SUCCESS:** The `resume-generator.html` file has been **PERFECTED** as of November 6, 2025.
@@ -64,16 +79,24 @@ All templates suppress browser-generated:
 
 ### 🔄 Maintenance
 
-**Automated Process:**
+**PROTECTED AUTOMATED PROCESS:**
 ```bash
 npm run generate:resumes  # Regenerates from TypeScript data
 npm run build            # Includes resume generation
 ```
 
-**Updating Content:**
-1. Edit `src/data/resumeData.ts`
-2. Run `npm run generate:resumes`  
-3. All templates automatically update with changes
+**⚠️ IMPORTANT - PROTECTED STATUS:**
+- The generated `resume-generator.html` is in **PROTECTED STATE**
+- Manual HTML modifications are **STRICTLY PROHIBITED**
+- All changes must be made via `src/data/resumeData.ts` or generator script
+- Direct HTML edits will be **LOST** on next generation cycle
+- Any generator modifications require **EXPLICIT APPROVAL**
+
+**Updating Content (APPROVED METHOD ONLY):**
+1. Edit `src/data/resumeData.ts` ✅
+2. Run `npm run generate:resumes` ✅  
+3. Commit both data and generated HTML ✅
+4. **NEVER edit HTML directly** ❌
 
 ### 📈 Version History
 

@@ -62,6 +62,13 @@ npm run generate:resumes  # TypeScript → HTML generation
 npm run build            # Includes resume generation
 ```
 
+**🔒 PROTECTED STATUS - Generated HTML**
+- The output `public/resume/resume-generator.html` is **PROTECTED**
+- Manual HTML modifications are **STRICTLY PROHIBITED** 
+- All changes must be made via TypeScript generator or data source
+- Direct HTML edits will be **OVERWRITTEN** on next generation cycle
+- Generator modifications require **EXPLICIT APPROVAL**
+
 ### Print Optimization System
 - **setPageMargins()**: Dynamic @page rule injection per template
 - **Browser Suppression**: Complete elimination of unwanted print elements
