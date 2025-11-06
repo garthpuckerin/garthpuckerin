@@ -917,6 +917,28 @@
                     }
                 `;
                 document.head.appendChild(style);
+            } else if (templateType === 'classic') {
+                // Create new style element with proper margins for classic template
+                const style = document.createElement('style');
+                style.id = 'dynamic-page-rules';
+                style.textContent = `
+                    @media print {
+                        @page {
+                            size: letter;
+                            margin: 0.75in 0.5in 0.5in 0.5in !important;
+                        }
+                        @page :first {
+                            margin-top: 0 !important;
+                        }
+                        @page :not(:first) {
+                            margin: 0.75in 0.5in 0.5in 0.5in !important;
+                            @top-center {
+                                content: "Garth Puckerin";
+                            }
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
             }
         }
 
