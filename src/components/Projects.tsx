@@ -258,6 +258,41 @@ const Projects: React.FC = () => {
             </article>
           ))}
         </div>
+
+        {/* Portfolio Expansion Teaser */}
+        <div className="mt-16 text-center">
+          <div className={cn(
+            "mx-auto max-w-2xl rounded-xl border p-6 shadow-lg",
+            theme === "light" && "border-blue-200 bg-blue-50/70",
+            theme !== "light" && "border-cyan-800/50 bg-cyan-950/20"
+          )}>
+            <div className="flex items-center justify-center mb-4">
+              <Award className={cn(
+                "mr-2 h-5 w-5",
+                theme === "light" ? "text-blue-600" : "text-cyan-400"
+              )} />
+              <h3 className={cn(
+                "text-lg font-semibold",
+                theme === "light" ? "text-blue-700" : "text-cyan-300"
+              )}>
+                Coming Soon: Live Demonstrations
+              </h3>
+            </div>
+            <p className={cn(
+              "text-sm leading-relaxed",
+              theme === "light" ? "text-blue-600" : "text-cyan-200"
+            )}>
+              Interactive showcases for these projects are in development. Each demo will feature 
+              live walkthroughs, architecture deep-dives, and hands-on exploration of key features.
+              <span className={cn(
+                "block mt-2 text-xs font-medium",
+                theme === "light" ? "text-blue-500" : "text-cyan-300"
+              )}>
+                Portfolio Demo System v1.1.0 • Q1 2025
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
