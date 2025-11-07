@@ -5,6 +5,26 @@ All notable changes to the Garth Puckerin Portfolio project will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - Planned (Portfolio Demo System) 🚀
+
+### Planning Phase
+- **Epic Demo**: Full-stack application showcase with live demonstration
+- **PDE Demo**: Professional Development Ecosystem with VS Code extension integration  
+- **Dreamcatcher Demo**: AI conversation organizer demonstration (optional)
+- **Protected Workflow**: Enterprise-grade branch protection for main and develop
+- **Demo Infrastructure**: Reusable components and routing system for project showcases
+- **Commercial Focus**: Transform portfolio from resume site to capability demonstration
+
+**Implementation Plan**: 5-sprint development cycle (November 6 - December 11, 2025)  
+**Documentation**: See [SPRINT_PLAN.md](SPRINT_PLAN.md) and [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### Planned Features
+- Non-disruptive demo integration preserving current portfolio functionality
+- `/demos/*` routing for individual project showcases
+- Live demo embedding with performance optimization
+- Technical architecture documentation for each showcased project
+- Enterprise-grade development workflow with protected branches
+
 ## [1.0.1] - 2025-11-06
 
 ### Fixed
