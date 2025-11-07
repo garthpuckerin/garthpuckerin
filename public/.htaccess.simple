@@ -1,8 +1,11 @@
 # Basic .htaccess for GoDaddy Shared Hosting + Cloudflare
 # Simplified version - compatible with shared hosting limitations
-# HTTPS redirects handled by Cloudflare (not .htaccess)
 
 RewriteEngine On
+
+# HTTPS Redirect (works with Cloudflare Flexible mode)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # React Router SPA Support
 RewriteCond %{REQUEST_FILENAME} !-f

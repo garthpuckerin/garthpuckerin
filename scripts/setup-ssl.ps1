@@ -50,9 +50,9 @@ Write-Host ""
 Write-Host "5. CONFIGURE SSL" -ForegroundColor Magenta
 Write-Host "   Back in Cloudflare:" -ForegroundColor White
 Write-Host "   - Go to SSL/TLS tab" -ForegroundColor White
-Write-Host "   - Set mode to 'Full (strict)'" -ForegroundColor White
+Write-Host "   - Set mode to 'Flexible' (for GoDaddy shared hosting)" -ForegroundColor White
 Write-Host "   - Enable 'Always Use HTTPS'" -ForegroundColor White
-Write-Host "   - Enable 'HSTS'" -ForegroundColor White
+Write-Host "   - Enable 'HSTS' (optional)" -ForegroundColor White
 Read-Host "   Press Enter when SSL is configured"
 
 Write-Host ""

@@ -45,9 +45,9 @@ Let's Encrypt provides free SSL certificates, but GoDaddy hosting has some limit
 ```bash
 # In Cloudflare Dashboard:
 # 1. Go to SSL/TLS tab
-# 2. Set SSL mode to "Full (strict)"
+# 2. Set SSL mode to "Flexible" (for GoDaddy shared hosting)
 # 3. Enable "Always Use HTTPS"
-# 4. Enable "HSTS"
+# 4. Enable "HSTS" (optional but recommended)
 ```
 
 #### 5. Wait for Propagation
@@ -145,9 +145,9 @@ npm run build
 
 ### SSL/TLS Configuration:
 ```yaml
-SSL Mode: "Full (strict)"
+SSL Mode: "Flexible" (for GoDaddy shared hosting)
 Always Use HTTPS: ✅ Enabled
-HSTS: ✅ Enabled
+HSTS: ✅ Enabled (optional)
 Min TLS Version: 1.2
 Opportunistic Encryption: ✅ Enabled
 ```

@@ -72,16 +72,16 @@ During transition this can cause:
 
 ## 🔧 **TROUBLESHOOTING STEPS**
 
-### **Step 1: Verify Cloudflare Settings**
+### **Step 1: Fix SSL Mode (MOST LIKELY CAUSE)**
 
 **In your Cloudflare dashboard:**
 
 1. **SSL/TLS Tab:**
    ```
    ❌ Change from "Full (strict)" 
-   ✅ Set to "Flexible" temporarily
+   ✅ Set to "Flexible" (correct for GoDaddy shared hosting)
    
-   This allows HTTP origin connection during setup
+   This allows HTTP origin connection which is what GoDaddy provides
    ```
 
 2. **DNS Tab:**

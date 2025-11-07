@@ -5,6 +5,7 @@ export interface PersonalInfo {
   location: string;
   email: string;
   phone: string;
+  website: string;
   linkedin: string;
   github: string;
 }
@@ -53,6 +54,7 @@ export const resumeData: ResumeData = {
     location: "East Stroudsburg, PA",
     email: "garth.puckerin@me.com",
     phone: "(718) 310-8707",
+    website: "garthpuckerin.com",
     linkedin: "linkedin.com/in/garthpuckerin",
     github: "github.com/garthpuckerin"
   },

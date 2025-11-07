@@ -793,7 +793,7 @@ function renderClassic() {
                     <div class="name">${personal.name.toUpperCase()}</div>
                     <div class="contact">
                         ${personal.phone} | ${personal.location} | ${personal.email}<br>
-                        ${personal.linkedin} | ${personal.github}
+                        ${personal.website} | ${personal.linkedin} | ${personal.github}
                     </div>
                 </div>
 
@@ -850,6 +850,7 @@ function renderModern() {
                         <div class="contact-item">${personal.email}</div>
                         <div class="contact-item">${personal.phone}</div>
                         <div class="contact-item">${personal.location}</div>
+                        <div class="contact-item">${personal.website}</div>
                         <div class="contact-item">${personal.linkedin}</div>
                         <div class="contact-item">${personal.github}</div>
                     </div>
@@ -916,7 +917,8 @@ function renderMinimal() {
                 <div class="header">
                     <div class="name">${personal.name}</div>
                     <div class="contact">
-                        ${personal.email} • ${personal.phone} • linkedin: /garthpuckerin • github: /garthpuckerin • ${personal.location}
+                        ${personal.email} • ${personal.phone} • ${personal.location}<br>
+                        ${personal.website} • linkedin: /garthpuckerin • github: /garthpuckerin
                     </div>
                 </div>
 
