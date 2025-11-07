@@ -50,6 +50,7 @@ const Hero: React.FC = () => {
 
   const sectionClass = cn(
     "relative flex min-h-screen items-center justify-center overflow-hidden transition-colors duration-300",
+    "py-8 sm:py-12", // Add mobile padding top/bottom
     theme === "light" &&
       "bg-gradient-to-br from-slate-100 via-slate-50 to-white text-slate-900",
     theme === "dark" &&
@@ -268,7 +269,7 @@ const Hero: React.FC = () => {
       </div>
 
       {isResumeModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-4 overflow-y-auto">
           <div
             className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" aria-hidden="true"
             onClick={() => setResumeModalOpen(false)}
@@ -282,6 +283,7 @@ const Hero: React.FC = () => {
             tabIndex={-1}
             className={cn(
               "relative z-10 w-full max-w-5xl rounded-3xl border p-6 shadow-2xl sm:p-8",
+              "my-4 max-h-[90vh] overflow-y-auto", // Add scrolling and height constraint
               modalSurface,
             )}
           >
@@ -302,18 +304,18 @@ const Hero: React.FC = () => {
               </button>
             </div>
 
-            <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {resumeOptions.map((option) => (
                 <div
                   key={option.id}
                   className={cn(
-                    "group flex h-full flex-col gap-4 rounded-2xl border p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl",
+                    "group flex h-full flex-col gap-4 rounded-2xl border p-4 sm:p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl",
                     cardSurface,
                   )}
                 >
                   {/* Resume Thumbnail Preview */}
                   <div className={cn(
-                    "h-80 rounded-xl p-5 flex items-center justify-center",
+                    "h-64 sm:h-80 rounded-xl p-3 sm:p-5 flex items-center justify-center",
                     theme === "light" ? "bg-slate-100" : "bg-slate-800/50"
                   )}>
                     <div className={cn(

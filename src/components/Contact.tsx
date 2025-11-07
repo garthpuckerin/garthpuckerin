@@ -1,10 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { cn } from "../lib/utils";
+import Toast from "./Toast";
 
 const Contact: React.FC = () => {
   const { theme } = useTheme();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: 'success' | 'error';
+    isVisible: boolean;
+  }>({
+    message: '',
+    type: 'success',
+    isVisible: false
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xgvpgjvq', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setToast({
+          message: 'Thank you for your message! I\'ll get back to you soon.',
+          type: 'success',
+          isVisible: true
+        });
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      setToast({
+        message: 'There was an error sending your message. Please try again or email me directly.',
+        type: 'error',
+        isVisible: true
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const closeToast = () => {
+    setToast(prev => ({ ...prev, isVisible: false }));
+  };
 
   const sectionClass = cn(
     "py-24 transition-colors duration-300",
@@ -157,12 +209,10 @@ const Contact: React.FC = () => {
 
           <div>
             <form
-              action="https://formspree.io/f/xgvpgjvq"
-              method="POST"
+              onSubmit={(e) => { void handleSubmit(e); }}
               className="space-y-6"
             >
               <input type="hidden" name="subject" value="Portfolio Contact from garthpuckerin.com" />
-              <input type="hidden" name="_next" value="https://garthpuckerin.com/#contact" />
               <input type="hidden" name="_subject" value="New Portfolio Contact!" />
               <div>
                 <label
@@ -220,14 +270,28 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              <button type="submit" className={buttonClass}>
+              <button 
+                type="submit" 
+                disabled={isSubmitting}
+                className={cn(
+                  buttonClass,
+                  isSubmitting && "opacity-50 cursor-not-allowed"
+                )}
+              >
                 <Send size={20} />
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
         </div>
       </div>
+
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={closeToast}
+      />
     </section>
   );
 };
