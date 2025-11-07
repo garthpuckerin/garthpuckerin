@@ -917,8 +917,7 @@ function renderMinimal() {
                 <div class="header">
                     <div class="name">${personal.name}</div>
                     <div class="contact">
-                        ${personal.email} • ${personal.phone} • ${personal.location}<br>
-                        ${personal.website} • linkedin: /garthpuckerin • github: /garthpuckerin
+                        ${personal.email} • ${personal.phone} • ${personal.location} • ${personal.website} • linkedin: /garthpuckerin • github: /garthpuckerin
                     </div>
                 </div>
 
