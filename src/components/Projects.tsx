@@ -62,27 +62,27 @@ const projects: Project[] = [
     status: "Beta",
   },
   {
-    title: "PipelineOS",
-    subtitle: "Intent-to-Execution DevOps Platform",
+    title: "Dreamcatcher",
+    subtitle: "AI Conversation Fragment Organizer",
     description:
-      "Turns strategic intent into structured workstreams (projects, tickets, agent runs, and PRs) inside a human-in-the-loop DevOps control hub.",
-    role: "Founder / Architect",
+      "Intelligent conversation processing system that captures, organizes, and contextualizes AI interaction fragments for project management and knowledge building.",
+    role: "Lead Developer & AI Integration Architect",
     highlights: [
-      "Coordinated PDE/IPDE orchestration with enforceable guardrails",
-      "Implemented dashboards for intent capture, review, and deployment workflows",
-      "Unified local-to-cloud delivery with provider-agnostic AI adapters and GitHub integration",
+      "Built ML-powered conversation analysis and topic clustering algorithms",
+      "Implemented semantic search and context preservation across conversation threads",
+      "Created intuitive project organization with automated tagging and relationship mapping",
     ],
     tech: [
-      "Next.js 14",
+      "Python",
       "FastAPI",
-      "Postgres",
-      "SQLite",
-      "Redis",
-      "Docker Compose",
-      "OpenAPI",
-      "GitHub Integration",
+      "React",
+      "PostgreSQL",
+      "OpenAI API",
+      "Vector Database",
+      "Docker",
+      "TypeScript",
     ],
-    status: "Production",
+    status: "Open Source",
   },
   {
     title: "GrantTracker 2.0",
@@ -154,7 +154,7 @@ const Projects: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2">
           {projects.map((project) => (
             <article key={project.title} className={cardClass}>
               <div className="mb-4">
@@ -311,7 +311,7 @@ const Projects: React.FC = () => {
                 "block mt-2 text-xs font-medium",
                 theme === "light" ? "text-blue-500" : "text-cyan-300"
               )}>
-                Portfolio Demo System v1.1.0 • Q1 2025
+                Portfolio Demo System v1.1.0 • Q1 2026
               </span>
             </p>
           </div>
