@@ -17,12 +17,6 @@ export default defineConfig({
     sourcemap: false,
     // Minify for obfuscation and performance
     minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console logs in production
-        drop_debugger: true // Remove debugger statements
-      }
-    },
     // Copy additional files to dist
     copyPublicDir: true
   },
