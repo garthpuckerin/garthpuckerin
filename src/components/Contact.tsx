@@ -157,11 +157,13 @@ const Contact: React.FC = () => {
 
           <div>
             <form
-              action="mailto:garth.puckerin@me.com"
+              action="https://formspree.io/f/YOUR_FORM_ID"
               method="POST"
               className="space-y-6"
             >
-              <input type="hidden" name="subject" value="Portfolio Contact" />
+              <input type="hidden" name="subject" value="Portfolio Contact from garthpuckerin.com" />
+              <input type="hidden" name="_next" value="https://garthpuckerin.com/#contact" />
+              <input type="hidden" name="_subject" value="New Portfolio Contact!" />
               <div>
                 <label
                   htmlFor="name"

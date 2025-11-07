@@ -150,8 +150,21 @@ const Header: React.FC = () => {
               {icon}
               {themeLabel[theme]}
             </button>
-            <a
-              href="mailto:garth.puckerin@me.com?subject=Let%27s%20Connect"
+            <button
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  const headerOffset = headerRef.current?.offsetHeight ?? 120;
+                  const elementPosition = contactSection.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 16;
+                  
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                  setIsOpen(false);
+                }
+              }}
               className={cn(
                 "hidden items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-semibold transition-all duration-200 md:inline-flex",
                 theme === "dark"
@@ -161,7 +174,7 @@ const Header: React.FC = () => {
             >
               <Send size={16} />
               Connect
-            </a>
+            </button>
             <button
               aria-label="Toggle navigation"
               onClick={() => setIsOpen((prev) => !prev)}
@@ -216,13 +229,26 @@ const Header: React.FC = () => {
                   {item.label}
                 </button>
               ))}
-              <a
-                href="mailto:garth.puckerin@me.com?subject=Let%27s%20Connect"
+              <button
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    const headerOffset = headerRef.current?.offsetHeight ?? 120;
+                    const elementPosition = contactSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 16;
+                    
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                    setIsOpen(false);
+                  }
+                }}
                 className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-sm font-semibold text-white transition duration-200 hover:from-cyan-600 hover:to-blue-700"
               >
                 <Send size={16} />
                 Connect
-              </a>
+              </button>
             </div>
           </div>
         )}

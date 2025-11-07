@@ -8,6 +8,7 @@ import Skills from "./components/Skills";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 import { Theme, ThemeContext } from "./context/ThemeContext";
 
 const THEMES: Theme[] = ["original", "dark", "light"];
@@ -62,6 +63,7 @@ function App() {
           <Contact />
         </main>
         <Footer />
+        <BackToTop />
       </div>
     </ThemeContext.Provider>
   );
