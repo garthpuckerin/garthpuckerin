@@ -225,7 +225,7 @@
 - [ ] Build enterprise grant management demonstration
 - [ ] Showcase compliance automation and workflow management
 - [ ] Highlight multi-tenant architecture and reporting capabilities
-- [ ] Demonstrate non-profit and government agency use cases
+- [ ] Demonstrate educational institution and non-profit use cases
 
 ##### **System-Wide Optimization**
 - [ ] Optimize demo page loading performance
