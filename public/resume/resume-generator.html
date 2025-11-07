@@ -1023,6 +1023,12 @@ Source: src/data/resumeData.ts via scripts/generate_resume_html.ts
 
         function handlePrint() {
             console.log('Print button clicked');
+            
+            // Detect browser
+            const isEdge = /Edge|Edg/.test(navigator.userAgent);
+            const isFirefox = /Firefox/.test(navigator.userAgent);
+            const isChrome = /Chrome/.test(navigator.userAgent) && !/Edge|Edg/.test(navigator.userAgent);
+            
             try {
                 // Check which template is currently active and set appropriate margins
                 const currentTemplate = document.querySelector('.resume.classic, .resume.modern, .resume.minimal');
@@ -1034,7 +1040,78 @@ Source: src/data/resumeData.ts via scripts/generate_resume_html.ts
                 }
                 setPageMargins(templateType);
                 
-                window.print();
+                // Show browser-specific instructions for PDF generation
+                if (isEdge || isFirefox) {
+                    const browserName = isEdge ? 'Edge' : 'Firefox';
+                    const instructions = isEdge 
+                        ? 'In the print dialog, change "Printer" to "Microsoft Print to PDF" or "Save as PDF"'
+                        : 'In the print dialog, change "Destination" to "Save to PDF"';
+                    
+                    // Create a modal with instructions
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.8);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+                    `;
+                    
+                    modal.innerHTML = `
+                        <div style="
+                            background: white;
+                            padding: 30px;
+                            border-radius: 12px;
+                            max-width: 500px;
+                            margin: 20px;
+                            text-align: center;
+                            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        ">
+                            <h3 style="margin: 0 0 15px 0; color: #333; font-size: 18px;">
+                                📄 ${browserName} PDF Instructions
+                            </h3>
+                            <p style="margin: 0 0 20px 0; color: #666; line-height: 1.5;">
+                                ${instructions}
+                            </p>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <button onclick="this.parentElement.parentElement.parentElement.remove(); window.print();" style="
+                                    background: #0066cc;
+                                    color: white;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    border-radius: 6px;
+                                    cursor: pointer;
+                                    font-size: 14px;
+                                ">
+                                    Got it - Open Print Dialog
+                                </button>
+                                <button onclick="this.parentElement.parentElement.parentElement.remove();" style="
+                                    background: #666;
+                                    color: white;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    border-radius: 6px;
+                                    cursor: pointer;
+                                    font-size: 14px;
+                                ">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                } else {
+                    // Chrome and other browsers - direct print
+                    window.print();
+                }
+                
             } catch (error) {
                 console.error('Print error:', error);
                 alert('Unable to open print dialog. Please try using Ctrl+P (Windows) or Cmd+P (Mac)');
