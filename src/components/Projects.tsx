@@ -84,6 +84,29 @@ const projects: Project[] = [
     ],
     status: "Production",
   },
+  {
+    title: "GrantTracker 2.0",
+    subtitle: "Enterprise Grant Management Platform",
+    description:
+      "Next-generation grant lifecycle management system designed for non-profits and government agencies. Features automated compliance tracking, multi-stakeholder workflows, and real-time reporting with audit trails.",
+    role: "Lead Developer & Product Architect",
+    highlights: [
+      "Built comprehensive grant application and award management workflows",
+      "Implemented automated compliance monitoring with deadline alerts and progress tracking",
+      "Designed multi-tenant architecture supporting various organizational structures and reporting requirements",
+    ],
+    tech: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Redis",
+      "Docker",
+      "AWS",
+      "Stripe",
+    ],
+    status: "In Development",
+  },
 ];
 
 const Projects: React.FC = () => {

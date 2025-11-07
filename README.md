@@ -77,6 +77,7 @@ npm run resumes  # Generates basic PDFs from docs/resume/
 - **Epic**: Full-stack application showcase demonstrating enterprise architecture
 - **PDE (Professional Development Ecosystem)**: Standalone platform with integrated VS Code extension
 - **Dreamcatcher**: AI conversation organizer showcasing modern ML capabilities
+- **GrantTracker 2.0**: Enterprise grant management platform with compliance automation
 
 **Demo Features**:
 - **Non-disruptive Design**: Preserves current portfolio layout and functionality
@@ -90,13 +91,14 @@ npm run resumes  # Generates basic PDFs from docs/resume/
 /demos/epic           # Epic project comprehensive showcase
 /demos/pde            # PDE ecosystem with VS Code extension demo
 /demos/dreamcatcher   # AI conversation processing demonstration
+/demos/granttracker   # Enterprise grant management platform showcase
 ```
 
 **Development Phases**:
 1. **Sprint 1**: Demo infrastructure and protected workflow setup
 2. **Sprint 2**: Epic demo implementation (proof of concept)
 3. **Sprint 3**: PDE ecosystem showcase with dual-platform demo
-4. **Sprint 4**: Dreamcatcher AI demo and system optimization
+4. **Sprint 4**: Dreamcatcher and GrantTracker demos with system optimization
 5. **Sprint 5**: Production deployment and monitoring setup
 
 See [`SPRINT_PLAN.md`](SPRINT_PLAN.md) for detailed implementation timeline and [`CONTRIBUTING.md`](CONTRIBUTING.md) for development workflow.

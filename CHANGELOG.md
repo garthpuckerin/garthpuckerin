@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Epic Demo**: Full-stack application showcase with live demonstration
 - **PDE Demo**: Professional Development Ecosystem with VS Code extension integration  
 - **Dreamcatcher Demo**: AI conversation organizer demonstration (optional)
+- **GrantTracker 2.0 Demo**: Enterprise grant management platform with compliance automation
 - **Protected Workflow**: Enterprise-grade branch protection for main and develop
 - **Demo Infrastructure**: Reusable components and routing system for project showcases
 - **Commercial Focus**: Transform portfolio from resume site to capability demonstration
