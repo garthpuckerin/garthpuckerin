@@ -111,14 +111,14 @@ const Header: React.FC = () => {
 
   return (
     <header ref={headerRef} className={headerClass}>
-      <div className="flex w-full items-center justify-between px-4 py-5 sm:px-6 sm:py-6 lg:px-10">
-        <button onClick={() => handleNavigate("home")} className="group flex items-center gap-4 text-left">
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 p-[2px] shadow-md transition-transform duration-200 group-hover:scale-105">
+      <div className="container mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 md:py-5 lg:px-10 lg:py-6">
+        <button onClick={() => handleNavigate("home")} className="group flex items-center gap-3 text-left sm:gap-4">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 p-[2px] shadow-md transition-transform duration-200 group-hover:scale-105 sm:h-12 sm:w-12">
             <img src={HeaderAvatar} alt="Garth Puckerin" className="h-full w-full rounded-full object-cover object-top" />
           </span>
           <span
             className={cn(
-              "hidden text-2xl font-bold bg-clip-text sm:block",
+              "hidden text-xl font-bold bg-clip-text sm:block sm:text-2xl",
               theme === "dark" && "bg-gradient-to-r from-slate-100 to-cyan-300 text-transparent",
               theme !== "dark" && "bg-gradient-to-r from-slate-800 to-cyan-600 text-transparent"
             )}
@@ -127,8 +127,8 @@ const Header: React.FC = () => {
           </span>
         </button>
 
-        <div className="flex flex-1 items-center justify-end gap-4 sm:gap-6 lg:gap-8">
-          <nav className="hidden items-center gap-8 md:flex">
+        <div className="flex flex-1 items-center justify-end gap-2 sm:gap-4 md:gap-6 lg:gap-8">
+          <nav className="hidden items-center gap-4 md:flex lg:gap-6 xl:gap-8">
             {navItems.map((item) => (
               <button key={item.id} onClick={() => handleNavigate(item.id)} className={navButtonClasses(item.id)}>
                 {item.label}
@@ -136,19 +136,19 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               aria-label="Cycle theme"
               onClick={cycleTheme}
               className={cn(
-                "hidden h-10 w-28 items-center justify-center gap-2 rounded-full border text-sm font-medium transition duration-200 md:flex",
+                "hidden h-8 w-20 items-center justify-center gap-1 rounded-full border text-xs font-medium transition duration-200 md:flex md:h-10 md:w-28 md:gap-2 md:text-sm",
                 theme === "dark"
                   ? "border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-300"
                   : "border-slate-300 text-slate-700 hover:border-cyan-500 hover:text-cyan-600"
               )}
             >
               {icon}
-              {themeLabel[theme]}
+              <span className="hidden lg:inline">{themeLabel[theme]}</span>
             </button>
             <button
               onClick={() => {
@@ -166,26 +166,26 @@ const Header: React.FC = () => {
                 }
               }}
               className={cn(
-                "hidden items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-semibold transition-all duration-200 md:inline-flex",
+                "hidden items-center gap-1 rounded-full border-2 px-3 py-1.5 text-xs font-semibold transition-all duration-200 md:inline-flex md:gap-2 md:px-4 md:py-2 md:text-sm",
                 theme === "dark"
                   ? "border-cyan-300 text-cyan-200 hover:-translate-y-0.5 hover:border-cyan-200 hover:text-white"
                   : "border-cyan-600 text-cyan-600 hover:-translate-y-0.5 hover:border-cyan-500 hover:text-cyan-700"
               )}
             >
-              <Send size={16} />
-              Connect
+              <Send size={14} className="md:h-4 md:w-4" />
+              <span className="hidden lg:inline">Connect</span>
             </button>
             <button
               aria-label="Toggle navigation"
               onClick={() => setIsOpen((prev) => !prev)}
               className={cn(
-                "flex h-10 w-10 items-center justify-center rounded-full border transition duration-200 md:hidden",
+                "flex h-8 w-8 items-center justify-center rounded-full border transition duration-200 sm:h-10 sm:w-10 md:hidden",
                 theme === "dark"
                   ? "border-slate-700 text-slate-200 hover:border-cyan-400 hover:text-cyan-300"
                   : "border-slate-300 text-slate-700 hover:border-cyan-500 hover:text-cyan-600"
               )}
             >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
+              {isOpen ? <X size={18} className="sm:h-5 sm:w-5" /> : <Menu size={18} className="sm:h-5 sm:w-5" />}
             </button>
           </div>
         </div>
