@@ -70,7 +70,7 @@ npm run generate:resumes
 npm run resumes  # Generates basic PDFs from docs/resume/
 ```
 
-### Portfolio Demo System v1.1.0 🚀 (Planned)
+### Portfolio Demo System v1.2.0 🚀 (Current)
 
 **Project Demonstrations**: Strategic expansion of the highlighted projects section with live demo pages for select repositories:
 
@@ -135,7 +135,7 @@ The HTML head includes meta tags for description, keywords, Open Graph/Twitter c
 
 `.github/workflows/ci.yml` runs lint and build on pushes and pull requests targeting `main` or `develop` (and feature branches). Keep the pipeline green before merging.
 
-## Branching & Workflow v1.1.0
+## Branching & Workflow v1.2.0
 
 ### **Protected Branches**
 Both `main` and `develop` branches are **PROTECTED** and require:

@@ -1,6 +1,6 @@
 # Contributing to Garth Puckerin Portfolio
 
-This document outlines the development workflow and guidelines for contributing to the portfolio project, especially during the Portfolio Demo System expansion (v1.1.0).
+This document outlines the development workflow and guidelines for contributing to the portfolio project, current version v1.2.0 with comprehensive mobile UX and browser enhancements.
 
 ## 🚫 **Protected Branches**
 
@@ -74,8 +74,8 @@ npm run lint && npm run build && npm test
 # 3. Tag release after merge
 git checkout main
 git pull origin main
-git tag -a v1.1.0 -m "Portfolio Demo System release"
-git push origin v1.1.0
+git tag -a v1.2.0 -m "Mobile UX and browser enhancements release"
+git push origin v1.2.0
 ```
 
 ## 📋 **Pull Request Guidelines**
@@ -238,7 +238,7 @@ Remember: The goal is building a **commercial-grade portfolio** that demonstrate
 
 ## 🚀 **Legacy Documentation**
 
-### **Previous Workflow (Pre-v1.1.0)**
+### **Previous Workflow (Pre-v1.2.0)**
 
 The following sections remain for reference but are superseded by the protected workflow above:
 
@@ -263,7 +263,7 @@ Production pushes go through GoDaddy hosting. See the README for the current man
 
 ---
 
-**Version**: 1.1.0 (Demo System Expansion)  
-**Last Updated**: November 6, 2025  
+**Version**: 1.2.0 (Mobile UX & Browser Enhancements)  
+**Last Updated**: November 7, 2025  
 **Status**: Protected workflow active
 
