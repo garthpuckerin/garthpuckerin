@@ -311,7 +311,7 @@ const Projects: React.FC = () => {
                 "block mt-2 text-xs font-medium",
                 theme === "light" ? "text-blue-500" : "text-cyan-300"
               )}>
-                Portfolio Demo System v1.1.0 • December 2025
+                Portfolio Demo System v1.2.0 • December 2025
               </span>
             </p>
           </div>
