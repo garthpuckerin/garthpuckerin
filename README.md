@@ -70,6 +70,39 @@ npm run generate:resumes
 npm run resumes  # Generates basic PDFs from docs/resume/
 ```
 
+### Portfolio Demo System v1.2.0 🚀 (Current)
+
+**Project Demonstrations**: Strategic expansion of the highlighted projects section with live demo pages for select repositories:
+
+- **Epic**: Full-stack application showcase demonstrating enterprise architecture
+- **PDE (Professional Development Ecosystem)**: Standalone platform with integrated VS Code extension
+- **Dreamcatcher**: AI conversation organizer showcasing modern ML capabilities
+- **GrantTracker 2.0**: Enterprise grant management platform with compliance automation
+
+**Demo Features**:
+- **Non-disruptive Design**: Preserves current portfolio layout and functionality
+- **Live Demonstrations**: Interactive showcases with real project walkthroughs
+- **Technical Deep-dives**: Architecture overviews and code implementation highlights
+- **Commercial Focus**: Business value and enterprise capability demonstration
+
+**Implementation Strategy**:
+```bash
+# Demo routing system
+/demos/epic           # Epic project comprehensive showcase
+/demos/pde            # PDE ecosystem with VS Code extension demo
+/demos/dreamcatcher   # AI conversation processing demonstration
+/demos/granttracker   # Enterprise grant management platform showcase
+```
+
+**Development Phases**:
+1. **Sprint 1**: Demo infrastructure and protected workflow setup
+2. **Sprint 2**: Epic demo implementation (proof of concept)
+3. **Sprint 3**: PDE ecosystem showcase with dual-platform demo
+4. **Sprint 4**: Dreamcatcher and GrantTracker demos with system optimization
+5. **Sprint 5**: Production deployment and monitoring setup
+
+See [`SPRINT_PLAN.md`](SPRINT_PLAN.md) for detailed implementation timeline and [`CONTRIBUTING.md`](CONTRIBUTING.md) for development workflow.
+
 ## Project Structure
 
 ```
@@ -102,20 +135,39 @@ The HTML head includes meta tags for description, keywords, Open Graph/Twitter c
 
 `.github/workflows/ci.yml` runs lint and build on pushes and pull requests targeting `main` or `develop` (and feature branches). Keep the pipeline green before merging.
 
-## Branching & Workflow
+## Branching & Workflow v1.2.0
 
-- **main** – Production-ready branch deployed to garthpuckerin.com.
-- **develop** – Integration branch for staging features before release.
-- **feature/*** – Short-lived branches for individual pieces of work (e.g., `feature/theme-toggle`).
+### **Protected Branches**
+Both `main` and `develop` branches are **PROTECTED** and require:
 
-### Contribution Flow
+- ✅ **Pull Request Reviews** (minimum 1 approval)
+- ✅ **Status Checks** (CI must pass: lint, build)
+- ✅ **Up-to-date branches** before merge
+- ✅ **No direct pushes** allowed
+- ✅ **Force push protection** enabled
 
-1. Branch from `develop` using a descriptive `feature/<topic>` name.
-2. Commit changes with conventional prefixes (`feat:`, `fix:`, `docs:` …).
-3. Push and open a PR targeting `develop`.
-4. Ensure CI passes (`npm run lint`, `npm run build`).
-5. Use GitHub auto-merge with squash once checks pass (branch protection permitting).
-6. Promote `develop` → `main` when ship-ready; tag releases if desired.
+### **Development Workflow**
+```bash
+# All work starts from develop (never main)
+git checkout develop && git pull origin develop
+
+# Create feature branch
+git checkout -b feature/demo-epic
+
+# Work, commit, push
+git push origin feature/demo-epic
+# Create PR: feature/demo-epic → develop
+
+# After PR approval and merge to develop
+# Release process: develop → main (via protected PR)
+```
+
+### **Branch Strategy**
+- **main** – Production-ready branch deployed to garthpuckerin.com (**PROTECTED**)
+- **develop** – Integration branch for staging features before release (**PROTECTED**)
+- **feature/*** – All new work branches from develop (e.g., `feature/demo-infrastructure`)
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for complete workflow documentation and [`BRANCH_STRATEGY.md`](BRANCH_STRATEGY.md) for protection configuration.
 
 ### Tooling Notes
 

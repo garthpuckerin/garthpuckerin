@@ -1,0 +1,170 @@
+# 🛡️ GODADDY HOSTING SECURITY CONFIGURATION
+
+## .htaccess File for Production Security
+
+```apache
+# ==========================================
+# SECURITY CONFIGURATION FOR GARTHPUCKERIN.COM
+# ==========================================
+
+RewriteEngine On
+
+# ==========================================
+# FORCE HTTPS/SSL
+# ==========================================
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ==========================================
+# SECURITY HEADERS
+# ==========================================
+
+# Prevent MIME type sniffing
+Header always set X-Content-Type-Options nosniff
+
+# Prevent clickjacking
+Header always set X-Frame-Options SAMEORIGIN
+
+# XSS Protection
+Header always set X-XSS-Protection "1; mode=block"
+
+# Referrer Policy
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Permissions Policy (disable unnecessary features)
+Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+
+# Content Security Policy
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; object-src 'none'; media-src 'self'; frame-src 'none'"
+
+# HTTP Strict Transport Security (HSTS)
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+# ==========================================
+# FILE PROTECTION
+# ==========================================
+
+# Protect .htaccess and other sensitive files
+<Files ~ "^\.ht">
+    Require all denied
+</Files>
+
+# Block access to source files and config
+<FilesMatch "\.(map|ts|tsx|json|md|lock)$">
+    Require all denied
+</FilesMatch>
+
+# Protect backup and temporary files
+<FilesMatch "\.(bak|backup|tmp|temp|log)$">
+    Require all denied
+</FilesMatch>
+
+# ==========================================
+# DIRECTORY SECURITY
+# ==========================================
+
+# Prevent directory browsing
+Options -Indexes
+
+# Disable server signature
+ServerSignature Off
+
+# ==========================================
+# PERFORMANCE & CACHING
+# ==========================================
+
+# Cache static assets
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+    Header set Expires "Thu, 31 Dec 2025 20:00:00 GMT"
+</FilesMatch>
+
+# Cache HTML with shorter duration
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "public, max-age=3600"
+</FilesMatch>
+
+# ==========================================
+# HOTLINK PROTECTION
+# ==========================================
+
+# Prevent hotlinking of images and assets
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https://garthpuckerin\.com [NC]
+RewriteCond %{HTTP_REFERER} !^https://www\.garthpuckerin\.com [NC]
+RewriteCond %{HTTP_REFERER} !^https://.*\.google\. [NC]
+RewriteCond %{HTTP_REFERER} !^https://.*\.bing\. [NC]
+RewriteRule \.(jpg|jpeg|png|gif|css|js|pdf)$ - [F,L]
+
+# ==========================================
+# RATE LIMITING (Basic)
+# ==========================================
+
+# Limit request size
+LimitRequestBody 10485760
+
+# ==========================================
+# ERROR PAGES
+# ==========================================
+
+# Custom error pages
+ErrorDocument 403 /index.html
+ErrorDocument 404 /index.html
+ErrorDocument 500 /index.html
+
+# ==========================================
+# COMPRESSION
+# ==========================================
+
+# Enable Gzip compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+</IfModule>
+
+# ==========================================
+# SPA ROUTING (React Router)
+# ==========================================
+
+# Handle client-side routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+```
+
+## 📋 DEPLOYMENT CHECKLIST
+
+### **1. Upload .htaccess**
+- Place this file in your GoDaddy `public_html` directory
+- Ensure it's named exactly `.htaccess` (with the dot)
+
+### **2. GoDaddy SSL Configuration**
+- Enable SSL certificate in GoDaddy control panel
+- Force HTTPS redirects (handled by .htaccess above)
+
+### **3. DNS Security**
+- Consider using Cloudflare for additional DDoS protection
+- Enable domain lock in GoDaddy
+
+### **4. Test Security**
+After deployment, test your security:
+- **SSL Test**: https://www.ssllabs.com/ssltest/
+- **Security Headers**: https://securityheaders.com/
+- **Observatory**: https://observatory.mozilla.org/
+
+### **5. Monitor**
+- Set up Google Search Console
+- Monitor for any security alerts
+- Regular SSL certificate renewal (auto with Let's Encrypt)
+
+---
+
+**This configuration provides enterprise-level security for your static portfolio!** 🛡️

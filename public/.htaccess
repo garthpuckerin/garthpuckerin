@@ -1,0 +1,19 @@
+# Basic .htaccess for GoDaddy Shared Hosting + Cloudflare
+# Simplified version - compatible with shared hosting limitations
+# HTTPS redirects handled by Cloudflare (not .htaccess)
+
+RewriteEngine On
+
+# React Router SPA Support
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# Basic Security (GoDaddy compatible)
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
+
+# Prevent directory browsing
+Options -Indexes

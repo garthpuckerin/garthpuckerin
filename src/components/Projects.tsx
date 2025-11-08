@@ -62,27 +62,50 @@ const projects: Project[] = [
     status: "Beta",
   },
   {
-    title: "PipelineOS",
-    subtitle: "Intent-to-Execution DevOps Platform",
+    title: "Dreamcatcher",
+    subtitle: "AI Conversation Fragment Organizer",
     description:
-      "Turns strategic intent into structured workstreams (projects, tickets, agent runs, and PRs) inside a human-in-the-loop DevOps control hub.",
-    role: "Founder / Architect",
+      "Intelligent conversation processing system that captures, organizes, and contextualizes AI interaction fragments for project management and knowledge building.",
+    role: "Lead Developer & AI Integration Architect",
     highlights: [
-      "Coordinated PDE/IPDE orchestration with enforceable guardrails",
-      "Implemented dashboards for intent capture, review, and deployment workflows",
-      "Unified local-to-cloud delivery with provider-agnostic AI adapters and GitHub integration",
+      "Built ML-powered conversation analysis and topic clustering algorithms",
+      "Implemented semantic search and context preservation across conversation threads",
+      "Created intuitive project organization with automated tagging and relationship mapping",
     ],
     tech: [
-      "Next.js 14",
+      "Python",
       "FastAPI",
-      "Postgres",
-      "SQLite",
-      "Redis",
-      "Docker Compose",
-      "OpenAPI",
-      "GitHub Integration",
+      "React",
+      "PostgreSQL",
+      "OpenAI API",
+      "Vector Database",
+      "Docker",
+      "TypeScript",
     ],
-    status: "Production",
+    status: "Open Source",
+  },
+  {
+    title: "GrantTracker 2.0",
+    subtitle: "Enterprise Grant Management Platform",
+    description:
+      "Next-generation grant lifecycle management system designed for educational institutions and non-profits. Features automated compliance tracking, multi-stakeholder workflows, and real-time reporting with audit trails.",
+    role: "Lead Developer & Product Architect",
+    highlights: [
+      "Built comprehensive grant application and award management workflows for schools and non-profits",
+      "Implemented automated compliance monitoring with deadline alerts and progress tracking",
+      "Designed multi-tenant architecture supporting various educational and organizational structures",
+    ],
+    tech: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Redis",
+      "Docker",
+      "AWS",
+      "Stripe",
+    ],
+    status: "In Development",
   },
 ];
 
@@ -131,7 +154,7 @@ const Projects: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2">
           {projects.map((project) => (
             <article key={project.title} className={cardClass}>
               <div className="mb-4">
@@ -257,6 +280,41 @@ const Projects: React.FC = () => {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Portfolio Expansion Teaser */}
+        <div className="mt-16 text-center">
+          <div className={cn(
+            "mx-auto max-w-2xl rounded-xl border p-6 shadow-lg",
+            theme === "light" && "border-blue-200 bg-blue-50/70",
+            theme !== "light" && "border-cyan-800/50 bg-cyan-950/20"
+          )}>
+            <div className="flex items-center justify-center mb-4">
+              <Award className={cn(
+                "mr-2 h-5 w-5",
+                theme === "light" ? "text-blue-600" : "text-cyan-400"
+              )} />
+              <h3 className={cn(
+                "text-lg font-semibold",
+                theme === "light" ? "text-blue-700" : "text-cyan-300"
+              )}>
+                Coming Soon: Live Demonstrations
+              </h3>
+            </div>
+            <p className={cn(
+              "text-sm leading-relaxed",
+              theme === "light" ? "text-blue-600" : "text-cyan-200"
+            )}>
+              Interactive showcases for these projects are in development. Each demo will feature 
+              live walkthroughs, architecture deep-dives, and hands-on exploration of key features.
+              <span className={cn(
+                "block mt-2 text-xs font-medium",
+                theme === "light" ? "text-blue-500" : "text-cyan-300"
+              )}>
+                Portfolio Demo System v1.2.0 • December 2025
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </section>

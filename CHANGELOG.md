@@ -5,6 +5,62 @@ All notable changes to the Garth Puckerin Portfolio project will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-11-07 (Mobile UX & Browser Enhancements) ✅
+
+### Added
+- **Mobile UX Improvements**: Enhanced hero section padding and modal scrolling
+- **Browser PDF Instructions**: Smart modal guidance for Edge/Firefox PDF downloads
+- **Contact Form Enhancement**: AJAX submission with toast notifications
+- **Resume Template Optimization**: Single-line contact info for minimal template
+- **Toast Notification System**: Theme-aware success/error feedback
+
+### Changed
+- **Form Experience**: Eliminated Formspree redirects for seamless UX
+- **Modal Responsiveness**: Improved resume modal layout on mobile devices
+- **Print Dialog**: Browser-specific instructions for better PDF generation
+
+### Fixed
+- **Mobile Scrolling**: Resume modal now scrolls properly on mobile
+- **Edge/Firefox**: Addressed default "Print" vs "Save as PDF" issue
+- **Form Feedback**: Users get immediate confirmation without page redirects
+
+## [1.1.0] - 2025-11-06 (Security & Launch Ready) ✅
+
+### Added
+- **SSL Implementation**: Cloudflare with Let's Encrypt backend
+- **Website Integration**: Portfolio URL added to all resume templates
+- **Enhanced Security**: Production-ready .htaccess configuration
+- **Resume Generator**: Three professional templates with website display
+
+### Changed
+- **Security Configuration**: Cloudflare "Flexible" mode for GoDaddy compatibility
+- **Resume Templates**: All templates now prominently display website URL
+
+### Fixed
+- **SSL Compatibility**: Resolved GoDaddy shared hosting SSL issues
+- **htaccess Configuration**: Simplified for hosting provider compatibility
+
+## [1.0.1] - Portfolio Demo System (Planning) 🚀
+
+### Planning Phase
+- **Epic Demo**: Full-stack application showcase with live demonstration
+- **PDE Demo**: Professional Development Ecosystem with VS Code extension integration  
+- **Dreamcatcher Demo**: AI conversation organizer demonstration (optional)
+- **GrantTracker 2.0 Demo**: Enterprise grant management platform with compliance automation
+- **Protected Workflow**: Enterprise-grade branch protection for main and develop
+- **Demo Infrastructure**: Reusable components and routing system for project showcases
+- **Commercial Focus**: Transform portfolio from resume site to capability demonstration
+
+**Implementation Plan**: 5-sprint development cycle (November 6 - December 11, 2025)  
+**Documentation**: See [SPRINT_PLAN.md](SPRINT_PLAN.md) and [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### Planned Features
+- Non-disruptive demo integration preserving current portfolio functionality
+- `/demos/*` routing for individual project showcases
+- Live demo embedding with performance optimization
+- Technical architecture documentation for each showcased project
+- Enterprise-grade development workflow with protected branches
+
 ## [1.0.1] - 2025-11-06
 
 ### Fixed
