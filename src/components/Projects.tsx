@@ -1,113 +1,9 @@
 import React from "react";
-import { ExternalLink, Github, Award } from "lucide-react";
+import { ExternalLink, Github, Award, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { cn } from "../lib/utils";
-
-type Project = {
-  title: string;
-  subtitle?: string;
-  description: string;
-  highlights: string[];
-  tech: string[];
-  role: string;
-  link?: string;
-  repo?: string;
-  status?: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "EPIC 2025",
-    subtitle: "Montefiore Access DB Modernization",
-    description:
-      "Modernizing the legacy Microsoft Access scheduling system I authored at Montefiore into a secure, web-first platform with normalized data and automated reporting.",
-    role: "Original Author & Modernization Lead",
-    highlights: [
-      "Migrated Access data models to SQL Server with SSMA and custom ETL",
-      "Introduced RBAC, audit trails, and governance for multi-site operations",
-      "Delivered REST APIs consumed by a modern Next.js front end for schedulers",
-    ],
-    tech: [
-      "Microsoft Access",
-      "SQL Server",
-      "Python",
-      "FastAPI",
-      "Next.js",
-      "Docker",
-      "GitHub Actions",
-    ],
-    status: "In Flight",
-  },
-  {
-    title: "PDE / IPDE",
-    subtitle: "Intelligent Professional Development Environment",
-    description:
-      "AI-augmented development environment and VS Code extension that converts natural-language specs into scaffolded repos, tests, CI, and review-ready PRs.",
-    role: "Product / Lead Architect",
-    highlights: [
-      "Built guardrailed, provider-agnostic code generation with semantic diff review",
-      "Automated doc/test creation and reproducible agent runs with approval gates",
-      "Integrated PipelineOS agents for seamless hand-off across the SDLC",
-    ],
-    tech: [
-      "VS Code Extension",
-      "TypeScript",
-      "Node.js",
-      "Python",
-      "Docker",
-      "GitHub Actions",
-      "OpenAPI",
-      "LLM Adapters",
-    ],
-    status: "Beta",
-  },
-  {
-    title: "Dreamcatcher",
-    subtitle: "AI Conversation Fragment Organizer",
-    description:
-      "Intelligent conversation processing system that captures, organizes, and contextualizes AI interaction fragments for project management and knowledge building.",
-    role: "Lead Developer & AI Integration Architect",
-    highlights: [
-      "Built ML-powered conversation analysis and topic clustering algorithms",
-      "Implemented semantic search and context preservation across conversation threads",
-      "Created intuitive project organization with automated tagging and relationship mapping",
-    ],
-    tech: [
-      "Python",
-      "FastAPI",
-      "React",
-      "PostgreSQL",
-      "OpenAI API",
-      "Vector Database",
-      "Docker",
-      "TypeScript",
-    ],
-    status: "Open Source",
-  },
-  {
-    title: "GrantTracker 2.0",
-    subtitle: "Enterprise Grant Management Platform",
-    description:
-      "Next-generation grant lifecycle management system designed for educational institutions and non-profits. Features automated compliance tracking, multi-stakeholder workflows, and real-time reporting with audit trails.",
-    role: "Lead Developer & Product Architect",
-    highlights: [
-      "Built comprehensive grant application and award management workflows for schools and non-profits",
-      "Implemented automated compliance monitoring with deadline alerts and progress tracking",
-      "Designed multi-tenant architecture supporting various educational and organizational structures",
-    ],
-    tech: [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Redis",
-      "Docker",
-      "AWS",
-      "Stripe",
-    ],
-    status: "In Development",
-  },
-];
+import { projects } from "../data/projects";
 
 const Projects: React.FC = () => {
   const { theme } = useTheme();
@@ -189,6 +85,20 @@ const Projects: React.FC = () => {
                     </p>
                   </div>
                   <div className="flex items-center gap-2">
+                    {project.internalLink && (
+                      <Link
+                        to={project.internalLink}
+                        className={cn(
+                          "flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-200",
+                          theme === "light"
+                            ? "border-slate-200 text-slate-500 hover:border-cyan-400 hover:text-cyan-500 bg-slate-50"
+                            : "border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-300 bg-slate-800",
+                        )}
+                        aria-label="View Project Details"
+                      >
+                        <ArrowRight size={18} />
+                      </Link>
+                    )}
                     {project.repo && (
                       <a
                         href={project.repo}
@@ -305,7 +215,7 @@ const Projects: React.FC = () => {
               "text-sm leading-relaxed",
               theme === "light" ? "text-blue-600" : "text-cyan-200"
             )}>
-              Interactive showcases for these projects are in development. Each demo will feature 
+              Interactive showcases for these projects are in development. Each demo will feature
               live walkthroughs, architecture deep-dives, and hands-on exploration of key features.
               <span className={cn(
                 "block mt-2 text-xs font-medium",
