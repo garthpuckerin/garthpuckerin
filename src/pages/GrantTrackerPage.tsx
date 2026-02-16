@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ExternalLink, Github, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import ProjectNavigation from '../components/ProjectNavigation';
@@ -42,25 +42,38 @@ const GrantTrackerPage = () => {
                                     <ExternalLink className="w-5 h-5 mr-2" />
                                     Launch Live Demo
                                 </a>
-                                <a
+                                {/* <a
                                     href="https://github.com/garthpuckerin/GrantTracker2.0-Demo"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-gray-600 transition-colors"
+                                    className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-700 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-gray-600 transition-colors opacity-50 cursor-not-allowed"
+                                    aria-disabled="true"
                                 >
                                     <Github className="w-5 h-5 mr-2" />
-                                    View Code
-                                </a>
+                                    View Code (Private)
+                                </a> */}
                             </div>
                         </div>
                         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center p-8 border-l border-gray-100 dark:border-gray-700">
                             {/* Placeholder for Hero Image/Video */}
-                            <div className="w-full aspect-video bg-white dark:bg-gray-900 rounded-xl shadow-2xl flex items-center justify-center border border-gray-200 dark:border-gray-600 overflow-hidden relative group">
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
-                                    <span className="text-white font-medium">Click to Launch Demo</span>
+                            <a
+                                href="https://grant-tracker-demo.vercel.app"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full aspect-video bg-white dark:bg-gray-900 rounded-xl shadow-2xl flex items-center justify-center border border-gray-200 dark:border-gray-600 overflow-hidden relative group cursor-pointer"
+                            >
+                                <img
+                                    src="/grant-tracker-preview.png"
+                                    alt="GrantTracker 2.0 Dashboard"
+                                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                                    <span className="inline-flex items-center px-6 py-3 bg-white/10 text-white font-semibold rounded-full border border-white/20 backdrop-blur-md shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                        <ExternalLink className="w-5 h-5 mr-2" />
+                                        Launch Interactive Demo
+                                    </span>
                                 </div>
-                                <span className="text-gray-400 font-medium">Interactive Preview (Coming Soon)</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -90,11 +103,11 @@ const GrantTrackerPage = () => {
                             <div className="grid sm:grid-cols-2 gap-4">
                                 {[
                                     "Multi-Year Grant Tracking",
-                                    "Real-time Budget Monitoring",
+                                    "AI-Driven Insights & Chat",
+                                    "Sponsor-Aware Compliance (2 CFR 200)",
+                                    "SF-425 Federal Reporting",
                                     "Role-Based Access Control",
-                                    "Type-safe Document Management",
-                                    "Task Assignment & Tracking",
-                                    "Complete Audit Trails"
+                                    "Real-time Budget Monitoring"
                                 ].map((feature, i) => (
                                     <div key={i} className="flex items-start p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
                                         <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 mt-0.5" />

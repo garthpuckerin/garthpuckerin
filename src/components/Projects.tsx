@@ -208,20 +208,21 @@ const Projects: React.FC = () => {
                 "text-lg font-semibold",
                 theme === "light" ? "text-blue-700" : "text-cyan-300"
               )}>
-                Coming Soon: Live Demonstrations
+                Live Demonstrations Available
               </h3>
             </div>
             <p className={cn(
               "text-sm leading-relaxed",
               theme === "light" ? "text-blue-600" : "text-cyan-200"
             )}>
-              Interactive showcases for these projects are in development. Each demo will feature
-              live walkthroughs, architecture deep-dives, and hands-on exploration of key features.
+              Interactive showcases for select projects are now available.
+              Launch the live demo for <strong>GrantTracker 2.0</strong> to explore the full-stack architecture
+              and user experience firsthand. More demos coming soon.
               <span className={cn(
                 "block mt-2 text-xs font-medium",
                 theme === "light" ? "text-blue-500" : "text-cyan-300"
               )}>
-                Portfolio Demo System v1.2.0 • December 2025
+                Portfolio Demo System v1.3.0 • February 2026
               </span>
             </p>
           </div>

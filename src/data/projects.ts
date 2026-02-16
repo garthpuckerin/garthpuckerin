@@ -20,8 +20,8 @@ export const projects: Project[] = [
         role: "Systems Architect & Lead Developer",
         highlights: [
             "Designed modular workflow architecture adaptable across institution types",
-            "Built automated compliance monitoring with drift-aware deadline alerts",
-            "Implemented multi-tenant governance supporting distributed stakeholders",
+            "Built automated compliance monitoring with sponsor-aware logic (2 CFR 200)",
+            "Integrated multi-agent AI for proactive spending insights and policy queries",
         ],
         tech: [
             "Next.js 16",
@@ -33,6 +33,7 @@ export const projects: Project[] = [
         ],
         status: "Production Ready",
         internalLink: "/projects/grant-tracker",
+        link: "https://grant-tracker2-0-demo.vercel.app/",
     },
     {
         title: "Dreamcatcher",
