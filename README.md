@@ -13,7 +13,7 @@ infrastructure.
 Thursdays. Doc drops land in
 [`reveals`](https://github.com/garthpuckerin/reveals) as each ships.
 
-**How I work:** private source (commercializing), public demos, public
+**How I work:** private source — commercial versions are in progress; public demos, public
 architecture. Code tours and walkthroughs available on request —
 [LinkedIn](https://linkedin.com/in/garthpuckerin) / garth.puckerin@me.com
 
